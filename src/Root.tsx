@@ -4,9 +4,9 @@ import styled from "styled-components";
 import hamburgerIcon from "./assets/images/hamburger.png";
 import arrowRightIcon from "./assets/images/arrow_right.png";
 
-const Wrapper = styled.div<{ $asideColumnFraction: number }>`
+const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
-    grid-template-columns: ${(props) => props.$asideColumnFraction}fr 7fr;
+    grid-template-columns: ${(props) => (props.$asideIsOpen ? 1 : 0)}fr 7fr;
     grid-template-rows: 1fr 20fr;
     min-height: 100%;
     background-color: red;
@@ -28,64 +28,60 @@ const AsideItemWrapper = styled.div`
     margin: 5px;
 `;
 
-const AsideItem = styled.button`
+const AsideItem = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
     padding: 4px 5px;
+    &:hover {
+        border-radius: 3px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
     > span {
         font-size: 15px;
         font-weight: 600;
     }
 `;
 
-const SubMenuButton = styled.button<{ $rotationAngle: number }>`
+const SubMenuButton = styled.button<{ $subMenuIsOpen: boolean }>`
     display: flex;
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);
     }
     > img {
         padding: 2.5px;
-        transform: rotateZ(${(props) => props.$rotationAngle}deg);
+        transform: rotateZ(${(props) => (props.$subMenuIsOpen ? 90 : 0)}deg);
         transition: transform 0.25s ease-in-out;
     }
 `;
 
 function Root() {
     const [asideIsOpen, setAsideIsOpen] = useState<boolean>(true);
-    const [asideColumnFraction, setAsideColumnFraction] = useState<number>(1);
     const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(false);
-    const [rotationAngle, setRotationAngle] = useState<number>(0);
 
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
-     * 2. asideIsOpen 값에 따라 asideColumnFraction 값을 대입한다.
      */
     const toggleAside = () => {
         setAsideIsOpen((previous) => !previous);
-
-        asideIsOpen ? setAsideColumnFraction(1) : setAsideColumnFraction(0);
     };
 
     /**@function toggleSubMenu
      * 1. subMenuIsOpen(boolean) 변수의 값을 전환한다.
-     * 2. subMenuIsOpen 값에 따라 rotationAngle 값을 대입한다.
      */
     const toggleSubMenu = () => {
         setSubMenuIsOpen((previous) => !previous);
-
-        subMenuIsOpen ? setRotationAngle(90) : setRotationAngle(0);
     };
 
     return (
-        <Wrapper $asideColumnFraction={asideColumnFraction}>
+        <Wrapper $asideIsOpen={asideIsOpen}>
             <Aside>
                 <HamburgerButton onClick={toggleAside}>
                     <img src={hamburgerIcon} alt="hamburger menu" width={20} />
                 </HamburgerButton>
                 <AsideItemWrapper>
                     <AsideItem>
-                        <SubMenuButton onClick={toggleSubMenu} $rotationAngle={rotationAngle}>
+                        <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
                             <img src={arrowRightIcon} alt="arrow right" width={20} />
                         </SubMenuButton>
                         <span>🐯 백미진</span>
