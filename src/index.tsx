@@ -53,8 +53,21 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+* {
+  box-sizing: border-box;
+}
 button {
   padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  &:hover {
+      border-radius: 3px;
+      background-color: rgba(0, 0, 0, 0.1);
+  }
+  > img {
+    opacity: 0.4;
+  }
 }
 `;
 
