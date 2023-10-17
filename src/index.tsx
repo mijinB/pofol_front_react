@@ -29,6 +29,12 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html, body {
+  height: 100%;
+  > div {
+    height: 100%;
+  }
+}
 body {
 	line-height: 1;
 }
@@ -46,6 +52,9 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+button {
+  padding: 0;
 }
 `;
 
