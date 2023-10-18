@@ -21,14 +21,15 @@ const AsideBackground = styled.div`
 const Aside = styled.div<{ $asideIsOpen: boolean }>`
     position: absolute;
     top: 50px;
+    left: ${(props) => (props.$asideIsOpen ? -250 : 0)}px;
     width: 240px;
     min-height: 240px;
     padding: 10px 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: ${(props) => (props.$asideIsOpen ? "transparent" : "white")};
-    box-shadow: rgba(0, 0, 0, 0.35) 0px ${(props) => (props.$asideIsOpen ? 0 : 5)}px
-        ${(props) => (props.$asideIsOpen ? 0 : 15)}px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: left 0.3s ease-in-out;
 `;
 
 const HamburgerButton = styled.button`
