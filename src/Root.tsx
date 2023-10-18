@@ -46,6 +46,9 @@ const AsideItem = styled.div`
         border-radius: 3px;
         background-color: rgba(0, 0, 0, 0.1);
     }
+    > img {
+        margin: 3px;
+    }
     > span {
         color: gray;
         font-size: 15px;
@@ -110,19 +113,31 @@ function Root() {
                         </AsideItem>
                         <SubMenuWrapper>
                             <AsideItem>
-                                <img src={dot} alt="arrow right" width={10} />
+                                <img src={dot} alt="dot" width={10} />
                                 <span>👩‍🎓 Education</span>
                             </AsideItem>
                             <AsideItem>
-                                <img src={dot} alt="arrow right" width={10} />
+                                <img src={dot} alt="dot" width={10} />
                                 <span>📚 Certificate</span>
                             </AsideItem>
                             <AsideItem>
-                                <img src={dot} alt="arrow right" width={10} />
+                                <img src={dot} alt="dot" width={10} />
                                 <span>🏆 Awards</span>
                             </AsideItem>
                         </SubMenuWrapper>
                     </SlideDown>
+                    <AsideItem>
+                        <img src={arrowRightIcon} alt="arrow right" width={15} />
+                        <span>🎨 SKILLS</span>
+                    </AsideItem>
+                    <AsideItem>
+                        <img src={arrowRightIcon} alt="arrow right" width={15} />
+                        <span>🖼️ PROJECT</span>
+                    </AsideItem>
+                    <AsideItem>
+                        <img src={arrowRightIcon} alt="arrow right" width={15} />
+                        <span>👩‍🎨 ACTIVITY</span>
+                    </AsideItem>
                 </AsideItemWrapper>
             </Aside>
             <h1>root</h1>
