@@ -2,8 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import hamburgerIcon from "./assets/images/hamburger.png";
-import arrowRightIcon from "./assets/images/arrow_right.png";
-import dot from "./assets/images/dot.png";
+import AsideMenu from "./components/AsideMenu";
 
 const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
@@ -18,6 +17,12 @@ const AsideBackground = styled.div`
     background-color: #fce0e2;
 `;
 
+const HamburgerButton = styled.button`
+    display: flex;
+    padding: 5px;
+    margin: 10px;
+`;
+
 const Aside = styled.div<{ $asideIsOpen: boolean }>`
     position: absolute;
     top: 50px;
@@ -30,67 +35,6 @@ const Aside = styled.div<{ $asideIsOpen: boolean }>`
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: left 0.3s ease-in-out;
-`;
-
-const HamburgerButton = styled.button`
-    display: flex;
-    padding: 5px;
-    margin: 10px;
-`;
-
-const AsideItemWrapper = styled.div`
-    margin: 5px;
-`;
-
-const SlideDown = styled.div<{ $subMenuIsOpen: boolean }>`
-    max-height: ${(props) => (props.$subMenuIsOpen ? "120px" : "30px")};
-    overflow: hidden;
-    transition: max-height 0.1s ease-in-out;
-`;
-
-const AsideItem = styled.div`
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 30px;
-    padding: 4px 7px;
-    overflow: hidden;
-    cursor: pointer;
-    &:hover {
-        border-radius: 3px;
-        background-color: rgba(0, 0, 0, 0.1);
-    }
-    > img {
-        margin: 3px;
-    }
-    > span {
-        color: gray;
-        font-size: 15px;
-        font-weight: 600;
-    }
-`;
-
-const SubMenuButton = styled.button<{ $subMenuIsOpen: boolean }>`
-    display: flex;
-    padding: 3px;
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-    }
-    > img {
-        transform: rotateZ(${(props) => (props.$subMenuIsOpen ? 90 : 0)}deg);
-        transition: transform 0.25s ease-in-out;
-    }
-`;
-
-const SubMenuWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    > div {
-        padding-left: 30px;
-        > img {
-            margin-right: 4px;
-        }
-    }
 `;
 
 function Root() {
@@ -117,44 +61,10 @@ function Root() {
                 <HamburgerButton onClick={toggleAside}>
                     <img src={hamburgerIcon} alt="hamburger menu" width={20} />
                 </HamburgerButton>
+                <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
             </AsideBackground>
             <Aside $asideIsOpen={asideIsOpen}>
-                <AsideItemWrapper>
-                    <SlideDown $subMenuIsOpen={subMenuIsOpen}>
-                        <AsideItem>
-                            <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
-                                <img src={arrowRightIcon} alt="arrow right" width={15} />
-                            </SubMenuButton>
-                            <span>🐯 백미진</span>
-                        </AsideItem>
-                        <SubMenuWrapper>
-                            <AsideItem>
-                                <img src={dot} alt="dot" width={10} />
-                                <span>👩‍🎓 Education</span>
-                            </AsideItem>
-                            <AsideItem>
-                                <img src={dot} alt="dot" width={10} />
-                                <span>📚 Certificate</span>
-                            </AsideItem>
-                            <AsideItem>
-                                <img src={dot} alt="dot" width={10} />
-                                <span>🏆 Awards</span>
-                            </AsideItem>
-                        </SubMenuWrapper>
-                    </SlideDown>
-                    <AsideItem>
-                        <img src={arrowRightIcon} alt="arrow right" width={15} />
-                        <span>🎨 SKILLS</span>
-                    </AsideItem>
-                    <AsideItem>
-                        <img src={arrowRightIcon} alt="arrow right" width={15} />
-                        <span>🖼️ PROJECT</span>
-                    </AsideItem>
-                    <AsideItem>
-                        <img src={arrowRightIcon} alt="arrow right" width={15} />
-                        <span>👩‍🎨 ACTIVITY</span>
-                    </AsideItem>
-                </AsideItemWrapper>
+                <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
             </Aside>
             <h1>root</h1>
             <Outlet />
