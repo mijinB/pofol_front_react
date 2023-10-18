@@ -81,7 +81,7 @@ const SubMenuWrapper = styled.div`
 
 function Root() {
     const [asideIsOpen, setAsideIsOpen] = useState<boolean>(true);
-    const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(false);
+    const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(true);
 
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
