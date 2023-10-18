@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import hamburgerIcon from "./assets/images/hamburger.png";
 import arrowRightIcon from "./assets/images/arrow_right.png";
+import dot from "./assets/images/dot.png";
 
 const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
@@ -28,16 +29,25 @@ const AsideItemWrapper = styled.div`
     margin: 5px;
 `;
 
+const SlideDown = styled.div<{ $subMenuIsOpen: boolean }>`
+    max-height: ${(props) => (props.$subMenuIsOpen ? "120px" : "30px")};
+    overflow: hidden;
+    transition: max-height 0.1s ease-in-out;
+`;
+
 const AsideItem = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 4px 5px;
+    height: 30px;
+    padding: 4px 7px;
+    cursor: pointer;
     &:hover {
         border-radius: 3px;
         background-color: rgba(0, 0, 0, 0.1);
     }
     > span {
+        color: gray;
         font-size: 15px;
         font-weight: 600;
     }
@@ -45,13 +55,24 @@ const AsideItem = styled.div`
 
 const SubMenuButton = styled.button<{ $subMenuIsOpen: boolean }>`
     display: flex;
+    padding: 3px;
     &:hover {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.1);
     }
     > img {
-        padding: 2.5px;
         transform: rotateZ(${(props) => (props.$subMenuIsOpen ? 90 : 0)}deg);
         transition: transform 0.25s ease-in-out;
+    }
+`;
+
+const SubMenuWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    > div {
+        padding-left: 30px;
+        > img {
+            margin-right: 4px;
+        }
     }
 `;
 
@@ -80,12 +101,28 @@ function Root() {
                     <img src={hamburgerIcon} alt="hamburger menu" width={20} />
                 </HamburgerButton>
                 <AsideItemWrapper>
-                    <AsideItem>
-                        <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
-                            <img src={arrowRightIcon} alt="arrow right" width={20} />
-                        </SubMenuButton>
-                        <span>🐯 백미진</span>
-                    </AsideItem>
+                    <SlideDown $subMenuIsOpen={subMenuIsOpen}>
+                        <AsideItem>
+                            <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
+                                <img src={arrowRightIcon} alt="arrow right" width={15} />
+                            </SubMenuButton>
+                            <span>🐯 백미진</span>
+                        </AsideItem>
+                        <SubMenuWrapper>
+                            <AsideItem>
+                                <img src={dot} alt="arrow right" width={10} />
+                                <span>👩‍🎓 Education</span>
+                            </AsideItem>
+                            <AsideItem>
+                                <img src={dot} alt="arrow right" width={10} />
+                                <span>📚 Certificate</span>
+                            </AsideItem>
+                            <AsideItem>
+                                <img src={dot} alt="arrow right" width={10} />
+                                <span>🏆 Awards</span>
+                            </AsideItem>
+                        </SubMenuWrapper>
+                    </SlideDown>
                 </AsideItemWrapper>
             </Aside>
             <h1>root</h1>

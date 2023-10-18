@@ -56,6 +56,11 @@ table {
 * {
   box-sizing: border-box;
 }
+button, div {
+  > img {
+    opacity: 0.4;
+  }
+}
 button {
   padding: 0;
   border: none;
@@ -64,9 +69,6 @@ button {
   &:hover {
       border-radius: 3px;
       background-color: rgba(0, 0, 0, 0.1);
-  }
-  > img {
-    opacity: 0.4;
   }
 }
 `;
