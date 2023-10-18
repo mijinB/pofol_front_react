@@ -7,16 +7,28 @@ import dot from "./assets/images/dot.png";
 
 const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
-    grid-template-columns: ${(props) => (props.$asideIsOpen ? 1 : 0)}fr 7fr;
+    grid-template-columns: ${(props) => (props.$asideIsOpen ? "240px" : "0px")} 7fr;
     grid-template-rows: 1fr 20fr;
     min-height: 100%;
-    background-color: red;
     transition: all 0.5s ease-in-out;
 `;
 
-const Aside = styled.div`
+const AsideBackground = styled.div`
     grid-row: span 2;
-    background-color: white;
+    background-color: #fce0e2;
+`;
+
+const Aside = styled.div<{ $asideIsOpen: boolean }>`
+    position: absolute;
+    top: 50px;
+    width: 240px;
+    min-height: 240px;
+    padding: 10px 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: ${(props) => (props.$asideIsOpen ? "transparent" : "white")};
+    box-shadow: rgba(0, 0, 0, 0.35) 0px ${(props) => (props.$asideIsOpen ? 0 : 5)}px
+        ${(props) => (props.$asideIsOpen ? 0 : 15)}px;
 `;
 
 const HamburgerButton = styled.button`
@@ -41,6 +53,7 @@ const AsideItem = styled.div`
     width: 100%;
     height: 30px;
     padding: 4px 7px;
+    overflow: hidden;
     cursor: pointer;
     &:hover {
         border-radius: 3px;
@@ -99,10 +112,12 @@ function Root() {
 
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
-            <Aside>
+            <AsideBackground>
                 <HamburgerButton onClick={toggleAside}>
                     <img src={hamburgerIcon} alt="hamburger menu" width={20} />
                 </HamburgerButton>
+            </AsideBackground>
+            <Aside $asideIsOpen={asideIsOpen}>
                 <AsideItemWrapper>
                     <SlideDown $subMenuIsOpen={subMenuIsOpen}>
                         <AsideItem>
