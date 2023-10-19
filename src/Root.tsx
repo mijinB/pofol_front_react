@@ -7,7 +7,7 @@ import profileImage from "./assets/images/cat.jpg";
 const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
     grid-template-columns: ${(props) => (props.$asideIsOpen ? "240px" : "0px")} 7fr;
-    grid-template-rows: 1fr 20fr;
+    grid-template-rows: 1fr 16fr;
     min-height: 100%;
     transition: all 0.5s ease-in-out;
 `;
@@ -20,6 +20,8 @@ const AsideBackground = styled.div`
 const ProfileWrapper = styled.div`
     display: flex;
     align-items: center;
+    height: 57px;
+    margin-left: 8px;
     overflow: hidden;
     > * {
         flex: 0 0 auto;
@@ -27,11 +29,12 @@ const ProfileWrapper = styled.div`
 `;
 
 const ProfileImage = styled.img`
-    margin: 8px;
+    margin-right: 8px;
     border-radius: 5px;
 `;
 
 const ProfileName = styled.span`
+    font-size: 14px;
     font-weight: 600;
 `;
 
@@ -110,7 +113,7 @@ function Root() {
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground>
                 <ProfileWrapper>
-                    <ProfileImage src={profileImage} alt="cat" width={37} />
+                    <ProfileImage src={profileImage} alt="cat" width={30} />
                     <ProfileName>mijin Portfolio</ProfileName>
                 </ProfileWrapper>
                 <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
