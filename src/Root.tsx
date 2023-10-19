@@ -17,6 +17,19 @@ const AsideBackground = styled.div`
     background-color: #fce0e2;
 `;
 
+const AsideToggleButton = styled.button<{ $asideIsOpen: boolean }>`
+    position: relative;
+    left: ${(props) => (props.$asideIsOpen ? 186 : 0)}px;
+    display: flex;
+    padding: 5px;
+    margin: 10px;
+    opacity: ${(props) => (props.$asideIsOpen ? 0 : 1)};
+    transition: left 0.5s ease-in-out, opacity 0.2s ease-in-out;
+    &:hover {
+        opacity: 1;
+    }
+`;
+
 const HoverArea = styled.div`
     position: absolute;
     top: 0;
@@ -24,17 +37,8 @@ const HoverArea = styled.div`
     height: 100%;
 `;
 
-const HamburgerButton = styled.button<{ $asideIsOpen: boolean }>`
-    display: flex;
-    padding: 5px;
-    margin: 10px;
-    /* opacity: ${(props) => (props.$asideIsOpen ? 0 : 1)}; */
-    transition: opacity 0.4s ease-in-out;
-`;
-
 const HoverAside = styled.div<{ $asideIsHover: boolean }>`
     position: absolute;
-    z-index: ${props => props.$asideIsHover ? 99 : 0};
     top: 100px;
     left: ${(props) => (props.$asideIsHover ? 0 : -250)}px;
     width: 240px;
@@ -88,13 +92,43 @@ function Root() {
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground>
                 <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
-                    <HamburgerButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
-                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                    </HamburgerButton>
+                    <AsideToggleButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
+                        {asideIsOpen ? (
+                            <svg
+                                width="27"
+                                height="27"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M12 18L6 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M18 18L12 12L18 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                        ) : asideIsHover ? (
+                            <svg
+                                width="27"
+                                height="27"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M12 18L18 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                        ) : (
+                            <svg
+                                width="27"
+                                height="27"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                        )}
+                    </AsideToggleButton>
                 </HoverArea>
                 <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
             </AsideBackground>

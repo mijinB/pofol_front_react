@@ -73,7 +73,7 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
                 <AsideItem>
                     <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 6L15 12L9 18" stroke="#888888" stroke-width="2.5" strokeLinecap="round" />
+                            <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2.5" strokeLinecap="round" />
                         </svg>
                     </SubMenuButton>
                     <span>🐯 백미진</span>
@@ -95,19 +95,19 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
             </SlideDown>
             <AsideItem>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6L15 12L9 18" stroke="#888888" stroke-width="2.5" strokeLinecap="round" />
+                    <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
                 <span>🎨 SKILLS</span>
             </AsideItem>
             <AsideItem>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6L15 12L9 18" stroke="#888888" stroke-width="2.5" strokeLinecap="round" />
+                    <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
                 <span>🖼️ PROJECT</span>
             </AsideItem>
             <AsideItem>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6L15 12L9 18" stroke="#888888" stroke-width="2.5" strokeLinecap="round" />
+                    <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
                 <span>👩‍🎨 ACTIVITY</span>
             </AsideItem>
