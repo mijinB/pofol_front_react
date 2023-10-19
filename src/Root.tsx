@@ -21,16 +21,17 @@ const ProfileWrapper = styled.div`
     display: flex;
     align-items: center;
     overflow: hidden;
+    > * {
+        flex: 0 0 auto;
+    }
 `;
 
 const ProfileImage = styled.img`
-    flex: 0 0 auto;
     margin: 8px;
     border-radius: 5px;
 `;
 
 const ProfileName = styled.span`
-    flex: 0 0 auto;
     font-weight: 600;
 `;
 

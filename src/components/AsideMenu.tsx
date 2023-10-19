@@ -22,12 +22,13 @@ const AsideItem = styled.div`
         border-radius: 3px;
         background-color: rgba(0, 0, 0, 0.1);
     }
-    > svg {
+    > * {
         flex: 0 0 auto;
+    }
+    > svg {
         margin: 3px;
     }
     > span {
-        flex: 0 0 auto;
         color: #888888;
         font-size: 15px;
         font-weight: 600;
@@ -55,7 +56,6 @@ const SubMenuWrapper = styled.div`
 `;
 
 const Dot = styled.div`
-    flex: 0 0 auto;
     width: 5px;
     height: 5px;
     margin-right: 5px;
