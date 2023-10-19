@@ -30,6 +30,8 @@ const HamburgerButton = styled.button<{ $asideIsOpen: boolean }>`
     display: flex;
     padding: 5px;
     margin: 10px;
+    opacity: ${props => props.$asideIsOpen ? 0 : 1};
+    transition: opacity 0.4s ease-in-out;
 `;
 
 const HoverAside = styled.div<{ $asideIsHover: boolean }>`
