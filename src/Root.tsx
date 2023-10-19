@@ -17,9 +17,8 @@ const AsideBackground = styled.div`
     background-color: #fce0e2;
 `;
 
-const HoverArea = styled.div<{$asideIsOpen: boolean}>`
+const HoverArea = styled.div`
     position: absolute;
-    z-index: ${props => props.$asideIsOpen ? 0 : 1};
     top: 0;
     width: 60px;
     height: 100%;
@@ -35,6 +34,7 @@ const HamburgerButton = styled.button<{ $asideIsOpen: boolean }>`
 
 const HoverAside = styled.div<{ $asideIsHover: boolean }>`
     position: absolute;
+    z-index: ${props => props.$asideIsHover ? 99 : 0};
     top: 100px;
     left: ${(props) => (props.$asideIsHover ? 0 : -250)}px;
     width: 240px;
@@ -87,7 +87,7 @@ function Root() {
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground>
-                <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen}>
+                <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
                     <HamburgerButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
                         <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
@@ -98,7 +98,7 @@ function Root() {
                 </HoverArea>
                 <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
             </AsideBackground>
-            <HoverAside $asideIsHover={asideIsHover}>
+            <HoverAside onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsHover={asideIsHover}>
                 <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
             </HoverAside>
             <h1>root</h1>
