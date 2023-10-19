@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
-import hamburgerIcon from "./assets/images/hamburger.png";
 import AsideMenu from "./components/AsideMenu";
 
 const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
@@ -18,9 +17,9 @@ const AsideBackground = styled.div`
     background-color: #fce0e2;
 `;
 
-const HoverArea = styled.div`
+const HoverArea = styled.div<{$asideIsOpen: boolean}>`
     position: absolute;
-    z-index: 1;
+    z-index: ${props => props.$asideIsOpen ? 0 : 1};
     top: 0;
     width: 60px;
     height: 100%;
@@ -30,7 +29,7 @@ const HamburgerButton = styled.button<{ $asideIsOpen: boolean }>`
     display: flex;
     padding: 5px;
     margin: 10px;
-    opacity: ${props => props.$asideIsOpen ? 0 : 1};
+    /* opacity: ${(props) => (props.$asideIsOpen ? 0 : 1)}; */
     transition: opacity 0.4s ease-in-out;
 `;
 
@@ -88,9 +87,13 @@ function Root() {
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground>
-                <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
+                <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen}>
                     <HamburgerButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
-                        <img src={hamburgerIcon} alt="hamburger menu" width={20} />
+                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
                     </HamburgerButton>
                 </HoverArea>
                 <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />

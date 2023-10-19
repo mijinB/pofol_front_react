@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import arrowRightIcon from "../assets/images/arrow_right.png";
-import dot from "../assets/images/dot.png";
 
 const AsideItemWrapper = styled.div`
     margin: 5px;
@@ -24,11 +22,11 @@ const AsideItem = styled.div`
         border-radius: 3px;
         background-color: rgba(0, 0, 0, 0.1);
     }
-    > img {
+    > svg {
         margin: 3px;
     }
     > span {
-        color: gray;
+        color: #888888;
         font-size: 15px;
         font-weight: 600;
     }
@@ -40,7 +38,7 @@ const SubMenuButton = styled.button<{ $subMenuIsOpen: boolean }>`
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }
-    > img {
+    > svg {
         transform: rotateZ(${(props) => (props.$subMenuIsOpen ? 90 : 0)}deg);
         transition: transform 0.25s ease-in-out;
     }
@@ -50,11 +48,17 @@ const SubMenuWrapper = styled.div`
     display: flex;
     flex-direction: column;
     > div {
-        padding-left: 30px;
-        > img {
-            margin-right: 4px;
-        }
+        padding-left: 35px;
     }
+`;
+
+const Dot = styled.div`
+    width: 5px;
+    height: 5px;
+    margin-right: 5px;
+    border-radius: 2.5px;
+    background-color: #888888;
+    opacity: 0.7;
 `;
 
 interface AsideMenuProp {
@@ -68,35 +72,43 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
             <SlideDown $subMenuIsOpen={subMenuIsOpen}>
                 <AsideItem>
                     <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
-                        <img src={arrowRightIcon} alt="arrow right" width={15} />
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 6L15 12L9 18" stroke="#888888" stroke-width="2.5" strokeLinecap="round" />
+                        </svg>
                     </SubMenuButton>
                     <span>🐯 백미진</span>
                 </AsideItem>
                 <SubMenuWrapper>
                     <AsideItem>
-                        <img src={dot} alt="dot" width={10} />
+                        <Dot />
                         <span>👩‍🎓 Education</span>
                     </AsideItem>
                     <AsideItem>
-                        <img src={dot} alt="dot" width={10} />
+                        <Dot />
                         <span>📚 Certificate</span>
                     </AsideItem>
                     <AsideItem>
-                        <img src={dot} alt="dot" width={10} />
+                        <Dot />
                         <span>🏆 Awards</span>
                     </AsideItem>
                 </SubMenuWrapper>
             </SlideDown>
             <AsideItem>
-                <img src={arrowRightIcon} alt="arrow right" width={15} />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="#888888" stroke-width="2.5" strokeLinecap="round" />
+                </svg>
                 <span>🎨 SKILLS</span>
             </AsideItem>
             <AsideItem>
-                <img src={arrowRightIcon} alt="arrow right" width={15} />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="#888888" stroke-width="2.5" strokeLinecap="round" />
+                </svg>
                 <span>🖼️ PROJECT</span>
             </AsideItem>
             <AsideItem>
-                <img src={arrowRightIcon} alt="arrow right" width={15} />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="#888888" stroke-width="2.5" strokeLinecap="round" />
+                </svg>
                 <span>👩‍🎨 ACTIVITY</span>
             </AsideItem>
         </AsideItemWrapper>

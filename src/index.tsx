@@ -57,8 +57,8 @@ table {
   box-sizing: border-box;
 }
 button, div {
-  > img {
-    opacity: 0.4;
+  > svg {
+    opacity: 0.7;
   }
 }
 button {
