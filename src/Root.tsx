@@ -14,7 +14,15 @@ const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
 
 const AsideBackground = styled.div`
     grid-row: span 2;
+    padding-top: 50px;
     background-color: #fce0e2;
+`;
+
+const HamburgerPadding = styled.div`
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    height: 100%;
 `;
 
 const HamburgerButton = styled.button`
@@ -23,10 +31,10 @@ const HamburgerButton = styled.button`
     margin: 10px;
 `;
 
-const Aside = styled.div<{ $asideIsOpen: boolean }>`
+const HoverAside = styled.div<{ $asideIsHover: boolean }>`
     position: absolute;
     top: 50px;
-    left: ${(props) => (props.$asideIsOpen ? -250 : 0)}px;
+    left: ${(props) => (props.$asideIsHover ? 0 : -250)}px;
     width: 240px;
     min-height: 240px;
     padding: 10px 0;
@@ -39,6 +47,7 @@ const Aside = styled.div<{ $asideIsOpen: boolean }>`
 
 function Root() {
     const [asideIsOpen, setAsideIsOpen] = useState<boolean>(true);
+    const [asideIsHover, setAsideIsHover] = useState<boolean>(false);
     const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(true);
 
     /**@function toggleAside
@@ -47,6 +56,20 @@ function Root() {
     const toggleAside = () => {
         setAsideIsOpen((previous) => !previous);
     };
+
+    /**@function onHoverAside
+     * 1. asideIsHover(boolean) 변수에 true를 대입한다.
+     */
+    const onHoverAside = () => {
+        setAsideIsHover(true);
+    };
+
+    /**@function onHoverOutAside
+     * 1. asideIsHover(boolean) 변수에 false를 대입한다.
+     */
+    const onHoverOutAside = () => {
+        setAsideIsHover(false);
+    }
 
     /**@function toggleSubMenu
      * 1. subMenuIsOpen(boolean) 변수의 값을 전환한다.
@@ -58,14 +81,16 @@ function Root() {
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground>
-                <HamburgerButton onClick={toggleAside}>
-                    <img src={hamburgerIcon} alt="hamburger menu" width={20} />
-                </HamburgerButton>
+                <HamburgerPadding onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
+                    <HamburgerButton onClick={toggleAside}>
+                        <img src={hamburgerIcon} alt="hamburger menu" width={20} />
+                    </HamburgerButton>
+                </HamburgerPadding>
                 <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
             </AsideBackground>
-            <Aside $asideIsOpen={asideIsOpen}>
+            <HoverAside $asideIsHover={asideIsHover}>
                 <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
-            </Aside>
+            </HoverAside>
             <h1>root</h1>
             <Outlet />
         </Wrapper>
