@@ -25,15 +25,18 @@ const HamburgerPadding = styled.div`
     height: 100%;
 `;
 
-const HamburgerButton = styled.button`
+const HamburgerButton = styled.button<{ $asideIsOpen: boolean }>`
+    position: absolute;
+    left: ${(props) => (props.$asideIsOpen ? 188 : 0)}px;
     display: flex;
     padding: 5px;
     margin: 10px;
+    transition: all 0.4s ease-in-out;
 `;
 
 const HoverAside = styled.div<{ $asideIsHover: boolean }>`
     position: absolute;
-    top: 50px;
+    top: 100px;
     left: ${(props) => (props.$asideIsHover ? 0 : -250)}px;
     width: 240px;
     min-height: 240px;
@@ -58,9 +61,11 @@ function Root() {
     };
 
     /**@function onHoverAside
-     * 1. asideIsHover(boolean) 변수에 true를 대입한다.
+     * 1. Aside 메뉴가 열려있을 경우에는(asideIsOpen=true) 아무런 기능없이 함수 종료
+     * 2. asideIsHover(boolean) 변수에 true를 대입한다.
      */
     const onHoverAside = () => {
+        if (asideIsOpen) return;
         setAsideIsHover(true);
     };
 
@@ -69,7 +74,7 @@ function Root() {
      */
     const onHoverOutAside = () => {
         setAsideIsHover(false);
-    }
+    };
 
     /**@function toggleSubMenu
      * 1. subMenuIsOpen(boolean) 변수의 값을 전환한다.
@@ -82,7 +87,7 @@ function Root() {
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground>
                 <HamburgerPadding onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
-                    <HamburgerButton onClick={toggleAside}>
+                    <HamburgerButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
                         <img src={hamburgerIcon} alt="hamburger menu" width={20} />
                     </HamburgerButton>
                 </HamburgerPadding>
