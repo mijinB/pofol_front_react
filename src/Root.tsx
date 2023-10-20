@@ -16,6 +16,13 @@ const AsideBackground = styled.div`
     background-color: #fce0e2;
 `;
 
+const HoverArea = styled.div<{ $asideIsOpen: boolean }>`
+    position: absolute;
+    top: 0;
+    width: ${(props) => (props.$asideIsOpen ? 0 : 60)}px;
+    height: 100%;
+`;
+
 const AsideToggleButton = styled.button<{ $asideIsOpen: boolean }>`
     position: relative;
     left: ${(props) => (props.$asideIsOpen ? 186 : 0)}px;
@@ -27,13 +34,6 @@ const AsideToggleButton = styled.button<{ $asideIsOpen: boolean }>`
     &:hover {
         opacity: 1;
     }
-`;
-
-const HoverArea = styled.div`
-    position: absolute;
-    top: 0;
-    width: 60px;
-    height: 100%;
 `;
 
 const HoverAside = styled.div<{ $asideIsHover: boolean }>`
@@ -90,7 +90,7 @@ function Root() {
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground>
-                <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
+                <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen}>
                     <AsideToggleButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
                         {asideIsOpen ? (
                             <svg

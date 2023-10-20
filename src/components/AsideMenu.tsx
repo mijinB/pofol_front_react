@@ -22,6 +22,7 @@ const ProfileImage = styled.img`
 const ProfileName = styled.span`
     font-size: 14px;
     font-weight: 600;
+    cursor: default;
 `;
 
 const SlideDown = styled.div<{ $subMenuIsOpen: boolean }>`
