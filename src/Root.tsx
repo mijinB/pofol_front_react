@@ -9,7 +9,7 @@ const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     grid-template-columns: ${(props) => (props.$asideIsOpen ? "240px" : "0px")} 7fr;
     grid-template-rows: 1fr;
     min-height: 100%;
-    transition: grid-template-columns 0.5s ease-in-out;
+    transition: grid-template-columns 0.3s ease-in-out;
 `;
 
 const AsideBackground = styled.div`
@@ -20,7 +20,7 @@ const AsideBackground = styled.div`
 const HoverArea = styled.div<{ $asideIsOpen: boolean }>`
     position: absolute;
     top: 0;
-    width: ${(props) => (props.$asideIsOpen ? 0 : 60)}px;
+    width: ${(props) => (props.$asideIsOpen ? 0 : 150)}px;
     height: 100%;
 `;
 
@@ -53,9 +53,10 @@ const OpenAside = styled(motion.div)`
     width: 240px;
 `;
 
-const HoverAside = styled(motion.div)`
+const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
     position: absolute;
     top: 100px;
+    left: ${(props) => (props.$asideIsHover ? 0 : -250)}px;
     width: 240px;
     min-height: 240px;
     padding: 10px 0;
@@ -63,6 +64,7 @@ const HoverAside = styled(motion.div)`
     border-bottom-right-radius: 5px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: left 0.3s linear;
 `;
 
 const ContentWrapper = styled.div<{ $asideIsOpen: boolean }>`
@@ -96,11 +98,11 @@ function Root() {
 
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
-     * 2. aside 메뉴가 열리면서 hover메뉴가 닫히도록 asideIsHover(boolean) 변수에 false를 대입한다.
+     * 2. aside 메뉴가 닫힐 때 hover메뉴가 열리도록 asideIsHover(boolean) 변수에 true를 대입한다.
      */
     const toggleAside = () => {
         setAsideIsOpen((previous) => !previous);
-        setAsideIsHover(false);
+        setAsideIsHover(true);
     };
 
     /**@function onHoverAside
@@ -147,11 +149,16 @@ function Root() {
                 ) : null}
             </AnimatePresence>
             <AnimatePresence>
-                {asideIsHover ? (
-                    <HoverAside layoutId="aside" onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
+                {asideIsOpen ? null : (
+                    <HoverAside
+                        layoutId="aside"
+                        onMouseEnter={onHoverAside}
+                        onMouseLeave={onHoverOutAside}
+                        $asideIsHover={asideIsHover}
+                    >
                         <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
                     </HoverAside>
-                ) : null}
+                )}
             </AnimatePresence>
             <ContentWrapper $asideIsOpen={asideIsOpen}>
                 <Breadcrumb>
