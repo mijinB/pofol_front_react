@@ -71,10 +71,22 @@ const ContentWrapper = styled.div<{ $asideIsOpen: boolean }>`
     margin: 0 ${(props) => (props.$asideIsOpen ? 20 : 57)}px;
 `;
 
-const ContentHeader = styled.header`
+const Breadcrumb = styled.header`
     position: relative;
     display: flex;
     align-items: center;
+`;
+
+const BreadcrumbItem = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 5px 5px 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+        border-radius: 3px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 `;
 
 function Root() {
@@ -142,7 +154,7 @@ function Root() {
                 ) : null}
             </AnimatePresence>
             <ContentWrapper $asideIsOpen={asideIsOpen}>
-                <ContentHeader>
+                <Breadcrumb>
                     <AsideOpenButton
                         onClick={toggleAside}
                         onMouseEnter={onHoverAside}
@@ -174,8 +186,8 @@ function Root() {
                             </svg>
                         )}
                     </AsideOpenButton>
-                    <h1>root</h1>
-                </ContentHeader>
+                    <BreadcrumbItem>👑 mijin Portfolio</BreadcrumbItem>
+                </Breadcrumb>
                 <Outlet />
             </ContentWrapper>
         </Wrapper>
