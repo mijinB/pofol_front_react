@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import AsideMenu from "./components/AsideMenu";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
@@ -25,6 +26,7 @@ const HoverArea = styled.div<{ $asideIsOpen: boolean }>`
 
 const AsideToggleButton = styled.button<{ $asideIsOpen: boolean }>`
     position: relative;
+    z-index: 1;
     left: ${(props) => (props.$asideIsOpen ? 186 : 0)}px;
     display: flex;
     padding: 5px;
@@ -36,10 +38,14 @@ const AsideToggleButton = styled.button<{ $asideIsOpen: boolean }>`
     }
 `;
 
-const HoverAside = styled.div<{ $asideIsHover: boolean }>`
+const OpenAside = styled(motion.div)`
+    position: absolute;
+    width: 240px;
+`;
+
+const HoverAside = styled(motion.div)`
     position: absolute;
     top: 100px;
-    left: ${(props) => (props.$asideIsHover ? 0 : -250)}px;
     width: 240px;
     min-height: 240px;
     padding: 10px 0;
@@ -47,7 +53,6 @@ const HoverAside = styled.div<{ $asideIsHover: boolean }>`
     border-bottom-right-radius: 5px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    transition: left 0.3s ease-in-out;
 `;
 
 function Root() {
@@ -89,51 +94,42 @@ function Root() {
 
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
-            <AsideBackground>
-                <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen}>
-                    <AsideToggleButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
-                        {asideIsOpen ? (
-                            <svg
-                                width="27"
-                                height="27"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M12 18L6 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M18 18L12 12L18 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        ) : asideIsHover ? (
-                            <svg
-                                width="27"
-                                height="27"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M12 18L18 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        ) : (
-                            <svg
-                                width="27"
-                                height="27"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        )}
-                    </AsideToggleButton>
-                </HoverArea>
-                <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
-            </AsideBackground>
-            <HoverAside onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsHover={asideIsHover}>
-                <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
-            </HoverAside>
+            <AsideBackground />
+            <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen}>
+                <AsideToggleButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
+                    {asideIsOpen ? (
+                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 18L6 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M18 18L12 12L18 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                    ) : asideIsHover ? (
+                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 18L18 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                    ) : (
+                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                    )}
+                </AsideToggleButton>
+            </HoverArea>
+            <AnimatePresence>
+                {asideIsOpen ? (
+                    <OpenAside layoutId="aside">
+                        <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
+                    </OpenAside>
+                ) : null}
+            </AnimatePresence>
+            <AnimatePresence>
+                {asideIsHover ? (
+                    <HoverAside layoutId="aside" onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
+                        <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
+                    </HoverAside>
+                ) : null}
+            </AnimatePresence>
             <h1>root</h1>
             <Outlet />
         </Wrapper>
