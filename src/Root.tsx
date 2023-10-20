@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
     grid-template-columns: ${(props) => (props.$asideIsOpen ? "240px" : "0px")} 7fr;
-    grid-template-rows: 1fr 16fr;
+    grid-template-rows: 1fr;
     min-height: 100%;
-    transition: all 0.5s ease-in-out;
+    transition: grid-template-columns 0.5s ease-in-out;
 `;
 
 const AsideBackground = styled.div`
@@ -24,18 +24,28 @@ const HoverArea = styled.div<{ $asideIsOpen: boolean }>`
     height: 100%;
 `;
 
-const AsideToggleButton = styled.button<{ $asideIsOpen: boolean }>`
+const AsideCloseButton = styled.button`
     position: relative;
     z-index: 1;
-    left: ${(props) => (props.$asideIsOpen ? 186 : 0)}px;
+    left: 186px;
     display: flex;
     padding: 5px;
     margin: 10px;
-    opacity: ${(props) => (props.$asideIsOpen ? 0 : 1)};
+    opacity: 0;
     transition: left 0.5s ease-in-out, opacity 0.2s ease-in-out;
     &:hover {
         opacity: 1;
     }
+`;
+
+const AsideOpenButton = styled.button<{ $asideIsOpen: boolean }>`
+    position: absolute;
+    top: 0;
+    left: -57px;
+    display: flex;
+    padding: 5px;
+    margin: 10px;
+    ${(props) => (props.$asideIsOpen ? "display: none;" : null)}
 `;
 
 const OpenAside = styled(motion.div)`
@@ -53,6 +63,18 @@ const HoverAside = styled(motion.div)`
     border-bottom-right-radius: 5px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+`;
+
+const ContentWrapper = styled.div<{ $asideIsOpen: boolean }>`
+    display: grid;
+    grid-template-rows: 1fr 16fr;
+    margin: 0 ${(props) => (props.$asideIsOpen ? 20 : 57)}px;
+`;
+
+const ContentHeader = styled.header`
+    position: relative;
+    display: flex;
+    align-items: center;
 `;
 
 function Root() {
@@ -96,25 +118,14 @@ function Root() {
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground />
             <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen}>
-                <AsideToggleButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
+                <AsideCloseButton onClick={toggleAside}>
                     {asideIsOpen ? (
                         <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 18L6 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
                             <path d="M18 18L12 12L18 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
                         </svg>
-                    ) : asideIsHover ? (
-                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 18L18 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                    ) : (
-                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                    )}
-                </AsideToggleButton>
+                    ) : null}
+                </AsideCloseButton>
             </HoverArea>
             <AnimatePresence>
                 {asideIsOpen ? (
@@ -130,8 +141,43 @@ function Root() {
                     </HoverAside>
                 ) : null}
             </AnimatePresence>
-            <h1>root</h1>
-            <Outlet />
+            <ContentWrapper $asideIsOpen={asideIsOpen}>
+                <ContentHeader>
+                    <AsideOpenButton
+                        onClick={toggleAside}
+                        onMouseEnter={onHoverAside}
+                        onMouseLeave={onHoverOutAside}
+                        $asideIsOpen={asideIsOpen}
+                    >
+                        {asideIsHover ? (
+                            <svg
+                                width="27"
+                                height="27"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M12 18L18 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                        ) : (
+                            <svg
+                                width="27"
+                                height="27"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                        )}
+                    </AsideOpenButton>
+                    <h1>root</h1>
+                </ContentHeader>
+                <Outlet />
+            </ContentWrapper>
         </Wrapper>
     );
 }
