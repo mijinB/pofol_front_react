@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import profileImage from "../assets/images/cat.jpg";
+import { Link } from "react-router-dom";
 
 const AsideItemWrapper = styled.div``;
 
@@ -31,7 +32,7 @@ const SlideDown = styled.div<{ $subMenuIsOpen: boolean }>`
     transition: max-height 0.1s ease-in-out;
 `;
 
-const AsideItem = styled.div`
+const AsideItem = styled(Link)`
     display: flex;
     align-items: center;
     width: 100%;
@@ -70,7 +71,7 @@ const SubMenuButton = styled.button<{ $subMenuIsOpen: boolean }>`
 const SubMenuWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    > div {
+    > a {
         padding-left: 35px;
     }
 `;
@@ -93,11 +94,11 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
     return (
         <AsideItemWrapper>
             <ProfileWrapper>
-                    <ProfileImage src={profileImage} alt="cat" width={30} />
-                    <ProfileName>mijin Portfolio</ProfileName>
-                </ProfileWrapper>
+                <ProfileImage src={profileImage} alt="cat" width={30} />
+                <ProfileName>mijin Portfolio</ProfileName>
+            </ProfileWrapper>
             <SlideDown $subMenuIsOpen={subMenuIsOpen}>
-                <AsideItem>
+                <AsideItem to="/info">
                     <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
@@ -106,33 +107,33 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
                     <span>🐯 백미진</span>
                 </AsideItem>
                 <SubMenuWrapper>
-                    <AsideItem>
+                    <AsideItem to="/info">
                         <Dot />
                         <span>👩‍🎓 Education</span>
                     </AsideItem>
-                    <AsideItem>
+                    <AsideItem to="/info">
                         <Dot />
                         <span>📚 Certificate</span>
                     </AsideItem>
-                    <AsideItem>
+                    <AsideItem to="/info">
                         <Dot />
                         <span>🏆 Awards</span>
                     </AsideItem>
                 </SubMenuWrapper>
             </SlideDown>
-            <AsideItem>
+            <AsideItem to="/skills">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 <span>🎨 SKILLS</span>
             </AsideItem>
-            <AsideItem>
+            <AsideItem to="project">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 <span>🖼️ PROJECT</span>
             </AsideItem>
-            <AsideItem>
+            <AsideItem to="activity">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
                 </svg>

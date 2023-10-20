@@ -53,10 +53,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a {
+  text-decoration:none;
+  color:inherit;
+}
 * {
   box-sizing: border-box;
 }
-button, div {
+button, a {
   > svg {
     opacity: 0.7;
   }
