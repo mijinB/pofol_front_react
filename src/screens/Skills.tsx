@@ -1,5 +1,5 @@
-function About() {
-    return <h1>about</h1>;
+function Skills() {
+    return <h1>skills</h1>;
 }
 
-export default About;
+export default Skills;
