@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import AsideMenu from "./components/AsideMenu";
-import profileImage from "./assets/images/cat.jpg";
 
 const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
@@ -15,27 +14,6 @@ const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
 const AsideBackground = styled.div`
     grid-row: span 2;
     background-color: #fce0e2;
-`;
-
-const ProfileWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    height: 57px;
-    margin-left: 8px;
-    overflow: hidden;
-    > * {
-        flex: 0 0 auto;
-    }
-`;
-
-const ProfileImage = styled.img`
-    margin-right: 8px;
-    border-radius: 5px;
-`;
-
-const ProfileName = styled.span`
-    font-size: 14px;
-    font-weight: 600;
 `;
 
 const AsideToggleButton = styled.button<{ $asideIsOpen: boolean }>`
@@ -112,10 +90,6 @@ function Root() {
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground>
-                <ProfileWrapper>
-                    <ProfileImage src={profileImage} alt="cat" width={30} />
-                    <ProfileName>mijin Portfolio</ProfileName>
-                </ProfileWrapper>
                 <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside}>
                     <AsideToggleButton onClick={toggleAside} $asideIsOpen={asideIsOpen}>
                         {asideIsOpen ? (

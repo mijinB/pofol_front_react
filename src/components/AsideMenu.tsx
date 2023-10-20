@@ -1,6 +1,27 @@
 import styled from "styled-components";
+import profileImage from "../assets/images/cat.jpg";
 
-const AsideItemWrapper = styled.div`
+const AsideItemWrapper = styled.div``;
+
+const ProfileWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    height: 57px;
+    margin-left: 8px;
+    overflow: hidden;
+    > * {
+        flex: 0 0 auto;
+    }
+`;
+
+const ProfileImage = styled.img`
+    margin-right: 8px;
+    border-radius: 5px;
+`;
+
+const ProfileName = styled.span`
+    font-size: 14px;
+    font-weight: 600;
 `;
 
 const SlideDown = styled.div<{ $subMenuIsOpen: boolean }>`
@@ -70,6 +91,10 @@ interface AsideMenuProp {
 function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
     return (
         <AsideItemWrapper>
+            <ProfileWrapper>
+                    <ProfileImage src={profileImage} alt="cat" width={30} />
+                    <ProfileName>mijin Portfolio</ProfileName>
+                </ProfileWrapper>
             <SlideDown $subMenuIsOpen={subMenuIsOpen}>
                 <AsideItem>
                     <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
