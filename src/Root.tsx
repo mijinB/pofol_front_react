@@ -106,17 +106,21 @@ const OptionsPopup = styled.div`
     top: 57px;
     right: 0;
     width: 200px;
-    height: 200px;
+    padding: 10px 5px;
     border-radius: 5px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
-const OptionItem = styled.div`
+const OptionItem = styled.button<{ $isFullWidth: boolean }>`
     display: flex;
     justify-content: space-between;
-    padding: 13px 15px;
-    font-size: 14px;
+    width: 100%;
+    padding: 5px 12px;
+    cursor: pointer;
+    > span {
+        font-size: 14px;
+    }
 `;
 
 const FullWidthToggle = styled.input.attrs({ id: "fullWidth", type: "checkbox" })`
@@ -138,10 +142,10 @@ const FullWidthLabel = styled.label.attrs({ htmlFor: "fullWidth" })<{ $isFullWid
     }
     &::after {
         position: absolute;
-        top: -2px;
-        left: ${(props) => (props.$isFullWidth ? 12 : 1)}px;
+        top: -11px;
+        left: ${(props) => (props.$isFullWidth ? 12 : -1)}px;
         color: white;
-        font-size: 17px;
+        font-size: 32px;
         transition: left 0.15s linear;
         content: "●";
     }
@@ -284,7 +288,7 @@ function Root() {
                     </OptionsButton>
                     {isOptionsPopupOpen ? (
                         <OptionsPopup>
-                            <OptionItem>
+                            <OptionItem onClick={toggleFullWidth} $isFullWidth={isFullWidth}>
                                 <span>전체 너비</span>
                                 <FullWidthToggle onClick={toggleFullWidth} />
                                 <FullWidthLabel $isFullWidth={isFullWidth} />
