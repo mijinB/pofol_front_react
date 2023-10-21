@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import AsideMenu from "./components/AsideMenu";
@@ -40,7 +40,7 @@ const AsideCloseButton = styled.button`
 
 const AsideOpenButton = styled.button<{ $asideIsOpen: boolean }>`
     position: absolute;
-    top: 0;
+    top: 3px;
     left: -57px;
     display: flex;
     padding: 5px;
@@ -77,27 +77,28 @@ const PageHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    > div {
-        cursor: pointer;
-        &:hover {
-            border-radius: 3px;
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-    }
 `;
 
 const Breadcrumb = styled.div`
     position: relative;
 `;
 
-const BreadcrumbItem = styled.div`
+const BreadcrumbItem = styled(Link)`
     padding: 5px 5px 5px 0;
     font-size: 14px;
+    cursor: pointer;
+    &:hover {
+        border-radius: 3px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 `;
 
-const OptionsButton = styled.div`
+const OptionsButton = styled.button`
     display: flex;
-    padding: 5px;
+    padding: 6px;
+    > svg {
+        opacity: 1;
+    }
 `;
 
 const OptionsPopup = styled.div`
@@ -121,7 +122,7 @@ const FullWidthLabel = styled.label.attrs({ id: "fullWidth" })`
     width: 30px;
     height: 18px;
     border-radius: 44px;
-    background-color: rgba(55,53,47,.16);
+    background-color: rgba(55, 53, 47, 0.16);
     cursor: pointer;
 `;
 
@@ -212,44 +213,39 @@ function Root() {
             </AnimatePresence>
             <ContentWrapper $asideIsOpen={asideIsOpen}>
                 <PageHeader>
+                    <AsideOpenButton
+                        onClick={toggleAside}
+                        onMouseEnter={onHoverAside}
+                        onMouseLeave={onHoverOutAside}
+                        $asideIsOpen={asideIsOpen}
+                    >
+                        {asideIsHover ? (
+                            <svg
+                                width="27"
+                                height="27"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M12 18L18 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                        ) : (
+                            <svg
+                                width="27"
+                                height="27"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                        )}
+                    </AsideOpenButton>
                     <Breadcrumb>
-                        <AsideOpenButton
-                            onClick={toggleAside}
-                            onMouseEnter={onHoverAside}
-                            onMouseLeave={onHoverOutAside}
-                            $asideIsOpen={asideIsOpen}
-                        >
-                            {asideIsHover ? (
-                                <svg
-                                    width="27"
-                                    height="27"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M12 18L18 12L12 6"
-                                        stroke="#888888"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                    />
-                                    <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            ) : (
-                                <svg
-                                    width="27"
-                                    height="27"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                    <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                    <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            )}
-                        </AsideOpenButton>
-                        <BreadcrumbItem>👑 mijin Portfolio</BreadcrumbItem>
+                        <BreadcrumbItem to="/info">👑 mijin Portfolio</BreadcrumbItem>
                     </Breadcrumb>
                     <OptionsButton onClick={toggleOptionsPopup}>
                         <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
