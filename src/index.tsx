@@ -61,11 +61,6 @@ a {
 * {
   box-sizing: border-box;
 }
-button, a {
-  > svg {
-    opacity: 0.7;
-  }
-}
 button {
   padding: 0;
   border: none;

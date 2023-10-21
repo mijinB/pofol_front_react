@@ -14,7 +14,7 @@ const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
 
 const AsideBackground = styled.div`
     grid-row: span 2;
-    background-color: #fce0e2;
+    background-color: #f5cd79;
 `;
 
 const HoverArea = styled.div<{ $asideIsOpen: boolean }>`
@@ -96,9 +96,6 @@ const BreadcrumbItem = styled(Link)`
 const OptionsButton = styled.button`
     display: flex;
     padding: 6px;
-    > svg {
-        opacity: 1;
-    }
 `;
 
 const OptionsPopup = styled.div`
@@ -257,8 +254,8 @@ function Root() {
                 <AsideCloseButton onClick={toggleAside}>
                     {asideIsOpen ? (
                         <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 18L6 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            <path d="M18 18L12 12L18 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M12 18L6 12L12 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M18 18L12 12L18 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                         </svg>
                     ) : null}
                 </AsideCloseButton>
@@ -298,8 +295,8 @@ function Root() {
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <path d="M12 18L18 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M12 18L18 12L12 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M6 18L12 12L6 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                             </svg>
                         ) : (
                             <svg
@@ -309,9 +306,9 @@ function Root() {
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 7H19" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 12H19" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M5 17H19" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                             </svg>
                         )}
                     </AsideOpenButton>

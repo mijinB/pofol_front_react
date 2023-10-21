@@ -51,7 +51,7 @@ const AsideItem = styled(Link)`
         margin: 3px;
     }
     > span {
-        color: #888888;
+        color: #707070;
         font-size: 14px;
     }
 `;
@@ -81,7 +81,7 @@ const Dot = styled.div`
     height: 5px;
     margin-right: 5px;
     border-radius: 2.5px;
-    background-color: #888888;
+    background-color: #707070;
     opacity: 0.7;
 `;
 
@@ -101,7 +101,7 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
                 <AsideItem to="/info">
                     <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M9 6L15 12L9 18" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                         </svg>
                     </SubMenuButton>
                     <span>🐯 백미진</span>
@@ -123,19 +123,19 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
             </SlideDown>
             <AsideItem to="/skills">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M9 6L15 12L9 18" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 <span>🎨 SKILLS</span>
             </AsideItem>
             <AsideItem to="project">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M9 6L15 12L9 18" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 <span>🖼️ PROJECT</span>
             </AsideItem>
             <AsideItem to="activity">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6L15 12L9 18" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M9 6L15 12L9 18" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 <span>👩‍🎨 ACTIVITY</span>
             </AsideItem>
