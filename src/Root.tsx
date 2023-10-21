@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import AsideMenu from "./components/AsideMenu";
@@ -112,10 +112,12 @@ const OptionsPopup = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
-const OptionItem = styled.button<{ $isFullWidth: boolean }>`
+const OptionItem = styled.button<{ $isFullWidth?: boolean }>`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 34px;
     padding: 5px 12px;
     cursor: pointer;
     > span {
@@ -158,12 +160,16 @@ const PageContainer = styled.div<{ $isFullWidth: boolean }>`
 `;
 
 function Root() {
+    const BASE_URL = "http://localhost:3000";
+
     const [asideIsOpen, setAsideIsOpen] = useState<boolean>(true);
     const [asideIsHover, setAsideIsHover] = useState<boolean>(false);
     const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(true);
 
     const [isOptionsPopupOpen, setISsOptionsPopupOpen] = useState<boolean>(false);
     const [isFullWidth, setIsFullWidth] = useState<boolean>(false);
+
+    const location = useLocation();
 
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
@@ -211,6 +217,19 @@ function Root() {
         setIsFullWidth((previous) => !previous);
     };
 
+    /**@function onCopyClipBoard
+     * 1. 복사할 text를 받아와서 클립보드에 저장
+     * 2. 정상적으로 동작됐으면 확인 alert 띄움
+     * 3. 동작되지 않았으면 console에 error 띄움
+     */
+    const onCopyClipBoard = async (text: string) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            alert("클립보드에 링크가 복사되었어요.");
+        } catch {
+            console.log("error");
+        }
+    };
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground />
@@ -292,6 +311,31 @@ function Root() {
                                 <span>전체 너비</span>
                                 <FullWidthToggle onClick={toggleFullWidth} />
                                 <FullWidthLabel $isFullWidth={isFullWidth} />
+                            </OptionItem>
+                            <OptionItem onClick={() => onCopyClipBoard(`${BASE_URL}${location.pathname}`)}>
+                                <span>링크 복사</span>
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M14 7V7C14 6.06812 14 5.60218 13.8478 5.23463C13.6448 4.74458 13.2554 4.35523 12.7654 4.15224C12.3978 4 11.9319 4 11 4H8C6.11438 4 5.17157 4 4.58579 4.58579C4 5.17157 4 6.11438 4 8V11C4 11.9319 4 12.3978 4.15224 12.7654C4.35523 13.2554 4.74458 13.6448 5.23463 13.8478C5.60218 14 6.06812 14 7 14V14"
+                                        stroke="#37352F"
+                                        strokeWidth="2"
+                                    />
+                                    <rect
+                                        x="10"
+                                        y="10"
+                                        width="10"
+                                        height="10"
+                                        rx="2"
+                                        stroke="#37352F"
+                                        strokeWidth="2"
+                                    />
+                                </svg>
                             </OptionItem>
                         </OptionsPopup>
                     ) : null}
