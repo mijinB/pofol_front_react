@@ -153,6 +153,25 @@ const FullWidthLabel = styled.label.attrs({ htmlFor: "fullWidth" })<{ $isFullWid
     }
 `;
 
+const CopiedMessage = styled.div<{ $isCopyClipBoard: boolean }>`
+    position: absolute;
+    top: ${(props) => (props.$isCopyClipBoard ? 60 : -60)}px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #37352f;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: top 0.3s linear;
+    > span {
+        font-size: 14px;
+        font-weight: 600;
+    }
+`;
+
 const PageContainer = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
     ${(props) => (props.$isFullWidth ? null : "justify-content: center;")}
@@ -161,6 +180,7 @@ const PageContainer = styled.div<{ $isFullWidth: boolean }>`
 
 function Root() {
     const BASE_URL = "http://localhost:3000";
+    const location = useLocation();
 
     const [asideIsOpen, setAsideIsOpen] = useState<boolean>(true);
     const [asideIsHover, setAsideIsHover] = useState<boolean>(false);
@@ -168,8 +188,7 @@ function Root() {
 
     const [isOptionsPopupOpen, setISsOptionsPopupOpen] = useState<boolean>(false);
     const [isFullWidth, setIsFullWidth] = useState<boolean>(false);
-
-    const location = useLocation();
+    const [isCopyClipBoard, setIsCopyClipBoard] = useState<boolean>(false);
 
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
@@ -218,14 +237,15 @@ function Root() {
     };
 
     /**@function onCopyClipBoard
-     * 1. 복사할 text를 받아와서 클립보드에 저장
-     * 2. 정상적으로 동작됐으면 확인 alert 띄움
-     * 3. 동작되지 않았으면 console에 error 띄움
+     * 1. 복사할 text를 받아와서 클립보드에 저장한다.
+     * 2. 정상적으로 동작됐으면 확인 Message 띄우기 위해 isCopyClipBoard(boolean) 변수에 true 대입하고 3초 후 다시 false 대입한다.
+     * 3. 동작되지 않았으면 console에 error 띄운다.
      */
     const onCopyClipBoard = async (text: string) => {
         try {
             await navigator.clipboard.writeText(text);
-            alert("클립보드에 링크가 복사되었어요.");
+            setIsCopyClipBoard(true);
+            setTimeout(() => setIsCopyClipBoard(false), 3000);
         } catch {
             console.log("error");
         }
@@ -342,6 +362,9 @@ function Root() {
                 </PageHeader>
                 <PageContainer $isFullWidth={isFullWidth}>
                     <Outlet />
+                    <CopiedMessage $isCopyClipBoard={isCopyClipBoard}>
+                        <span>링크 복사 완료</span>
+                    </CopiedMessage>
                 </PageContainer>
             </ContentWrapper>
         </Wrapper>
