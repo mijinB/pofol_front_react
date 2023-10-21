@@ -111,6 +111,20 @@ const OptionsPopup = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
+const FullWidthToggle = styled.input.attrs({ id: "fullWidth", type: "checkbox" })`
+    position: absolute;
+    right: -1000px;
+`;
+
+const FullWidthLabel = styled.label.attrs({ id: "fullWidth" })`
+    display: block;
+    width: 30px;
+    height: 18px;
+    border-radius: 44px;
+    background-color: rgba(55,53,47,.16);
+    cursor: pointer;
+`;
+
 const PageContainer = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
     ${(props) => (props.$isFullWidth ? null : "justify-content: center;")}
@@ -244,7 +258,12 @@ function Root() {
                             <circle cx="18" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
                         </svg>
                     </OptionsButton>
-                    {isOptionsPopupOpen ? <OptionsPopup></OptionsPopup> : null}
+                    {isOptionsPopupOpen ? (
+                        <OptionsPopup>
+                            <FullWidthToggle />
+                            <FullWidthLabel />
+                        </OptionsPopup>
+                    ) : null}
                 </PageHeader>
                 <PageContainer $isFullWidth={isFullWidth}>
                     <Outlet />
