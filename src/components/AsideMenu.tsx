@@ -82,7 +82,6 @@ const Dot = styled.div`
     margin-right: 5px;
     border-radius: 2.5px;
     background-color: #707070;
-    opacity: 0.7;
 `;
 
 interface AsideMenuProp {
