@@ -69,32 +69,49 @@ const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
 
 const ContentWrapper = styled.div<{ $asideIsOpen: boolean }>`
     display: grid;
-    grid-template-rows: 1fr 16fr;
+    grid-template-rows: 57px 1fr;
     margin: 0 ${(props) => (props.$asideIsOpen ? 20 : 57)}px;
 `;
 
-const Breadcrumb = styled.header`
-    position: relative;
+const PageHeader = styled.div`
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    > div {
+        cursor: pointer;
+        &:hover {
+            border-radius: 3px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+`;
+
+const Breadcrumb = styled.div`
+    position: relative;
 `;
 
 const BreadcrumbItem = styled.div`
-    display: flex;
-    align-items: center;
     padding: 5px 5px 5px 0;
     font-size: 14px;
-    cursor: pointer;
-    &:hover {
-        border-radius: 3px;
-        background-color: rgba(0, 0, 0, 0.1);
-    }
+`;
+
+const OptionsPanel = styled.div`
+    display: flex;
+    padding: 5px;
+`;
+
+const PageContainer = styled.div<{ $isFullWidth: boolean }>`
+    display: flex;
+    ${(props) => (props.$isFullWidth ? null : "justify-content: center;")}
+    ${(props) => (props.$isFullWidth ? "padding: 0 96px;" : null)}
 `;
 
 function Root() {
     const [asideIsOpen, setAsideIsOpen] = useState<boolean>(true);
     const [asideIsHover, setAsideIsHover] = useState<boolean>(false);
     const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(true);
+
+    const [isFullWidth, setIsFullWidth] = useState<boolean>(true);
 
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
@@ -161,41 +178,57 @@ function Root() {
                 )}
             </AnimatePresence>
             <ContentWrapper $asideIsOpen={asideIsOpen}>
-                <Breadcrumb>
-                    <AsideOpenButton
-                        onClick={toggleAside}
-                        onMouseEnter={onHoverAside}
-                        onMouseLeave={onHoverOutAside}
-                        $asideIsOpen={asideIsOpen}
-                    >
-                        {asideIsHover ? (
-                            <svg
-                                width="27"
-                                height="27"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M12 18L18 12L12 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        ) : (
-                            <svg
-                                width="27"
-                                height="27"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        )}
-                    </AsideOpenButton>
-                    <BreadcrumbItem>👑 mijin Portfolio</BreadcrumbItem>
-                </Breadcrumb>
-                <Outlet />
+                <PageHeader>
+                    <Breadcrumb>
+                        <AsideOpenButton
+                            onClick={toggleAside}
+                            onMouseEnter={onHoverAside}
+                            onMouseLeave={onHoverOutAside}
+                            $asideIsOpen={asideIsOpen}
+                        >
+                            {asideIsHover ? (
+                                <svg
+                                    width="27"
+                                    height="27"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M12 18L18 12L12 6"
+                                        stroke="#888888"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                    />
+                                    <path d="M6 18L12 12L6 6" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                </svg>
+                            ) : (
+                                <svg
+                                    width="27"
+                                    height="27"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M5 7H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                    <path d="M5 12H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                    <path d="M5 17H19" stroke="#888888" strokeWidth="2" strokeLinecap="round" />
+                                </svg>
+                            )}
+                        </AsideOpenButton>
+                        <BreadcrumbItem>👑 mijin Portfolio</BreadcrumbItem>
+                    </Breadcrumb>
+                    <OptionsPanel>
+                        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="6" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="18" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </OptionsPanel>
+                </PageHeader>
+                <PageContainer $isFullWidth={isFullWidth}>
+                    <Outlet />
+                </PageContainer>
             </ContentWrapper>
         </Wrapper>
     );

@@ -37,6 +37,7 @@ html, body {
 }
 body {
 	line-height: 1;
+  color: #37352F;
 }
 ol, ul {
 	list-style: none;
