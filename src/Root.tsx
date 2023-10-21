@@ -112,18 +112,39 @@ const OptionsPopup = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
-const FullWidthToggle = styled.input.attrs({ id: "fullWidth", type: "checkbox" })`
-    position: absolute;
-    right: -1000px;
+const OptionItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 15px;
+    font-size: 14px;
 `;
 
-const FullWidthLabel = styled.label.attrs({ id: "fullWidth" })`
+const FullWidthToggle = styled.input.attrs({ id: "fullWidth", type: "checkbox" })`
+    position: absolute;
+    left: -10000px;
+`;
+
+const FullWidthLabel = styled.label.attrs({ htmlFor: "fullWidth" })<{ $isFullWidth: boolean }>`
+    position: relative;
     display: block;
     width: 30px;
     height: 18px;
     border-radius: 44px;
-    background-color: rgba(55, 53, 47, 0.16);
+    background-color: ${(props) => (props.$isFullWidth ? "rgb(35, 131, 226)" : "rgba(55, 53, 47, 0.2)")};
+    transition: background-color 0.2s ease-in-out;
     cursor: pointer;
+    &:hover {
+        background-color: ${(props) => (props.$isFullWidth ? "rgba(35, 131, 226, 0.85)" : "rgba(55, 53, 47, 0.25)")};
+    }
+    &::after {
+        position: absolute;
+        top: -2px;
+        left: ${(props) => (props.$isFullWidth ? 12 : 1)}px;
+        color: white;
+        font-size: 17px;
+        transition: left 0.15s linear;
+        content: "●";
+    }
 `;
 
 const PageContainer = styled.div<{ $isFullWidth: boolean }>`
@@ -138,7 +159,7 @@ function Root() {
     const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(true);
 
     const [isOptionsPopupOpen, setISsOptionsPopupOpen] = useState<boolean>(false);
-    const [isFullWidth, setIsFullWidth] = useState<boolean>(true);
+    const [isFullWidth, setIsFullWidth] = useState<boolean>(false);
 
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
@@ -177,6 +198,13 @@ function Root() {
      */
     const toggleOptionsPopup = () => {
         setISsOptionsPopupOpen((previous) => !previous);
+    };
+
+    /**@function toggleFullWidth
+     * 1. isFullWidth(boolean) 변수의 값을 전환한다.
+     */
+    const toggleFullWidth = () => {
+        setIsFullWidth((previous) => !previous);
     };
 
     return (
@@ -249,15 +277,18 @@ function Root() {
                     </Breadcrumb>
                     <OptionsButton onClick={toggleOptionsPopup}>
                         <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
-                            <circle cx="6" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
-                            <circle cx="18" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="12" cy="12" r="1" stroke="#37352F" strokeWidth="2" strokeLinecap="round" />
+                            <circle cx="6" cy="12" r="1" stroke="#37352F" strokeWidth="2" strokeLinecap="round" />
+                            <circle cx="18" cy="12" r="1" stroke="#37352F" strokeWidth="2" strokeLinecap="round" />
                         </svg>
                     </OptionsButton>
                     {isOptionsPopupOpen ? (
                         <OptionsPopup>
-                            <FullWidthToggle />
-                            <FullWidthLabel />
+                            <OptionItem>
+                                <span>전체 너비</span>
+                                <FullWidthToggle onClick={toggleFullWidth} />
+                                <FullWidthLabel $isFullWidth={isFullWidth} />
+                            </OptionItem>
                         </OptionsPopup>
                     ) : null}
                 </PageHeader>
