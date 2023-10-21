@@ -89,7 +89,7 @@ const BreadcrumbItem = styled(Link)`
     cursor: pointer;
     &:hover {
         border-radius: 3px;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.05);
     }
 `;
 
