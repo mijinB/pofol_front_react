@@ -58,7 +58,6 @@ const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
     top: 100px;
     left: ${(props) => (props.$asideIsHover ? 0 : -250)}px;
     width: 240px;
-    min-height: 240px;
     padding: 10px 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -74,6 +73,7 @@ const ContentWrapper = styled.div<{ $asideIsOpen: boolean }>`
 `;
 
 const PageHeader = styled.div`
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -95,9 +95,20 @@ const BreadcrumbItem = styled.div`
     font-size: 14px;
 `;
 
-const OptionsPanel = styled.div`
+const OptionsButton = styled.div`
     display: flex;
     padding: 5px;
+`;
+
+const OptionsPopup = styled.div`
+    position: absolute;
+    top: 57px;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
 const PageContainer = styled.div<{ $isFullWidth: boolean }>`
@@ -111,6 +122,7 @@ function Root() {
     const [asideIsHover, setAsideIsHover] = useState<boolean>(false);
     const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(true);
 
+    const [isOptionsPopupOpen, setISsOptionsPopupOpen] = useState<boolean>(false);
     const [isFullWidth, setIsFullWidth] = useState<boolean>(true);
 
     /**@function toggleAside
@@ -143,6 +155,13 @@ function Root() {
      */
     const toggleSubMenu = () => {
         setSubMenuIsOpen((previous) => !previous);
+    };
+
+    /**@function toggleOptionsPopup
+     * 1. isOptionsPopupOpen(boolean) 변수의 값을 전환한다.
+     */
+    const toggleOptionsPopup = () => {
+        setISsOptionsPopupOpen((previous) => !previous);
     };
 
     return (
@@ -218,13 +237,14 @@ function Root() {
                         </AsideOpenButton>
                         <BreadcrumbItem>👑 mijin Portfolio</BreadcrumbItem>
                     </Breadcrumb>
-                    <OptionsPanel>
+                    <OptionsButton onClick={toggleOptionsPopup}>
                         <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="12" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
                             <circle cx="6" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
                             <circle cx="18" cy="12" r="1" stroke="#37352F" stroke-width="2" stroke-linecap="round" />
                         </svg>
-                    </OptionsPanel>
+                    </OptionsButton>
+                    {isOptionsPopupOpen ? <OptionsPopup></OptionsPopup> : null}
                 </PageHeader>
                 <PageContainer $isFullWidth={isFullWidth}>
                     <Outlet />
