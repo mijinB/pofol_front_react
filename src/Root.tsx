@@ -299,7 +299,7 @@ function Root() {
                 )}
             </AnimatePresence>
             <AnimatePresence>
-                {asideIsOpen || (
+                {!asideIsOpen && (
                     <HoverAside
                         layoutId="aside"
                         onMouseEnter={onHoverAside}
