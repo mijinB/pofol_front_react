@@ -106,7 +106,7 @@ const OverLay = styled.div`
     left: 0;
 `;
 
-const OptionsPopup = styled.div`
+const OptionsPopup = styled(motion.div)`
     position: absolute;
     top: 57px;
     right: 0;
@@ -182,6 +182,29 @@ const PageContainer = styled.div<{ $isFullWidth: boolean }>`
     ${(props) => (props.$isFullWidth ? null : "justify-content: center;")}
     ${(props) => (props.$isFullWidth ? "padding: 0 96px;" : null)}
 `;
+
+const optionsPopupVariants = {
+    initial: {
+        opacity: 0,
+        scale: 0.9,
+    },
+    animate: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            ease: "easeOut",
+            duration: 0.15,
+        },
+    },
+    exit: {
+        opacity: 0,
+        scale: 0.9,
+        transition: {
+            ease: "easeIn",
+            duration: 0.2,
+        },
+    },
+};
 
 function Root() {
     const BASE_URL = "http://localhost:3000";
@@ -260,23 +283,23 @@ function Root() {
             <AsideBackground />
             <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen}>
                 <AsideCloseButton onClick={toggleAside}>
-                    {asideIsOpen ? (
+                    {asideIsOpen && (
                         <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 18L6 12L12 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                             <path d="M18 18L12 12L18 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                         </svg>
-                    ) : null}
+                    )}
                 </AsideCloseButton>
             </HoverArea>
             <AnimatePresence>
-                {asideIsOpen ? (
+                {asideIsOpen && (
                     <OpenAside layoutId="aside">
                         <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
                     </OpenAside>
-                ) : null}
+                )}
             </AnimatePresence>
             <AnimatePresence>
-                {asideIsOpen ? null : (
+                {asideIsOpen || (
                     <HoverAside
                         layoutId="aside"
                         onMouseEnter={onHoverAside}
@@ -330,43 +353,50 @@ function Root() {
                             <circle cx="18" cy="12" r="1" stroke="#37352F" strokeWidth="2" strokeLinecap="round" />
                         </svg>
                     </OptionsButton>
-                    {isOptionsPopupOpen ? (
-                        <>
-                            <OverLay onClick={toggleOptionsPopup} />
-                            <OptionsPopup>
-                                <OptionItem onClick={toggleFullWidth} $isFullWidth={isFullWidth}>
-                                    <span>전체 너비</span>
-                                    <FullWidthToggle onClick={toggleFullWidth} />
-                                    <FullWidthLabel $isFullWidth={isFullWidth} />
-                                </OptionItem>
-                                <OptionItem onClick={() => onCopyClipBoard(`${BASE_URL}${location.pathname}`)}>
-                                    <span>링크 복사</span>
-                                    <svg
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M14 7V7C14 6.06812 14 5.60218 13.8478 5.23463C13.6448 4.74458 13.2554 4.35523 12.7654 4.15224C12.3978 4 11.9319 4 11 4H8C6.11438 4 5.17157 4 4.58579 4.58579C4 5.17157 4 6.11438 4 8V11C4 11.9319 4 12.3978 4.15224 12.7654C4.35523 13.2554 4.74458 13.6448 5.23463 13.8478C5.60218 14 6.06812 14 7 14V14"
-                                            stroke="#37352F"
-                                            strokeWidth="2"
-                                        />
-                                        <rect
-                                            x="10"
-                                            y="10"
-                                            width="10"
-                                            height="10"
-                                            rx="2"
-                                            stroke="#37352F"
-                                            strokeWidth="2"
-                                        />
-                                    </svg>
-                                </OptionItem>
-                            </OptionsPopup>
-                        </>
-                    ) : null}
+                    <AnimatePresence>
+                        {isOptionsPopupOpen && (
+                            <>
+                                <OverLay onClick={toggleOptionsPopup} />
+                                <OptionsPopup
+                                    variants={optionsPopupVariants}
+                                    initial="initial"
+                                    animate="animate"
+                                    exit="exit"
+                                >
+                                    <OptionItem onClick={toggleFullWidth} $isFullWidth={isFullWidth}>
+                                        <span>전체 너비</span>
+                                        <FullWidthToggle onClick={toggleFullWidth} />
+                                        <FullWidthLabel $isFullWidth={isFullWidth} />
+                                    </OptionItem>
+                                    <OptionItem onClick={() => onCopyClipBoard(`${BASE_URL}${location.pathname}`)}>
+                                        <span>링크 복사</span>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M14 7V7C14 6.06812 14 5.60218 13.8478 5.23463C13.6448 4.74458 13.2554 4.35523 12.7654 4.15224C12.3978 4 11.9319 4 11 4H8C6.11438 4 5.17157 4 4.58579 4.58579C4 5.17157 4 6.11438 4 8V11C4 11.9319 4 12.3978 4.15224 12.7654C4.35523 13.2554 4.74458 13.6448 5.23463 13.8478C5.60218 14 6.06812 14 7 14V14"
+                                                stroke="#37352F"
+                                                strokeWidth="2"
+                                            />
+                                            <rect
+                                                x="10"
+                                                y="10"
+                                                width="10"
+                                                height="10"
+                                                rx="2"
+                                                stroke="#37352F"
+                                                strokeWidth="2"
+                                            />
+                                        </svg>
+                                    </OptionItem>
+                                </OptionsPopup>
+                            </>
+                        )}
+                    </AnimatePresence>
                 </PageHeader>
                 <PageContainer $isFullWidth={isFullWidth}>
                     <Outlet />
