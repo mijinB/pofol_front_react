@@ -84,12 +84,12 @@ const Dot = styled.div`
     background-color: #707070;
 `;
 
-interface AsideMenuProp {
+interface IAsideMenuProp {
     subMenuIsOpen: boolean;
     toggleSubMenu: () => void;
 }
 
-function AsideMenu({ subMenuIsOpen, toggleSubMenu }: AsideMenuProp) {
+function AsideMenu({ subMenuIsOpen, toggleSubMenu }: IAsideMenuProp) {
     return (
         <AsideItemWrapper>
             <ProfileWrapper>

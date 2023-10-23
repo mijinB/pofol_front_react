@@ -179,7 +179,8 @@ const CopiedMessage = styled.div<{ $isCopyClipBoard: boolean }>`
 
 const PageContainer = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
-    ${(props) => (props.$isFullWidth ? null : "justify-content: center;")}
+    padding: 100px 0;
+    justify-content: center;
     ${(props) => (props.$isFullWidth ? "padding: 0 96px;" : null)}
 `;
 
@@ -399,7 +400,7 @@ function Root() {
                     </AnimatePresence>
                 </PageHeader>
                 <PageContainer $isFullWidth={isFullWidth}>
-                    <Outlet />
+                    <Outlet context={{ isFullWidth }} />
                     <CopiedMessage $isCopyClipBoard={isCopyClipBoard}>
                         <span>링크 복사 완료</span>
                     </CopiedMessage>
