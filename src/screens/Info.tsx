@@ -1,10 +1,12 @@
 import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
+import PageHeader from "../components/PageHeader";
 import myImage from "../assets/images/me.jpeg";
 import githubImage from "../assets/images/github.png";
 import naverBlogImage from "../assets/images/naverblog.png";
 import gmailImage from "../assets/images/gmail.png";
-import PageHeader from "../components/PageHeader";
+import award1Image from "../assets/images/award1.jpg";
+import award2Image from "../assets/images/award2.jpg";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
@@ -17,7 +19,7 @@ const TwoColumns = styled.div`
     padding-bottom: 180px;
 `;
 
-const MyImage = styled.img`
+const Image = styled.img`
     width: 100%;
 `;
 
@@ -86,6 +88,7 @@ const CertificateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding-bottom: 180px;
 `;
 
 const CertificateContainer = styled.div`
@@ -147,6 +150,11 @@ const ObjectKeyText = styled.span`
     color: #ee5253;
 `;
 
+const AwardsContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+`;
+
 interface IInfoProps {
     isFullWidth: boolean;
 }
@@ -158,7 +166,7 @@ function Info() {
         <Wrapper $isFullWidth={isFullWidth}>
             <PageHeader icon="🐯" title="백미진" />
             <TwoColumns>
-                <MyImage src={myImage} alt="me" />
+                <Image src={myImage} alt="me" />
                 <GreetingContainer>
                     <p>
                         안녕하세요.
@@ -343,6 +351,11 @@ function Info() {
                     </CertificateItem>
                 </CertificateContainer>
             </CertificateWrapper>
+            <PageHeader icon="🏆" title="Awards" />
+            <AwardsContainer>
+                <img src={award1Image} alt="award1" width={300} />
+                <img src={award2Image} alt="award2" width={300} />
+            </AwardsContainer>
         </Wrapper>
     );
 }
