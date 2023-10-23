@@ -64,6 +64,23 @@ const LinkButton = styled.div`
     }
 `;
 
+const EducationContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+`;
+
+const EducationItem = styled.div`
+    line-height: 1.5;
+    > h2 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    > p {
+        font-size: 15px;
+    }
+`;
+
 interface IInfoProps {
     isFullWidth: boolean;
 }
@@ -117,6 +134,16 @@ function Info() {
                 </GreetingWrapper>
             </TwoColumns>
             <PageHeader icon="👩‍🎓" title="Education" />
+            <EducationContainer>
+                <EducationItem>
+                    <h2>여주대학교 컴퓨터정보과</h2>
+                    <p>2017.03. ~ 2019.02. 졸업 및 편입 (4.12 / 4.5)</p>
+                </EducationItem>
+                <EducationItem>
+                    <h2>원광대학교 컴퓨터소프트웨어공학과</h2>
+                    <p>2019.03. ~ 2021.02. 졸업 (3.77 / 4.5)</p>
+                </EducationItem>
+            </EducationContainer>
         </Wrapper>
     );
 }
