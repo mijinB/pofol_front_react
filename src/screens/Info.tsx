@@ -1,6 +1,9 @@
+import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 import myImage from "../assets/images/me.jpeg";
-import { useOutletContext } from "react-router-dom";
+import githubImage from "../assets/images/github.png";
+import naverBlogImage from "../assets/images/naverblog.png";
+import gmailImage from "../assets/images/gmail.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
@@ -53,13 +56,31 @@ const GreetingWrapper = styled.div`
             line-height: 1.5;
         }
     }
-    > div {
+    > div:nth-of-type(1) {
         padding: 15px 20px;
         border-radius: 5px;
         background-color: rgba(246, 229, 141, 0.6);
         > p {
             font-size: 16px;
             line-height: 1.5;
+        }
+    }
+`;
+
+const LinkButton = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    > * {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #707070;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover {
+            color: #f8c75d;
         }
     }
 `;
@@ -104,6 +125,20 @@ function Info() {
                             ❤️‍🩹 '꽃길' 아닌 '흙길' 위에서라도 그 순간을 사랑하는 사람이 되자.
                         </p>
                     </div>
+                    <LinkButton>
+                        <a href="https://github.com/mijinB">
+                            <img src={githubImage} alt="github" width={25} />
+                            GitHub
+                        </a>
+                        <a href="https://blog.naver.com/bkmij">
+                            <img src={naverBlogImage} alt="naver blog" width={25} />
+                            Naver Blog
+                        </a>
+                        <span>
+                            <img src={gmailImage} alt="gmail" width={25} />
+                            bmj13465@gmail.com
+                        </span>
+                    </LinkButton>
                 </GreetingWrapper>
             </TwoColumns>
         </Wrapper>
