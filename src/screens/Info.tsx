@@ -4,37 +4,17 @@ import myImage from "../assets/images/me.jpeg";
 import githubImage from "../assets/images/github.png";
 import naverBlogImage from "../assets/images/naverblog.png";
 import gmailImage from "../assets/images/gmail.png";
+import PageHeader from "../components/PageHeader";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
-`;
-
-const InfoHeader = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    > span {
-        &:nth-of-type(1) {
-            font-size: 60px;
-        }
-        &:nth-of-type(2) {
-            font-size: 30px;
-            font-weight: 600;
-        }
-    }
-`;
-
-const Divider = styled.div`
-    width: 100%;
-    height: 1px;
-    margin: 30px 0;
-    background-color: #37352f;
 `;
 
 const TwoColumns = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    padding: 0 0 180px 0;
 `;
 
 const MyImage = styled.img`
@@ -93,11 +73,7 @@ function Info() {
 
     return (
         <Wrapper $isFullWidth={isFullWidth}>
-            <InfoHeader>
-                <span>🐯</span>
-                <span>백미진</span>
-            </InfoHeader>
-            <Divider />
+            <PageHeader icon="🐯" title="백미진" />
             <TwoColumns>
                 <MyImage src={myImage} alt="me" />
                 <GreetingWrapper>
@@ -140,6 +116,7 @@ function Info() {
                     </LinkButton>
                 </GreetingWrapper>
             </TwoColumns>
+            <PageHeader icon="👩‍🎓" title="Education" />
         </Wrapper>
     );
 }
