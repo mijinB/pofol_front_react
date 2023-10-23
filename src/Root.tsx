@@ -49,7 +49,7 @@ const AsideOpenButton = styled.button<{ $asideIsOpen: boolean }>`
 `;
 
 const OpenAside = styled(motion.div)`
-    position: absolute;
+    position: fixed;
     width: 240px;
 `;
 
