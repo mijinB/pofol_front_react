@@ -179,9 +179,8 @@ const CopiedMessage = styled.div<{ $isCopyClipBoard: boolean }>`
 
 const PageContainer = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
-    padding: 100px 0;
     justify-content: center;
-    ${(props) => (props.$isFullWidth ? "padding: 0 96px;" : null)}
+    padding: 100px ${(props) => (props.$isFullWidth ? 96 : 0)}px;
 `;
 
 const optionsPopupVariants = {
