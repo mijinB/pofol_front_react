@@ -14,14 +14,14 @@ const TwoColumns = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    padding: 0 0 180px 0;
+    padding-bottom: 180px;
 `;
 
 const MyImage = styled.img`
     width: 100%;
 `;
 
-const GreetingWrapper = styled.div`
+const GreetingContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -68,6 +68,7 @@ const EducationContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 25px;
+    padding-bottom: 180px;
 `;
 
 const EducationItem = styled.div`
@@ -79,6 +80,71 @@ const EducationItem = styled.div`
     > p {
         font-size: 15px;
     }
+`;
+
+const CertificateWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`;
+
+const CertificateContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: rgba(112, 112, 112, 0.1);
+`;
+
+const CertificateItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    > h2 {
+        font-size: 15px;
+        font-weight: 600;
+        font-style: italic;
+    }
+`;
+
+const CertificateDateSpace = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 20px;
+`;
+
+const DescriptionSpace = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 25px;
+`;
+
+const ItemLine = styled.div`
+    display: flex;
+    gap: 7px;
+    > * {
+        font-size: 15px;
+    }
+`;
+
+const ImportText = styled.span`
+    color: #686de0;
+    font-style: italic;
+`;
+
+const StringText = styled.span`
+    color: #10ac84;
+`;
+
+const KeyWordText = styled.span`
+    color: #f368e0;
+`;
+
+const ObjectKeyText = styled.span`
+    color: #ee5253;
 `;
 
 interface IInfoProps {
@@ -93,7 +159,7 @@ function Info() {
             <PageHeader icon="🐯" title="백미진" />
             <TwoColumns>
                 <MyImage src={myImage} alt="me" />
-                <GreetingWrapper>
+                <GreetingContainer>
                     <p>
                         안녕하세요.
                         <br />
@@ -131,7 +197,7 @@ function Info() {
                             bmj13465@gmail.com
                         </span>
                     </LinkButton>
-                </GreetingWrapper>
+                </GreetingContainer>
             </TwoColumns>
             <PageHeader icon="👩‍🎓" title="Education" />
             <EducationContainer>
@@ -144,6 +210,139 @@ function Info() {
                     <p>2019.03. ~ 2021.02. 졸업 (3.77 / 4.5)</p>
                 </EducationItem>
             </EducationContainer>
+            <PageHeader icon="📜" title="Certificate" />
+            <CertificateWrapper>
+                <CertificateContainer>
+                    <CertificateItem>
+                        <ItemLine>
+                            <ImportText>import</ImportText>
+                            <span>정보처리기사</span>
+                            <ImportText>from</ImportText>
+                            <StringText>"한국산업인력공단"</StringText>
+                            <span>;</span>
+                        </ItemLine>
+                        <ItemLine>
+                            <ImportText>import</ImportText>
+                            <span>GTQ_그래픽기술자격_1급</span>
+                            <ImportText>from</ImportText>
+                            <StringText>"한국생산성본부"</StringText>
+                            <span>;</span>
+                        </ItemLine>
+                        <ItemLine>
+                            <ImportText>import</ImportText>
+                            <span>MOS_PowerPoint</span>
+                            <ImportText>from</ImportText>
+                            <StringText>"Microsoft"</StringText>
+                            <span>;</span>
+                        </ItemLine>
+                        <ItemLine>
+                            <ImportText>import</ImportText>
+                            <span>ICDL_Start_Certificate</span>
+                            <ImportText>from</ImportText>
+                            <StringText>"한국생산성본부"</StringText>
+                            <span>;</span>
+                        </ItemLine>
+                        <ItemLine>
+                            <ImportText>import</ImportText>
+                            <span>컴퓨터활용능력1급</span>
+                            <ImportText>from</ImportText>
+                            <StringText>"대한상공회의소"</StringText>
+                            <span>;</span>
+                        </ItemLine>
+                        <ItemLine>
+                            <ImportText>import</ImportText>
+                            <span>전산회계1급</span>
+                            <ImportText>from</ImportText>
+                            <StringText>"한국세무사협회"</StringText>
+                            <span>;</span>
+                        </ItemLine>
+                        <ItemLine>
+                            <ImportText>import</ImportText>
+                            <span>전산세무2급</span>
+                            <ImportText>from</ImportText>
+                            <StringText>"한국세무사협회"</StringText>
+                            <span>;</span>
+                        </ItemLine>
+                        <ItemLine>
+                            <ImportText>import</ImportText>
+                            <span>FAT_회계정보처리1급</span>
+                            <ImportText>from</ImportText>
+                            <StringText>"한국공인회계사회"</StringText>
+                            <span>;</span>
+                        </ItemLine>
+                    </CertificateItem>
+                    <CertificateItem>
+                        <ItemLine>
+                            <KeyWordText>const</KeyWordText>
+                            <span>certificateDate = &#123;</span>
+                        </ItemLine>
+                        <CertificateDateSpace>
+                            <ItemLine>
+                                <ObjectKeyText>"정보처리기사"</ObjectKeyText>
+                                <span>:</span>
+                                <StringText>"2020/12/31"</StringText>
+                                <span>,</span>
+                            </ItemLine>
+                            <ItemLine>
+                                <ObjectKeyText>"GTQ_그래픽기술자격_1급"</ObjectKeyText>
+                                <span>:</span>
+                                <StringText>"2019/03/15"</StringText>
+                                <span>,</span>
+                            </ItemLine>
+                            <ItemLine>
+                                <ObjectKeyText>"MOS_PowerPoint"</ObjectKeyText>
+                                <span>:</span>
+                                <StringText>"2019/12/06"</StringText>
+                                <span>,</span>
+                            </ItemLine>
+                            <ItemLine>
+                                <ObjectKeyText>"ICDL_Start_Certificate"</ObjectKeyText>
+                                <span>:</span>
+                                <StringText>"2020/08/28"</StringText>
+                                <span>,</span>
+                            </ItemLine>
+                            <ItemLine>
+                                <ObjectKeyText>"컴퓨터활용능력1급"</ObjectKeyText>
+                                <span>:</span>
+                                <StringText>"2021/02/05"</StringText>
+                                <span>,</span>
+                            </ItemLine>
+                            <ItemLine>
+                                <ObjectKeyText>"전산회계1급"</ObjectKeyText>
+                                <span>:</span>
+                                <StringText>"2021/04/27"</StringText>
+                                <span>,</span>
+                            </ItemLine>
+                            <ItemLine>
+                                <ObjectKeyText>"전산세무2급"</ObjectKeyText>
+                                <span>:</span>
+                                <StringText>"2021/06/24"</StringText>
+                                <span>,</span>
+                            </ItemLine>
+                            <ItemLine>
+                                <ObjectKeyText>"FAT_회계정보처리1급"</ObjectKeyText>
+                                <span>:</span>
+                                <StringText>"2021/06/29"</StringText>
+                                <span>,</span>
+                            </ItemLine>
+                        </CertificateDateSpace>
+                        <ItemLine>
+                            <span>&#125;;</span>
+                        </ItemLine>
+                    </CertificateItem>
+                </CertificateContainer>
+                <CertificateContainer>
+                    <CertificateItem>
+                        <h2>💡 ICDL_Start_Certificate</h2>
+                        <DescriptionSpace>
+                            <span>Word Processing(워드프로세싱)</span>
+                            <span>Spreadsheets(스프레드시트)</span>
+                            <span>Presentation(프레젠테이션)</span>
+                            <span>Web Browsing and Communication(ONLINE ESSENTIALS)</span>
+                        </DescriptionSpace>
+                    </CertificateItem>
+                </CertificateContainer>
+            </CertificateWrapper>
         </Wrapper>
     );
 }
