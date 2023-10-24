@@ -2,8 +2,6 @@ import styled from "styled-components";
 import profileImage from "../assets/images/cat.jpg";
 import { Link } from "react-router-dom";
 
-const AsideItemWrapper = styled.div``;
-
 const ProfileWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -91,7 +89,7 @@ interface IAsideMenuProp {
 
 function AsideMenu({ subMenuIsOpen, toggleSubMenu }: IAsideMenuProp) {
     return (
-        <AsideItemWrapper>
+        <>
             <ProfileWrapper>
                 <ProfileImage src={profileImage} alt="cat" width={30} />
                 <ProfileName>mijin Portfolio</ProfileName>
@@ -138,7 +136,7 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: IAsideMenuProp) {
                 </svg>
                 <span>👩‍🎨 ACTIVITY</span>
             </AsideItem>
-        </AsideItemWrapper>
+        </>
     );
 }
 
