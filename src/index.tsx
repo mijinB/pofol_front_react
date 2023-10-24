@@ -71,6 +71,9 @@ button {
       background-color: rgba(0, 0, 0, 0.05);
   }
 }
+p {
+  word-break: keep-all;
+}
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
