@@ -117,20 +117,6 @@ function Skills() {
                     원하고 제가 원하는 아름다운 결과물을 만들고 싶습니다.
                 </p>
             </IntroContainer>
-            {/* <SkillContainer>
-                <Image src={htmlImage} alt="html" width={130} />
-                <Image src={cssImage} alt="css" width={130} />
-                <Image src={jsImage} alt="javascript" width={125} />
-                <Image src={reactImage} alt="react" width={130} />
-                <Image src={typescriptImage} alt="typescript" width={125} />
-                <Image src={scssImage} alt="scss" width={125} />
-                <Image src={styledComponentsImage} alt="styled components" width={130} />
-                <Image src={framerImage} alt="framer" width={140} />
-                <Image src={vscodeImage} alt="vscode" width={100} />
-                <Image src={githubLogoImage} alt="github" width={130} />
-                <Image src={dartImage} alt="dart" width={130} />
-                <Image src={flutterImage} alt="flutter" width={130} />
-            </SkillContainer> */}
             <SkillContainer>
                 <SkillItem>
                     <SkillTitle>
