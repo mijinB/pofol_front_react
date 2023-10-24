@@ -13,26 +13,28 @@ const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
 `;
 
 const AsideBackground = styled.div`
-    grid-row: span 2;
     background-color: #f5cd79;
 `;
 
+const AsideMenuContainer = styled.div`
+    position: fixed;
+`;
+
 const HoverArea = styled.div<{ $asideIsOpen: boolean }>`
-    position: absolute;
-    top: 0;
+    position: fixed;
     width: ${(props) => (props.$asideIsOpen ? 0 : 150)}px;
     height: 100%;
 `;
 
 const AsideCloseButton = styled.button`
-    position: relative;
+    position: absolute;
     z-index: 1;
     left: 186px;
     display: flex;
     padding: 5px;
     margin: 10px;
     opacity: 0;
-    transition: left 0.5s ease-in-out, opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
     &:hover {
         opacity: 1;
     }
@@ -49,7 +51,7 @@ const AsideOpenButton = styled.button<{ $asideIsOpen: boolean }>`
 `;
 
 const OpenAside = styled(motion.div)`
-    position: fixed;
+    position: absolute;
     width: 240px;
 `;
 
@@ -281,7 +283,8 @@ function Root() {
     return (
         <Wrapper $asideIsOpen={asideIsOpen}>
             <AsideBackground />
-            <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen}>
+            <AsideMenuContainer>
+                <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen} />
                 <AsideCloseButton onClick={toggleAside}>
                     {asideIsOpen && (
                         <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -290,26 +293,26 @@ function Root() {
                         </svg>
                     )}
                 </AsideCloseButton>
-            </HoverArea>
-            <AnimatePresence>
-                {asideIsOpen && (
-                    <OpenAside layoutId="aside">
-                        <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
-                    </OpenAside>
-                )}
-            </AnimatePresence>
-            <AnimatePresence>
-                {!asideIsOpen && (
-                    <HoverAside
-                        layoutId="aside"
-                        onMouseEnter={onHoverAside}
-                        onMouseLeave={onHoverOutAside}
-                        $asideIsHover={asideIsHover}
-                    >
-                        <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
-                    </HoverAside>
-                )}
-            </AnimatePresence>
+                <AnimatePresence>
+                    {asideIsOpen && (
+                        <OpenAside layoutId="aside">
+                            <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
+                        </OpenAside>
+                    )}
+                </AnimatePresence>
+                <AnimatePresence>
+                    {!asideIsOpen && (
+                        <HoverAside
+                            layoutId="aside"
+                            onMouseEnter={onHoverAside}
+                            onMouseLeave={onHoverOutAside}
+                            $asideIsHover={asideIsHover}
+                        >
+                            <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
+                        </HoverAside>
+                    )}
+                </AnimatePresence>
+            </AsideMenuContainer>
             <ContentWrapper $asideIsOpen={asideIsOpen}>
                 <PageHeader>
                     <AsideOpenButton
