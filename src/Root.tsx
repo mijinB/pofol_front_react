@@ -75,10 +75,12 @@ const ContentWrapper = styled.div<{ $asideIsOpen: boolean }>`
 `;
 
 const PageHeader = styled.div`
-    position: relative;
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
 `;
 
 const Breadcrumb = styled.div`
