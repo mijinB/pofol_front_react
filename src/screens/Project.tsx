@@ -46,6 +46,7 @@ const ProjectItem = styled.div`
     border-radius: 5px;
     background-color: white;
     box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
+    overflow: hidden;
     cursor: pointer;
     &:hover {
         background-color: rgba(15, 15, 15, 0.02);
