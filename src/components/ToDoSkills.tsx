@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const SkillsContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
     > div {
         display: inline-flex;
@@ -96,9 +97,7 @@ function ToDoSkills() {
                     </svg>
                     <span>JavaScript</span>
                 </JSIcon>
-                <span>/</span>
-            </SkillsContainer>
-            <SkillsContainer>
+                <span> / </span>
                 <ReactIcon>
                     <svg role="img" width="13" height="13" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <title>React</title>

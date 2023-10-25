@@ -180,8 +180,6 @@ const SummaryItemTitle = styled.div`
 `;
 
 const SummaryItemContent = styled.div`
-    display: flex;
-    justify-content: space-between;
     > p {
         font-size: 14px;
     }
