@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import profileImage from "../assets/images/cat.jpg";
+import profileImage from "../assets/images/profile.jpg";
 import { Link } from "react-router-dom";
 
 const ProfileWrapper = styled.div`
@@ -91,7 +91,7 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: IAsideMenuProp) {
     return (
         <>
             <ProfileWrapper>
-                <ProfileImage src={profileImage} alt="cat" width={30} />
+                <ProfileImage src={profileImage} alt="profile" width={30} />
                 <ProfileName>mijin Portfolio</ProfileName>
             </ProfileWrapper>
             <SlideDown $subMenuIsOpen={subMenuIsOpen}>

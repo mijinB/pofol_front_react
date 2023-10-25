@@ -1,13 +1,14 @@
 import { useOutletContext } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
 import PageHeader from "../components/PageHeader";
+import ToDoSkills from "../components/ToDoSkills";
+import KoPlaceSkills from "../components/KoPlaceSkills";
 import todoTemplateImage from "../assets/images/todo_template.jpg";
 import todoLogo from "../assets/images/todo_logo.png";
 import koPlaceTemplateImage from "../assets/images/ko_place_template.jpg";
 import koPlaceLogo from "../assets/images/ko_place_logo.png";
-import { useState } from "react";
-import ToDoSkills from "../components/ToDoSkills";
-import KoPlaceSkills from "../components/KoPlaceSkills";
+import profileImage from "../assets/images/profile.jpg";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
@@ -164,6 +165,7 @@ const ModalSummary = styled.div`
     grid-template-rows: repeat(4, 1fr);
     align-items: center;
     gap: 20px;
+    margin-bottom: 20px;
 `;
 
 const SummaryItemTitle = styled.div`
@@ -185,7 +187,28 @@ const SummaryItemContent = styled.div`
     }
 `;
 
-const ModalComment = styled.div``;
+const ModalComment = styled.div`
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding-bottom: 10px;
+`;
+
+const ProfileImage = styled.img`
+    border-radius: 50%;
+`;
+
+const CommentContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    > * {
+        font-size: 14px;
+    }
+    > span {
+        font-weight: 600;
+    }
+`;
 
 interface IProjectProp {
     isFullWidth: boolean;
@@ -325,7 +348,15 @@ function Project() {
                                             <TeamTag>개인프로젝트</TeamTag>
                                         </SummaryItemContent>
                                     </ModalSummary>
-                                    <ModalComment></ModalComment>
+                                    <SubDivider />
+                                    <ModalComment>
+                                        <ProfileImage src={profileImage} alt="profile" width={21} />
+                                        <CommentContent>
+                                            <span>mijin</span>
+                                            <p>커버 이미지는 Pixlr E를 사용해서 직접 제작했어요.</p>
+                                        </CommentContent>
+                                    </ModalComment>
+                                    <SubDivider />
                                 </ModalSummaryContainer>
                             </ModalTextContainer>
                         </ProjectDetailsModal>
