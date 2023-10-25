@@ -22,12 +22,19 @@ const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
     > p {
         width: ${(props) => (props.$isFullWidth ? 100 : 78)}%;
         font-size: 14px;
         line-height: 1.4;
     }
+`;
+
+const SkillIcons = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 70px;
 `;
 
 const SkillContainer = styled.div`
@@ -57,7 +64,7 @@ const SkillTitle = styled.div`
 `;
 
 const Image = styled.img`
-    border-radius: 15px;
+    border-radius: 10px;
 `;
 
 const SubDivider = styled.div`
@@ -117,6 +124,20 @@ function Skills() {
                     원하고 제가 원하는 아름다운 결과물을 만들고 싶습니다.
                 </p>
             </IntroContainer>
+            <SkillIcons>
+                <Image src={htmlImage} alt="html" width={50} />
+                <Image src={cssImage} alt="css" width={50} />
+                <Image src={jsImage} alt="javascript" width={45} />
+                <Image src={reactImage} alt="react" width={47} />
+                <Image src={typescriptImage} alt="typescript" width={45} />
+                <Image src={scssImage} alt="scss" width={45} />
+                <Image src={styledComponentsImage} alt="styled components" width={45} />
+                <Image src={framerImage} alt="framer" width={60} />
+                <Image src={vscodeImage} alt="vscode" width={40} />
+                <Image src={githubLogoImage} alt="github" width={45} />
+                <Image src={dartImage} alt="dart" width={50} />
+                <Image src={flutterImage} alt="flutter" width={50} />
+            </SkillIcons>
             <SkillContainer>
                 <SkillItem>
                     <SkillTitle>
