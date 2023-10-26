@@ -54,10 +54,11 @@ const AsideItem = styled(Link)`
     }
 `;
 
-const SubMenuButton = styled.button<{ $subMenuIsOpen: boolean }>`
+const SubMenuButton = styled.div<{ $subMenuIsOpen: boolean }>`
     display: flex;
     padding: 3px;
     &:hover {
+        border-radius: 3px;
         background-color: rgba(0, 0, 0, 0.1);
     }
     > svg {
