@@ -15,6 +15,11 @@ import todoLoginImage from "../assets/images/todo_login.png";
 import todoListImage from "../assets/images/todo_list.png";
 import todoGameImage from "../assets/images/todo_game.png";
 import todoSettingImage from "../assets/images/todo_setting.png";
+import reactTodoImage from "../assets/images/react_todo.png";
+import reactDoingImage from "../assets/images/react_doing.png";
+import reactDoneImage from "../assets/images/react_done.png";
+import reactCustomizeImage from "../assets/images/react_customize.png";
+import reactThemeToggleGIF from "../assets/images/react_theme_toggle.gif";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
@@ -176,6 +181,10 @@ const ModalTitle = styled.h2`
 
 const ModalSummaryContainer = styled.div`
     padding: 30px 0;
+    > p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
 `;
 
 const ModalSummary = styled.div`
@@ -294,12 +303,39 @@ const LinkInfo = styled.div`
     }
 `;
 
-const ImageColumn = styled.div`
+const TwoColumns = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     > img {
         width: 100%;
+    }
+`;
+
+const FourColumns = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    > img {
+        width: 100%;
+    }
+`;
+
+const ToggleInfoColumns = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 10px;
+    > img {
+        width: 100%;
+    }
+    > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        > p {
+            line-height: 1.5;
+        }
     }
 `;
 
@@ -347,7 +383,7 @@ function Project() {
                             <span>To Do List</span>
                         </TemplateTitle>
                         <ToDoSkills />
-                        <span>2023년 8월 18일 → 2023년 8월 29일</span>
+                        <span>2023년 8월 18일 → 8월 29일 / 2023년 9월 4일 → 9월 5일</span>
                         <TeamTag>개인프로젝트</TeamTag>
                     </TemplateTextContainer>
                 </ProjectItem>
@@ -430,7 +466,7 @@ function Project() {
                                                 <span>진행 기간</span>
                                             </SummaryItemTitle>
                                             <SummaryItemContent>
-                                                <p>2023년 8월 18일 → 2023년 8월 29일</p>
+                                                <p>2023년 8월 18일 → 8월 29일 / 2023년 9월 4일 → 9월 5일</p>
                                             </SummaryItemContent>
                                             <SummaryItemTitle>
                                                 <svg
@@ -487,10 +523,10 @@ function Project() {
                                     </ModalContentSection>
                                     <ModalContentSection>
                                         <SectionTitle>🧸 상세 내용</SectionTitle>
-                                        <ImageColumn>
+                                        <TwoColumns>
                                             <img src={todoLoginImage} alt="todo login" />
                                             <img src={todoListImage} alt="todo list" />
-                                        </ImageColumn>
+                                        </TwoColumns>
                                         <p>
                                             로그인 시 입력하는 사용자 이름과 to do list의 요소들은 LocalStorage에
                                             저장되어 관리돼요.
@@ -505,10 +541,10 @@ function Project() {
                                             날씨, 온도를 보여줘요. (날씨는 weather API에서 제공해주는 icon으로
                                             보여줘요.)
                                         </p>
-                                        <ImageColumn>
+                                        <TwoColumns>
                                             <img src={todoGameImage} alt="todo login" />
                                             <img src={todoSettingImage} alt="todo list" />
-                                        </ImageColumn>
+                                        </TwoColumns>
                                         <p>
                                             컴퓨터와 진행하는 가위바위보 게임과 컴퓨터가 뽑을 랜덤 숫자를 맞추는 게임이
                                             games 폴더에 있어서 조그만 재미를 줘요.
@@ -538,6 +574,77 @@ function Project() {
                                         </CheckBoxContainer>
                                     </ModalContentSection>
                                     <SubDivider />
+                                    <ModalTitle>👉 React To Do List</ModalTitle>
+                                    <ModalSummaryContainer>
+                                        <p>
+                                            새로운 언어를 공부하면서 코딩 시도를 할 때 처음 만들어보는 프로젝트를
+                                            만들기보다 만들어 본 경험이 있는 프로젝트를 새로운 언어로 다시 만드는 방법이
+                                            효과적이라고 생각해요.
+                                        </p>
+                                    </ModalSummaryContainer>
+                                    <ModalContentSection>
+                                        <SectionTitle>🔗 Link</SectionTitle>
+                                        <LinkItem>
+                                            <span>⪧ GitHub(source)</span>
+                                            <LinkItemBox>
+                                                <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
+                                                <GitHubImage src={githubImage} alt="github logo" width={17} />
+                                                <LinkInfo>
+                                                    <span>recoil_todo_list</span>
+                                                    <span>mijinB</span>
+                                                </LinkInfo>
+                                            </LinkItemBox>
+                                        </LinkItem>
+                                        <LinkItem>
+                                            <span>⪧ GitHub Pages(deploy)</span>
+                                            <LinkItemBox>
+                                                <ProfileImage src={githubImage} alt="github logo" width={33} />
+                                                <LinkInfo>
+                                                    <span>ToDo List</span>
+                                                    <span>https://mijinb.github.io/recoil_todo_list/</span>
+                                                </LinkInfo>
+                                            </LinkItemBox>
+                                        </LinkItem>
+                                    </ModalContentSection>
+                                    <ModalContentSection>
+                                        <SectionTitle>🧸 상세 내용</SectionTitle>
+                                        <FourColumns>
+                                            <img src={reactTodoImage} alt="react todo" />
+                                            <img src={reactDoingImage} alt="react doing" />
+                                            <img src={reactDoneImage} alt="react done" />
+                                            <img src={reactCustomizeImage} alt="react customize" />
+                                        </FourColumns>
+                                        <p>
+                                            카테고리 별로 구분해서 볼 수 있도록 구현했어요. to do 요소를 입력하면 선택된
+                                            카테고리로 추가되고 to do 요소 아래 카테고리 버튼을 이용해서 옮길 수 있어요.
+                                        </p>
+                                        <p>
+                                            카테고리는 사용자가 원하는대로 추가할 수 있고 삭제도 자유롭게 가능해요.
+                                            <br />
+                                            카테고리 삭제 시, 그 카테고리에 존재하는 모든 to do 요소들을 함께 제거하여
+                                            불필요한 데이터가 저장되지 않도록 구현했어요. (삭제 버튼을 누르면
+                                            “카테고리를 정말 삭제하시겠습니까? 해당 카테고리에 포함된 data가 모두
+                                            삭제됩니다.” 라는 alert 창을 띄움으로써 사용자의 실수를 방지하고 있어요.)
+                                        </p>
+                                        <p>
+                                            Recoil을 사용하여 전역 상태 관리를 적용했어요. (모든 to do 요소들은 하나의
+                                            atom으로 관리하고 그 요소들 중에서 카테고리 별로 구분하여 가져오는 기능은
+                                            selector을 이용해 구현했어요.)
+                                        </p>
+                                        <ToggleInfoColumns>
+                                            <img src={reactThemeToggleGIF} alt="react theme toggle" />
+                                            <div>
+                                                <p>
+                                                    &lt;input&gt; 태그의 checkbox로 다크모드 toggle 버튼을 구현했어요.
+                                                </p>
+                                                <p>
+                                                    라이트모드/다크모드로 전환될 때 색상 변경 및 emoji 변경은 Styled
+                                                    Components의 props를 이용해 간편하게 적용했어요.
+                                                </p>
+                                            </div>
+                                        </ToggleInfoColumns>
+                                        <p>TypeScript를 사용하여 JavaScript를 런타임 에러로부터 보호했어요.</p>
+                                    </ModalContentSection>
                                 </ModalTextContent>
                             </ModalContentWrapper>
                         </ProjectDetailsModal>
