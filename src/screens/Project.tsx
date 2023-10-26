@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PageHeader from "../components/PageHeader";
 import ToDoSkills from "../components/ToDoSkills";
 import KoPlaceSkills from "../components/KoPlaceSkills";
+import ProjectModalHeader from "../components/ProjectModalHeader";
 
 import todoTemplateImage from "../assets/images/todo_template.jpg";
 import todoLogo from "../assets/images/todo_logo.png";
@@ -12,6 +13,7 @@ import koPlaceLogo from "../assets/images/ko_place_logo.png";
 import profileImage from "../assets/images/profile.jpg";
 import gitProfileImage from "../assets/images/git_profile.jpg";
 import githubImage from "../assets/images/github.png";
+import googlePlayImage from "../assets/images/google_play.png";
 import todoLoginImage from "../assets/images/todo_login.png";
 import todoListImage from "../assets/images/todo_list.png";
 import todoGameImage from "../assets/images/todo_game.png";
@@ -21,7 +23,8 @@ import reactDoingImage from "../assets/images/react_doing.png";
 import reactDoneImage from "../assets/images/react_done.png";
 import reactCustomizeImage from "../assets/images/react_customize.png";
 import reactThemeToggleGIF from "../assets/images/react_theme_toggle.gif";
-import ProjectModalHeader from "../components/ProjectModalHeader";
+import koPlaceMainImage from "../assets/images/ko_place_main.png";
+import koPlaceDetailImage from "../assets/images/ko_place_detail.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
@@ -302,9 +305,19 @@ const TwoColumns = styled.div`
 const FourColumns = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    align-items: center;
     gap: 10px;
     > img {
         width: 100%;
+    }
+    > div {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        > p {
+            line-height: 1.5;
+        }
     }
 `;
 
@@ -394,7 +407,7 @@ function Project() {
                                 <ModalTextContent>
                                     <ModalTitle>To Do List</ModalTitle>
                                     <ModalSummaryContainer>
-                                        <ModalSummary style={{gap: 6}}>
+                                        <ModalSummary style={{ gap: 6 }}>
                                             <SummaryItemTitle>
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -676,7 +689,7 @@ function Project() {
                                 <ModalTextContent>
                                     <ModalTitle>가볼 만한 곳=ko</ModalTitle>
                                     <ModalSummaryContainer>
-                                        <ModalSummary  style={{gap: 20}}>
+                                        <ModalSummary style={{ gap: 20 }}>
                                             <SummaryItemTitle>
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -761,6 +774,109 @@ function Project() {
                                         </ModalComment>
                                         <SubDivider />
                                     </ModalSummaryContainer>
+                                    <ModalContentSection>
+                                        <SectionTitle>🔗 Link</SectionTitle>
+                                        <LinkItem
+                                            href="https://github.com/mijinB/place_worth_visiting_ko"
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
+                                            <span>⪧ GitHub(source)</span>
+                                            <LinkItemBox>
+                                                <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
+                                                <GitHubImage src={githubImage} alt="github logo" width={17} />
+                                                <LinkInfo>
+                                                    <span>place_worth_visiting_ko</span>
+                                                    <span>mijinB</span>
+                                                </LinkInfo>
+                                            </LinkItemBox>
+                                        </LinkItem>
+                                        <LinkItem
+                                            href="https://play.google.com/store/apps/details?id=com.bkmi.place_worth_visiting_ko&hl=ko"
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
+                                            <span>⪧ Google Store(download)</span>
+                                            <LinkItemBox>
+                                                <img src={googlePlayImage} alt="google play logo" width={30} />
+                                                <LinkInfo>
+                                                    <span>가볼 만한 곳=ko - Google Play 앱</span>
+                                                    <span>
+                                                        https://play.google.com/store/apps/details?id=com.bkmi.place_worth_visiting_ko&hl=ko
+                                                    </span>
+                                                </LinkInfo>
+                                            </LinkItemBox>
+                                        </LinkItem>
+                                    </ModalContentSection>
+                                    <ModalContentSection>
+                                        <SectionTitle>🧸 상세 내용</SectionTitle>
+                                        <FourColumns>
+                                            <img src={koPlaceMainImage} alt="ko place main" />
+                                            <img src={koPlaceDetailImage} alt="ko place detail" />
+                                            <div>
+                                                <p>
+                                                    ‘지역’ → ‘시군구’ → ‘타입’을 선택하여 원하는 지역의 가볼 만한 장소를
+                                                    쉽게 조회할 수 있는 APP이에요. 메인 페이지, 상세 페이지, 즐겨찾기
+                                                    페이지, 설정 페이지가 존재해요.
+                                                </p>
+                                                <p>
+                                                    카드 리스트 중 한 개의 카드를 터치하면 상세 페이지로 이동하며 google
+                                                    지도로 정확한 위치를 보여줘요. google 지도 아래에는 상세정보,
+                                                    업무시간, 휴무일, 주차 가능 여부, 리뷰 등을 제공해요.
+                                                </p>
+                                                <p>
+                                                    관심 있는 장소를 따로 구분하여 볼 수 있도록 즐겨찾기 기능을
+                                                    추가했어요.
+                                                </p>
+                                            </div>
+                                        </FourColumns>
+                                        <p>
+                                            기존에는 회원가입 및 로그인을 해야 어플을 사용 가능하도록 구현했었는데
+                                            번거로움이 있을 거 같아서 APP을 실행하면 바로 사용이 가능하고 즐겨찾기, 리뷰
+                                            기능만 회원가입 및 로그인이 필요하도록 수정했어요.
+                                        </p>
+                                        <p>(23.06.10 완료/Google Play 업데이트 완료)</p>
+                                    </ModalContentSection>
+                                    <ModalContentSection>
+                                        <SectionTitle>⚒️ 사용 기술 및 라이브러리</SectionTitle>
+                                        <p>⪧ Flutter, Dart, Android</p>
+                                        <p>⪧ Firebase</p>
+                                        <p>⪧ 공공데이터포털 API, Google Map API</p>
+                                    </ModalContentSection>
+                                    <ModalContentSection>
+                                        <SectionTitle>🎶 앞으로 추가할 기능</SectionTitle>
+                                        <CheckBoxContainer>
+                                            <input type="checkbox" readOnly checked />
+                                            <p>
+                                                상세 페이지에 장소 상세 설명(운영 시간, 휴무일, 장소 설명 등) 추가 예정
+                                                (23.05.20 완료)
+                                            </p>
+                                        </CheckBoxContainer>
+                                        <CheckBoxContainer>
+                                            <input type="checkbox" readOnly checked />
+                                            <p>
+                                                디바이스 크기 차이로 레이아웃 깨짐 발생 확인. 업데이트 예정 (23.06.01
+                                                완료/Google Play 업데이트 완료)
+                                            </p>
+                                        </CheckBoxContainer>
+                                        <CheckBoxContainer>
+                                            <input type="checkbox" readOnly checked />
+                                            <p>검색하기, 로그아웃, 회원 탈퇴 Button Refactoring (23.06.02 완료)</p>
+                                        </CheckBoxContainer>
+                                        <CheckBoxContainer>
+                                            <input type="checkbox" readOnly checked />
+                                            <p>
+                                                로그인, 회원가입 TextField & 상세정보 Text Refactoring (23.06.04 완료)
+                                            </p>
+                                        </CheckBoxContainer>
+                                        <CheckBoxContainer>
+                                            <input type="checkbox" readOnly checked />
+                                            <p>
+                                                로그인 위치 변경/APP 실행 시 바로 사용 가능하게 하기 (23.06.10
+                                                완료/Google Play 업데이트 완료)
+                                            </p>
+                                        </CheckBoxContainer>
+                                    </ModalContentSection>
                                 </ModalTextContent>
                             </ModalContentWrapper>
                         </ProjectDetailsModal>
