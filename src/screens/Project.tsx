@@ -303,6 +303,16 @@ const ImageColumn = styled.div`
     }
 `;
 
+const CheckBoxContainer = styled.div`
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    > p {
+        color: rgba(112, 112, 112, 0.7);
+        text-decoration: line-through;
+    }
+`;
+
 interface IProjectProp {
     isFullWidth: boolean;
 }
@@ -513,6 +523,21 @@ function Project() {
                                             종류에 한해서 랜덤으로 image가 바껴요.
                                         </p>
                                     </ModalContentSection>
+                                    <ModalContentSection>
+                                        <SectionTitle>⚒️ 사용 기술 및 라이브러리</SectionTitle>
+                                        <p>⪧ HTML, CSS, Vanilla JavaScript</p>
+                                    </ModalContentSection>
+                                    <ModalContentSection>
+                                        <SectionTitle>🎶 앞으로 추가할 기능</SectionTitle>
+                                        <CheckBoxContainer>
+                                            <input type="checkbox" readOnly checked />
+                                            <p>
+                                                IOS로 봤을 때 games 폴더(이모지) 비활성이 시각적으로 보이지 않아서
+                                                setting처럼 icon으로 수정 (23.10.16 완료)
+                                            </p>
+                                        </CheckBoxContainer>
+                                    </ModalContentSection>
+                                    <SubDivider />
                                 </ModalTextContent>
                             </ModalContentWrapper>
                         </ProjectDetailsModal>
