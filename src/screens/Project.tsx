@@ -9,6 +9,12 @@ import todoLogo from "../assets/images/todo_logo.png";
 import koPlaceTemplateImage from "../assets/images/ko_place_template.jpg";
 import koPlaceLogo from "../assets/images/ko_place_logo.png";
 import profileImage from "../assets/images/profile.jpg";
+import gitProfileImage from "../assets/images/git_profile.jpg";
+import githubImage from "../assets/images/github.png";
+import todoLoginImage from "../assets/images/todo_login.png";
+import todoListImage from "../assets/images/todo_list.png";
+import todoGameImage from "../assets/images/todo_game.png";
+import todoSettingImage from "../assets/images/todo_setting.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
@@ -211,6 +217,15 @@ const ProfileImage = styled.img`
     border-radius: 50%;
 `;
 
+const GitHubImage = styled.img`
+    position: absolute;
+    top: 31px;
+    left: 38px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: white;
+`;
+
 const CommentContent = styled.div`
     display: flex;
     flex-direction: column;
@@ -223,7 +238,15 @@ const CommentContent = styled.div`
     }
 `;
 
-const ModalContentSection = styled.div``;
+const ModalContentSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 120px;
+    > p {
+        line-height: 1.5;
+    }
+`;
 
 const SectionTitle = styled.h3`
     font-size: 22px;
@@ -234,7 +257,6 @@ const LinkItem = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin: 20px 0;
     > span {
         font-size: 15px;
         font-style: italic;
@@ -242,9 +264,43 @@ const LinkItem = styled.div`
 `;
 
 const LinkItemBox = styled.a`
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
     padding: 10px 15px;
     border: 1px solid rgba(55, 53, 47, 0.2);
     border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(15, 15, 15, 0.05);
+        transition: background-color 0.2s ease-out;
+    }
+`;
+
+const LinkInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    > span {
+        &:nth-of-type(1) {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        &:nth-of-type(2) {
+            font-size: 12px;
+            color: rgba(112, 112, 112, 0.7);
+        }
+    }
+`;
+
+const ImageColumn = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    > img {
+        width: 100%;
+    }
 `;
 
 interface IProjectProp {
@@ -399,8 +455,63 @@ function Project() {
                                         <SectionTitle>🔗 Link</SectionTitle>
                                         <LinkItem>
                                             <span>⪧ GitHub(source)</span>
-                                            <LinkItemBox></LinkItemBox>
+                                            <LinkItemBox>
+                                                <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
+                                                <GitHubImage src={githubImage} alt="github logo" width={17} />
+                                                <LinkInfo>
+                                                    <span>vanilla_js_todo_list</span>
+                                                    <span>mijinB</span>
+                                                </LinkInfo>
+                                            </LinkItemBox>
                                         </LinkItem>
+                                        <LinkItem>
+                                            <span>⪧ GitHub Pages(deploy)</span>
+                                            <LinkItemBox>
+                                                <ProfileImage src={githubImage} alt="github logo" width={33} />
+                                                <LinkInfo>
+                                                    <span>ToDo List</span>
+                                                    <span>https://mijinb.github.io/vanilla_js_todo_list/</span>
+                                                </LinkInfo>
+                                            </LinkItemBox>
+                                        </LinkItem>
+                                    </ModalContentSection>
+                                    <ModalContentSection>
+                                        <SectionTitle>🧸 상세 내용</SectionTitle>
+                                        <ImageColumn>
+                                            <img src={todoLoginImage} alt="todo login" />
+                                            <img src={todoListImage} alt="todo list" />
+                                        </ImageColumn>
+                                        <p>
+                                            로그인 시 입력하는 사용자 이름과 to do list의 요소들은 LocalStorage에
+                                            저장되어 관리돼요.
+                                        </p>
+                                        <p>
+                                            to do list의 요소들은 각각 편집과 삭제가 가능하고 완료한 요소는 체크 박스를
+                                            체크하여 구분할 수 있어요. (완료된 요소의 text는 취소선이 생김으로써
+                                            시각적으로 더 쉽게 구분이 가능해요.)
+                                        </p>
+                                        <p>
+                                            현재 시간을 digital 폰트로 보여주고 weather API를 사용하여 사용자의 위치 및
+                                            날씨, 온도를 보여줘요. (날씨는 weather API에서 제공해주는 icon으로
+                                            보여줘요.)
+                                        </p>
+                                        <ImageColumn>
+                                            <img src={todoGameImage} alt="todo login" />
+                                            <img src={todoSettingImage} alt="todo list" />
+                                        </ImageColumn>
+                                        <p>
+                                            컴퓨터와 진행하는 가위바위보 게임과 컴퓨터가 뽑을 랜덤 숫자를 맞추는 게임이
+                                            games 폴더에 있어서 조그만 재미를 줘요.
+                                        </p>
+                                        <p>
+                                            setting 폴더에서는 background image의 종류를 바꿀 수 있고(꼬닐리오 작가,
+                                            퍼엉 작가의 일러스트 / 그라데이션) 사용자 이름 옆에 있는 귀여운 동물
+                                            이모지도 변경할 수 있어요.
+                                        </p>
+                                        <p>
+                                            setting 폴더 아래에 있는 반짝반짝 이모지를 누르면 적용중인 background image
+                                            종류에 한해서 랜덤으로 image가 바껴요.
+                                        </p>
                                     </ModalContentSection>
                                 </ModalTextContent>
                             </ModalContentWrapper>

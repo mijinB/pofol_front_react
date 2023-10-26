@@ -10,7 +10,7 @@ import scssImage from "../assets/images/scss.png";
 import styledComponentsImage from "../assets/images/styledcomponents.png";
 import framerImage from "../assets/images/framer.png";
 import vscodeImage from "../assets/images/vscode.png";
-import githubLogoImage from "../assets/images/githublogo.png";
+import githubImage from "../assets/images/github.png";
 import dartImage from "../assets/images/dart.png";
 import flutterImage from "../assets/images/flutter.png";
 
@@ -134,7 +134,7 @@ function Skills() {
                 <Image src={styledComponentsImage} alt="styled components" width={45} />
                 <Image src={framerImage} alt="framer" width={60} />
                 <Image src={vscodeImage} alt="vscode" width={40} />
-                <Image src={githubLogoImage} alt="github" width={45} />
+                <Image src={githubImage} alt="github" width={45} />
                 <Image src={dartImage} alt="dart" width={50} />
                 <Image src={flutterImage} alt="flutter" width={50} />
             </SkillIcons>
@@ -264,7 +264,7 @@ function Skills() {
                 </SkillItem>
                 <SkillItem>
                     <SkillTitle>
-                        <Image src={githubLogoImage} alt="github" width={27} />
+                        <Image src={githubImage} alt="github" width={27} />
                         <span>GitHub</span>
                     </SkillTitle>
                     <SubDivider>
