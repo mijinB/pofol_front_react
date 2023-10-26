@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PageHeader from "../components/PageHeader";
 import ToDoSkills from "../components/ToDoSkills";
 import KoPlaceSkills from "../components/KoPlaceSkills";
+
 import todoTemplateImage from "../assets/images/todo_template.jpg";
 import todoLogo from "../assets/images/todo_logo.png";
 import koPlaceTemplateImage from "../assets/images/ko_place_template.jpg";
@@ -20,6 +21,7 @@ import reactDoingImage from "../assets/images/react_doing.png";
 import reactDoneImage from "../assets/images/react_done.png";
 import reactCustomizeImage from "../assets/images/react_customize.png";
 import reactThemeToggleGIF from "../assets/images/react_theme_toggle.gif";
+import ProjectModalHeader from "../components/ProjectModalHeader";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
@@ -130,27 +132,13 @@ const ProjectDetailsModal = styled.div`
     transform: translate(-50%, -50%);
 `;
 
-const ModalHeader = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 10px;
-    background-color: white;
-    > svg {
-        cursor: pointer;
-        &:hover {
-            filter: sepia(100%) saturate(6054%) hue-rotate(358deg) brightness(100%) contrast(100%);
-        }
-    }
-`;
-
 const ModalContentWrapper = styled.div`
     display: grid;
     grid-template-rows: 220px 1fr;
     overflow-y: scroll;
 `;
 
-const ModalImageContainer = styled.div<{ $todoLogo: string }>`
+const ModalImageContainer = styled.div<{ $projectLogo: string }>`
     position: relative;
     &::after {
         position: absolute;
@@ -158,7 +146,7 @@ const ModalImageContainer = styled.div<{ $todoLogo: string }>`
         left: 120px;
         width: 100px;
         height: 100px;
-        background: url(${(props) => props.$todoLogo}) no-repeat center/contain;
+        background: url(${(props) => props.$projectLogo}) no-repeat center/contain;
         content: "";
     }
 `;
@@ -356,13 +344,21 @@ interface IProjectProp {
 function Project() {
     const { isFullWidth } = useOutletContext<IProjectProp>();
 
-    const [isProjectDetailsOpen, setIsProjectDetailsOpen] = useState<boolean>(false);
+    const [isToDoDetailsOpen, setIsToDoDetailsOpen] = useState<boolean>(false);
+    const [isKoPlaceDetailsOpen, setIsKoPlaceDetailsOpen] = useState<boolean>(false);
 
     /**@function toggleDetailsModal
-     * 1. isProjectDetailsOpen(boolean) 변수의 값을 전환한다.
+     * 1. isToDoDetailsOpen(boolean) 변수의 값을 전환한다.
      */
-    const toggleDetailsModal = () => {
-        setIsProjectDetailsOpen((previous) => !previous);
+    const toggleToDoDetailsModal = () => {
+        setIsToDoDetailsOpen((previous) => !previous);
+    };
+
+    /**@function toggleKoPlaceDetailsModal
+     * 1. isKoPlaceDetailsOpen(boolean) 변수의 값을 전환한다.
+     */
+    const toggleKoPlaceDetailsModal = () => {
+        setIsKoPlaceDetailsOpen((previous) => !previous);
     };
 
     return (
@@ -375,7 +371,7 @@ function Project() {
                 </SubDivider>
             </ProjectTitle>
             <ProjectContainer>
-                <ProjectItem onClick={toggleDetailsModal}>
+                <ProjectItem onClick={toggleToDoDetailsModal}>
                     <TemplateImage src={todoTemplateImage} alt="todo template" />
                     <TemplateTextContainer>
                         <TemplateTitle>
@@ -387,26 +383,13 @@ function Project() {
                         <TeamTag>개인프로젝트</TeamTag>
                     </TemplateTextContainer>
                 </ProjectItem>
-                {isProjectDetailsOpen && (
+                {isToDoDetailsOpen && (
                     <>
-                        <OverLay onClick={toggleDetailsModal} />
+                        <OverLay onClick={toggleToDoDetailsModal} />
                         <ProjectDetailsModal>
-                            <ModalHeader>
-                                <svg
-                                    onClick={toggleDetailsModal}
-                                    width="30"
-                                    height="30"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <circle cx="12" cy="12" r="9" stroke="#37352F" />
-                                    <path d="M9.00009 14.9997L15.0001 8.99966" stroke="#37352F" />
-                                    <path d="M15 15L9 9" stroke="#37352F" />
-                                </svg>
-                            </ModalHeader>
+                            <ProjectModalHeader clickFunction={toggleToDoDetailsModal} />
                             <ModalContentWrapper>
-                                <ModalImageContainer $todoLogo={todoLogo}>
+                                <ModalImageContainer $projectLogo={todoLogo}>
                                     <ModalImage src={todoTemplateImage} alt="todo template" />
                                 </ModalImageContainer>
                                 <ModalTextContent>
@@ -666,7 +649,7 @@ function Project() {
                         </ProjectDetailsModal>
                     </>
                 )}
-                <ProjectItem>
+                <ProjectItem onClick={toggleKoPlaceDetailsModal}>
                     <TemplateImage src={koPlaceTemplateImage} alt="ko place template" />
                     <TemplateTextContainer>
                         <TemplateTitle>
@@ -678,6 +661,27 @@ function Project() {
                         <TeamTag>개인프로젝트</TeamTag>
                     </TemplateTextContainer>
                 </ProjectItem>
+                {isKoPlaceDetailsOpen && (
+                    <>
+                        <OverLay onClick={toggleKoPlaceDetailsModal} />
+                        <ProjectDetailsModal>
+                            <ProjectModalHeader clickFunction={toggleKoPlaceDetailsModal} />
+                            <ModalContentWrapper>
+                                <ModalImageContainer $projectLogo={koPlaceLogo}>
+                                    <ModalImage
+                                        src={koPlaceTemplateImage}
+                                        alt="ko place template"
+                                        style={{ objectPosition: "center -100px" }}
+                                    />
+                                </ModalImageContainer>
+                                <ModalTextContent>
+                                    <ModalTitle>가볼 만한 곳=ko</ModalTitle>
+                                    <ModalSummaryContainer></ModalSummaryContainer>
+                                </ModalTextContent>
+                            </ModalContentWrapper>
+                        </ProjectDetailsModal>
+                    </>
+                )}
             </ProjectContainer>
         </Wrapper>
     );
