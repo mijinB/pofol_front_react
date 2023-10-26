@@ -253,7 +253,7 @@ const SectionTitle = styled.h3`
     font-weight: 600;
 `;
 
-const LinkItem = styled.a`
+const LinkItem = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -496,13 +496,13 @@ function Project() {
                                         </ModalSummaryContainer>
                                         <ModalContentSection>
                                             <SectionTitle>🔗 Link</SectionTitle>
-                                            <LinkItem
-                                                href="https://github.com/mijinB/vanilla_js_todo_list"
-                                                target="_blank"
-                                                rel="noreferrer noopener"
-                                            >
+                                            <LinkItem>
                                                 <span>⪧ GitHub(source)</span>
-                                                <LinkItemBox>
+                                                <LinkItemBox
+                                                    href="https://github.com/mijinB/vanilla_js_todo_list"
+                                                    target="_blank"
+                                                    rel="noreferrer noopener"
+                                                >
                                                     <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
                                                     <GitHubImage src={githubImage} alt="github logo" width={17} />
                                                     <LinkInfo>
@@ -511,13 +511,13 @@ function Project() {
                                                     </LinkInfo>
                                                 </LinkItemBox>
                                             </LinkItem>
-                                            <LinkItem
-                                                href="https://mijinb.github.io/vanilla_js_todo_list/"
-                                                target="_blank"
-                                                rel="noreferrer noopener"
-                                            >
+                                            <LinkItem>
                                                 <span>⪧ GitHub Pages(deploy)</span>
-                                                <LinkItemBox>
+                                                <LinkItemBox
+                                                    href="https://mijinb.github.io/vanilla_js_todo_list/"
+                                                    target="_blank"
+                                                    rel="noreferrer noopener"
+                                                >
                                                     <ProfileImage src={githubImage} alt="github logo" width={33} />
                                                     <LinkInfo>
                                                         <span>ToDo List</span>
@@ -589,13 +589,13 @@ function Project() {
                                         </ModalSummaryContainer>
                                         <ModalContentSection>
                                             <SectionTitle>🔗 Link</SectionTitle>
-                                            <LinkItem
-                                                href="https://github.com/mijinB/recoil_todo_list"
-                                                target="_blank"
-                                                rel="noreferrer noopener"
-                                            >
+                                            <LinkItem>
                                                 <span>⪧ GitHub(source)</span>
-                                                <LinkItemBox>
+                                                <LinkItemBox
+                                                    href="https://github.com/mijinB/recoil_todo_list"
+                                                    target="_blank"
+                                                    rel="noreferrer noopener"
+                                                >
                                                     <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
                                                     <GitHubImage src={githubImage} alt="github logo" width={17} />
                                                     <LinkInfo>
@@ -604,13 +604,13 @@ function Project() {
                                                     </LinkInfo>
                                                 </LinkItemBox>
                                             </LinkItem>
-                                            <LinkItem
-                                                href="https://mijinb.github.io/recoil_todo_list/"
-                                                target="_blank"
-                                                rel="noreferrer noopener"
-                                            >
+                                            <LinkItem>
                                                 <span>⪧ GitHub Pages(deploy)</span>
-                                                <LinkItemBox>
+                                                <LinkItemBox
+                                                    href="https://mijinb.github.io/recoil_todo_list/"
+                                                    target="_blank"
+                                                    rel="noreferrer noopener"
+                                                >
                                                     <ProfileImage src={githubImage} alt="github logo" width={33} />
                                                     <LinkInfo>
                                                         <span>ToDo List</span>
@@ -783,13 +783,13 @@ function Project() {
                                         </ModalSummaryContainer>
                                         <ModalContentSection>
                                             <SectionTitle>🔗 Link</SectionTitle>
-                                            <LinkItem
-                                                href="https://github.com/mijinB/place_worth_visiting_ko"
-                                                target="_blank"
-                                                rel="noreferrer noopener"
-                                            >
+                                            <LinkItem>
                                                 <span>⪧ GitHub(source)</span>
-                                                <LinkItemBox>
+                                                <LinkItemBox
+                                                    href="https://github.com/mijinB/place_worth_visiting_ko"
+                                                    target="_blank"
+                                                    rel="noreferrer noopener"
+                                                >
                                                     <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
                                                     <GitHubImage src={githubImage} alt="github logo" width={17} />
                                                     <LinkInfo>
@@ -798,13 +798,13 @@ function Project() {
                                                     </LinkInfo>
                                                 </LinkItemBox>
                                             </LinkItem>
-                                            <LinkItem
-                                                href="https://play.google.com/store/apps/details?id=com.bkmi.place_worth_visiting_ko&hl=ko"
-                                                target="_blank"
-                                                rel="noreferrer noopener"
-                                            >
+                                            <LinkItem>
                                                 <span>⪧ Google Store(download)</span>
-                                                <LinkItemBox>
+                                                <LinkItemBox
+                                                    href="https://play.google.com/store/apps/details?id=com.bkmi.place_worth_visiting_ko&hl=ko"
+                                                    target="_blank"
+                                                    rel="noreferrer noopener"
+                                                >
                                                     <img src={googlePlayImage} alt="google play logo" width={30} />
                                                     <LinkInfo>
                                                         <span>가볼 만한 곳=ko - Google Play 앱</span>
