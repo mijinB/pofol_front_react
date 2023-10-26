@@ -192,7 +192,7 @@ const ModalSummary = styled.div`
     grid-template-columns: 1fr 3.3fr;
     grid-template-rows: repeat(4, 1fr);
     align-items: center;
-    gap: 20px;
+    gap: 7px;
     margin-bottom: 20px;
 `;
 
