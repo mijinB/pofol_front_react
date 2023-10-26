@@ -192,11 +192,11 @@ function Info() {
                         </p>
                     </div>
                     <LinkButton>
-                        <a href="https://github.com/mijinB">
+                        <a href="https://github.com/mijinB" target="_blank" rel="noreferrer noopener">
                             <img src={githubImage} alt="github" width={25} />
                             GitHub
                         </a>
-                        <a href="https://blog.naver.com/bkmij">
+                        <a href="https://blog.naver.com/bkmij" target="_blank" rel="noreferrer noopener">
                             <img src={naverBlogImage} alt="naver blog" width={25} />
                             Naver Blog
                         </a>

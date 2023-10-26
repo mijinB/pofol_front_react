@@ -262,7 +262,7 @@ const SectionTitle = styled.h3`
     font-weight: 600;
 `;
 
-const LinkItem = styled.div`
+const LinkItem = styled.a`
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -499,7 +499,11 @@ function Project() {
                                     </ModalSummaryContainer>
                                     <ModalContentSection>
                                         <SectionTitle>🔗 Link</SectionTitle>
-                                        <LinkItem>
+                                        <LinkItem
+                                            href="https://github.com/mijinB/vanilla_js_todo_list"
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
                                             <span>⪧ GitHub(source)</span>
                                             <LinkItemBox>
                                                 <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
@@ -510,7 +514,11 @@ function Project() {
                                                 </LinkInfo>
                                             </LinkItemBox>
                                         </LinkItem>
-                                        <LinkItem>
+                                        <LinkItem
+                                            href="https://mijinb.github.io/vanilla_js_todo_list/"
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
                                             <span>⪧ GitHub Pages(deploy)</span>
                                             <LinkItemBox>
                                                 <ProfileImage src={githubImage} alt="github logo" width={33} />
@@ -584,7 +592,11 @@ function Project() {
                                     </ModalSummaryContainer>
                                     <ModalContentSection>
                                         <SectionTitle>🔗 Link</SectionTitle>
-                                        <LinkItem>
+                                        <LinkItem
+                                            href="https://github.com/mijinB/recoil_todo_list"
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
                                             <span>⪧ GitHub(source)</span>
                                             <LinkItemBox>
                                                 <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
@@ -595,7 +607,11 @@ function Project() {
                                                 </LinkInfo>
                                             </LinkItemBox>
                                         </LinkItem>
-                                        <LinkItem>
+                                        <LinkItem
+                                            href="https://mijinb.github.io/recoil_todo_list/"
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
                                             <span>⪧ GitHub Pages(deploy)</span>
                                             <LinkItemBox>
                                                 <ProfileImage src={githubImage} alt="github logo" width={33} />
