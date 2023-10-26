@@ -183,6 +183,7 @@ const ModalSummary = styled.div`
     grid-template-columns: 1fr 3.3fr;
     grid-template-rows: repeat(4, 1fr);
     align-items: center;
+    gap: 20px;
     margin-bottom: 20px;
 `;
 
@@ -408,7 +409,7 @@ function Project() {
                                     <ModalTextContent>
                                         <ModalTitle>To Do List</ModalTitle>
                                         <ModalSummaryContainer>
-                                            <ModalSummary style={{ gap: 6 }}>
+                                            <ModalSummary>
                                                 <SummaryItemTitle>
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -695,7 +696,7 @@ function Project() {
                                     <ModalTextContent>
                                         <ModalTitle>가볼 만한 곳=ko</ModalTitle>
                                         <ModalSummaryContainer>
-                                            <ModalSummary style={{ gap: 20 }}>
+                                            <ModalSummary>
                                                 <SummaryItemTitle>
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
