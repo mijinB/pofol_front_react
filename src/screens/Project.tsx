@@ -840,9 +840,9 @@ function Project() {
                                             <p>
                                                 기존에는 회원가입 및 로그인을 해야 어플을 사용 가능하도록 구현했었는데
                                                 번거로움이 있을 거 같아서 APP을 실행하면 바로 사용이 가능하고 즐겨찾기,
-                                                리뷰 기능만 회원가입 및 로그인이 필요하도록 수정했어요.
+                                                리뷰 기능만 회원가입 및 로그인이 필요하도록 수정했어요. (23.06.10
+                                                완료/Google Play 업데이트 완료)
                                             </p>
-                                            <p>(23.06.10 완료/Google Play 업데이트 완료)</p>
                                         </ModalContentSection>
                                         <ModalContentSection>
                                             <SectionTitle>⚒️ 사용 기술 및 라이브러리</SectionTitle>
