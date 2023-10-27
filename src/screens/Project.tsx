@@ -145,11 +145,11 @@ const ModalImageContainer = styled.div<{ $projectLogo: string }>`
     }
 `;
 
-const ModalImage = styled.img`
+const ModalImage = styled.img<{ $objectPosition: string }>`
     width: 100%;
     height: 220px;
     object-fit: cover;
-    object-position: top;
+    object-position: ${(props) => props.$objectPosition};
 `;
 
 const ModalTextContent = styled.div`
@@ -393,7 +393,7 @@ function Project() {
                             <Scrollbars autoHide>
                                 <ModalContentWrapper>
                                     <ModalImageContainer $projectLogo={todoLogo}>
-                                        <ModalImage src={todoTemplateImage} alt="todo template" />
+                                        <ModalImage src={todoTemplateImage} alt="todo template" $objectPosition="center -30px" />
                                     </ModalImageContainer>
                                     <ModalTextContent>
                                         <ModalTitle>To Do List</ModalTitle>
@@ -682,7 +682,7 @@ function Project() {
                                         <ModalImage
                                             src={koPlaceTemplateImage}
                                             alt="ko place template"
-                                            style={{ objectPosition: "center -100px" }}
+                                            $objectPosition="center -100px"
                                         />
                                     </ModalImageContainer>
                                     <ModalTextContent>
