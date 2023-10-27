@@ -27,16 +27,10 @@ import reactCustomizeImage from "../assets/images/react_customize.png";
 import reactThemeToggleGIF from "../assets/images/react_theme_toggle.gif";
 import koPlaceMainImage from "../assets/images/ko_place_main.png";
 import koPlaceDetailImage from "../assets/images/ko_place_detail.png";
+import YearTitle from "../components/YearTitle";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
-`;
-
-const ProjectTitle = styled.div`
-    padding-top: 50px;
-    > span {
-        font-weight: 600;
-    }
 `;
 
 const SubDivider = styled.div`
@@ -49,10 +43,6 @@ const SubDivider = styled.div`
         margin: 10px 0;
         background-color: rgb(55, 53, 47);
     }
-`;
-
-const DarkDivider = styled.div`
-    width: 77px;
 `;
 
 const ProjectContainer = styled.div`
@@ -381,12 +371,7 @@ function Project() {
     return (
         <Wrapper $isFullWidth={isFullWidth}>
             <PageHeader icon="🖼️" title="Project" />
-            <ProjectTitle>
-                <span>🐰 2023</span>
-                <SubDivider>
-                    <DarkDivider />
-                </SubDivider>
-            </ProjectTitle>
+            <YearTitle icon="🐰" title="2023" />
             <ProjectContainer>
                 <ProjectItem onClick={toggleToDoDetailsModal}>
                     <TemplateImage src={todoTemplateImage} alt="todo template" />
