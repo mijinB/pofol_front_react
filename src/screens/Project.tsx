@@ -14,6 +14,7 @@ import koPlaceLogo from "../assets/images/ko_place_logo.png";
 import profileImage from "../assets/images/profile.jpg";
 import gitProfileImage from "../assets/images/git_profile.jpg";
 import githubImage from "../assets/images/github.png";
+import reactImage from "../assets/images/react.png";
 import googlePlayImage from "../assets/images/google_play.png";
 import todoLoginImage from "../assets/images/todo_login.png";
 import todoListImage from "../assets/images/todo_list.png";
@@ -166,6 +167,9 @@ const ModalTextContent = styled.div`
 `;
 
 const ModalTitle = styled.h2`
+    display: flex;
+    align-items: flex-end;
+    gap: 7px;
     font-size: 42px;
     font-weight: 600;
 `;
@@ -569,7 +573,7 @@ function Project() {
                                             <p>⪧ HTML, CSS, Vanilla JavaScript</p>
                                         </ModalContentSection>
                                         <ModalContentSection>
-                                            <SectionTitle>🎶 앞으로 추가할 기능</SectionTitle>
+                                            <SectionTitle>🎶 관리 및 업데이트</SectionTitle>
                                             <CheckBoxContainer>
                                                 <input type="checkbox" readOnly checked />
                                                 <p>
@@ -579,7 +583,10 @@ function Project() {
                                             </CheckBoxContainer>
                                         </ModalContentSection>
                                         <SubDivider />
-                                        <ModalTitle>👉 React To Do List</ModalTitle>
+                                        <ModalTitle>
+                                            <ProfileImage src={reactImage} alt="react logo" width={40} />
+                                            React To Do List
+                                        </ModalTitle>
                                         <ModalSummaryContainer>
                                             <p>
                                                 새로운 언어를 공부하면서 코딩 시도를 할 때 처음 만들어보는 프로젝트를
@@ -851,7 +858,7 @@ function Project() {
                                             <p>⪧ 공공데이터포털 API, Google Map API</p>
                                         </ModalContentSection>
                                         <ModalContentSection>
-                                            <SectionTitle>🎶 앞으로 추가할 기능</SectionTitle>
+                                            <SectionTitle>🎶 관리 및 업데이트</SectionTitle>
                                             <CheckBoxContainer>
                                                 <input type="checkbox" readOnly checked />
                                                 <p>
