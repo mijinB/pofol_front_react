@@ -1,11 +1,12 @@
 import { useOutletContext } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
+import Scrollbars from "react-custom-scrollbars-2";
 import PageHeader from "../components/PageHeader";
 import ToDoSkills from "../components/ToDoSkills";
 import KoPlaceSkills from "../components/KoPlaceSkills";
 import ProjectModalHeader from "../components/ProjectModalHeader";
-import Scrollbars from "react-custom-scrollbars-2";
+import YearTitle from "../components/YearTitle";
 
 import todoTemplateImage from "../assets/images/todo_template.jpg";
 import todoLogo from "../assets/images/todo_logo.png";
@@ -27,7 +28,6 @@ import reactCustomizeImage from "../assets/images/react_customize.png";
 import reactThemeToggleGIF from "../assets/images/react_theme_toggle.gif";
 import koPlaceMainImage from "../assets/images/ko_place_main.png";
 import koPlaceDetailImage from "../assets/images/ko_place_detail.png";
-import YearTitle from "../components/YearTitle";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;

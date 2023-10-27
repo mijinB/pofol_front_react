@@ -3,6 +3,12 @@ import PageHeader from "../components/PageHeader";
 import styled from "styled-components";
 import YearTitle from "../components/YearTitle";
 
+import typescriptImage from "../assets/images/typescript.png";
+import cssImage from "../assets/images/css3.png";
+import reactImage from "../assets/images/react.png";
+import javascriptImage from "../assets/images/js.png";
+import flutterImage from "../assets/images/flutter.png";
+
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
 `;
@@ -15,7 +21,7 @@ const ActivityContainer = styled.div`
 
 const ActivityItemList = styled.div`
     display: grid;
-    grid-template-rows: 30px repeat(3, 1fr) 1.7fr repeat(2, 1.3fr);
+    grid-template-rows: 30px repeat(3, 1fr) 1.6fr repeat(2, 1.2fr);
     gap: 5px;
     width: 100%;
     height: 100%;
@@ -55,8 +61,16 @@ const ActivityItem = styled.div`
 `;
 
 const ItemTitle = styled.div`
-    font-size: 14px;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    > img {
+        border-radius: 2px;
+    }
+    > span {
+        font-size: 14px;
+        font-weight: 600;
+    }
 `;
 
 const TagContainer = styled.div`
@@ -185,7 +199,9 @@ function Activity() {
                         완료
                     </ListTitle>
                     <ActivityItem>
-                        <ItemTitle>📚 IT 5분 잡학사전</ItemTitle>
+                        <ItemTitle>
+                            <span>📚 IT 5분 잡학사전</span>
+                        </ItemTitle>
                         <TagContainer>
                             <ColorTag $tagColor="#fdecc8">계획</ColorTag>
                             <ColorTag $tagColor="#dbeddb">성실</ColorTag>
@@ -195,7 +211,10 @@ function Activity() {
                         <span>2023년 10월 6일 → 10월 20일</span>
                     </ActivityItem>
                     <ActivityItem>
-                        <ItemTitle>🚧 TypeScript Challenge 17기</ItemTitle>
+                        <ItemTitle>
+                            <img src={typescriptImage} alt="type script logo" width={16} />
+                            <span>TypeScript Challenge 17기</span>
+                        </ItemTitle>
                         <TagContainer>
                             <TypeScriptIcon>
                                 <svg
@@ -215,7 +234,10 @@ function Activity() {
                         <span>2023년 9월 25일 → 10월 9일</span>
                     </ActivityItem>
                     <ActivityItem>
-                        <ItemTitle>🪟 CSS Layout Challenge 37기</ItemTitle>
+                        <ItemTitle>
+                            <img src={cssImage} alt="css logo" width={20} />
+                            <span>CSS Layout Challenge 37기</span>
+                        </ItemTitle>
                         <TagContainer>
                             <CSSIcon>
                                 <svg
@@ -249,7 +271,10 @@ function Activity() {
                         <span>2023년 9월 18일 → 10월 2일</span>
                     </ActivityItem>
                     <ActivityItem>
-                        <ItemTitle>🖥️ ReactJS Challenge 35기</ItemTitle>
+                        <ItemTitle>
+                            <img src={reactImage} alt="react logo" width={16} />
+                            <span>ReactJS Challenge 35기</span>
+                        </ItemTitle>
                         <TagContainer>
                             <ReactIcon>
                                 <svg
@@ -339,7 +364,10 @@ function Activity() {
                         <EmText>우수 졸업생 선정 🏅</EmText>
                     </ActivityItem>
                     <ActivityItem>
-                        <ItemTitle>🖥️ VanillaJS Challenge 40기</ItemTitle>
+                        <ItemTitle>
+                            <img src={javascriptImage} alt="java script logo" width={16} />
+                            <span>VanillaJS Challenge 40기</span>
+                        </ItemTitle>
                         <TagContainer>
                             <HTMLIcon>
                                 <svg
@@ -387,7 +415,10 @@ function Activity() {
                         <EmText>우수 졸업생 선정 🏅</EmText>
                     </ActivityItem>
                     <ActivityItem>
-                        <ItemTitle>📱 Dart/Flutter Challenge 1기</ItemTitle>
+                        <ItemTitle>
+                            <img src={flutterImage} alt="flutter logo" width={19} />
+                            <span>Dart/Flutter Challenge 1기</span>
+                        </ItemTitle>
                         <TagContainer>
                             <DartIcon>
                                 <svg
