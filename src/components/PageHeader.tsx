@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const InfoHeader = styled.div`
+const HeaderTitle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -30,10 +30,10 @@ interface IPageHeaderProps {
 function PageHeader({icon, title}: IPageHeaderProps) {
     return (
         <>
-            <InfoHeader>
+            <HeaderTitle>
                 <span>{icon}</span>
                 <span>{title}</span>
-            </InfoHeader>
+            </HeaderTitle>
             <Divider />
         </>
     );
