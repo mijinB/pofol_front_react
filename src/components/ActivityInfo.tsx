@@ -111,7 +111,7 @@ const LinkItemBox = styled.a`
     border-radius: 4px;
     cursor: pointer;
     &:hover {
-        background-color: rgba(15, 15, 15, 0.05);
+        background-color: rgba(91, 151, 189, 0.08);
         transition: background-color 0.2s ease-out;
     }
 `;
