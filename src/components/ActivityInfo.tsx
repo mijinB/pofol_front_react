@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ActivitySkills from "./ActivitySkills";
 import naverBlogImage from "../assets/images/naverblog.png";
 import nomadImage from "../assets/images/nomadLogo.png";
 
@@ -28,7 +27,7 @@ const SummaryTitleIcons = styled.div`
     align-items: center;
     margin-right: 3px;
     > svg {
-        height: 25px;
+        height: 30px;
         margin-bottom: 10px;
         opacity: 0.4;
     }
@@ -41,7 +40,7 @@ const SummaryTitleTexts = styled.div`
     > span {
         display: inline-flex;
         align-items: center;
-        height: 25px;
+        height: 30px;
         margin-bottom: 10px;
         font-size: 14px;
         opacity: 0.7;
@@ -51,12 +50,25 @@ const SummaryTitleTexts = styled.div`
 const SummaryContents = styled.div`
     display: flex;
     flex-direction: column;
+    width: 300px;
     > * {
         display: inline-flex;
         align-items: center;
-        height: 25px;
+        height: 30px;
         margin-bottom: 10px;
         font-size: 14px;
+    }
+`;
+
+const ItemTitle = styled.h3`
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 60px;
+    font-size: 23px;
+    font-weight: 600;
+    > img {
+        display: none;
     }
 `;
 
@@ -64,10 +76,13 @@ const ModalContentSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 120px;
-    > p {
+    margin-bottom: 100px;
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
         font-size: 15px;
-        line-height: 1.5;
+        line-height: 1.3;
     }
 `;
 
@@ -123,11 +138,13 @@ const ProfileImage = styled.img`
 
 interface IActivityInfoProps {
     addLink: boolean;
+    title: string | React.ReactElement;
+    skills: React.ReactElement;
     period: string;
-    learnedContent: string;
+    learnedContent: string | React.ReactElement;
 }
 
-function ActivityInfo({ addLink, period, learnedContent }: IActivityInfoProps) {
+function ActivityInfo({ addLink, title, skills, period, learnedContent }: IActivityInfoProps) {
     return (
         <ItemInfoWrapper>
             <ModalSummaryContainer>
@@ -163,15 +180,16 @@ function ActivityInfo({ addLink, period, learnedContent }: IActivityInfoProps) {
                     </SummaryTitleTexts>
                     <SummaryContents>
                         <p>완료</p>
-                        <ActivitySkills isITBook={true} />
+                        {skills}
                         <p>{period}</p>
                         <p>Nomad Coders 노마드 코더</p>
                     </SummaryContents>
                 </ModalSummary>
             </ModalSummaryContainer>
+            <ItemTitle>"{title}"</ItemTitle>
             <ModalContentSection>
                 <SectionTitle>✍️ 배운 내용</SectionTitle>
-                <p>{learnedContent}</p>
+                <div>{learnedContent}</div>
             </ModalContentSection>
             {addLink && (
                 <ModalContentSection>
@@ -197,7 +215,7 @@ function ActivityInfo({ addLink, period, learnedContent }: IActivityInfoProps) {
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                          <ProfileImage src={nomadImage} alt="nomad coders logo" width={33} />
+                            <ProfileImage src={nomadImage} alt="nomad coders logo" width={33} />
                             <LinkInfo>
                                 <span>Nomad Coders Community</span>
                                 <span>https://nomadcoders.co/community/book_club/</span>
