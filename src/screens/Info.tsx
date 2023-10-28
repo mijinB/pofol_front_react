@@ -13,7 +13,7 @@ const Wrapper = styled.div<{ $isFullWidth: boolean }>`
 `;
 
 const ScrollPaddingContainer = styled.div`
-    padding: 57px;
+    height: 57px;
 `;
 
 const TwoColumns = styled.div`
@@ -157,6 +157,7 @@ const ObjectKeyText = styled.span`
 const AwardsContainer = styled.div`
     display: flex;
     justify-content: space-around;
+    margin-bottom: 189px;
 `;
 
 interface IInfoProps {
