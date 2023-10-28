@@ -44,13 +44,14 @@ const ListTitle = styled.span`
     font-weight: 600;
 `;
 
-const ActivityItem = styled.div`
+const ActivityItem = styled.div<{ $isSelectedItem: boolean }>`
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 15px;
     padding: 15px 10px;
     border-radius: 4px;
+    background-color: ${(props) => (props.$isSelectedItem ? "rgba(91, 151, 189, 0.08)" : "white")};
     box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.05) 0px 2px 4px;
     cursor: pointer;
     &:hover {
@@ -94,7 +95,7 @@ interface IItemSelect {
 function Activity() {
     const { isFullWidth } = useOutletContext<IActivityProp>();
 
-    const [itemSelect, setItemSelect] = useState<IItemSelect>({
+    const [selectedItem, setSelectedItem] = useState<IItemSelect>({
         id: 1,
         title: "📚 IT 5분 잡학 사전",
         tag: <ActivitySkills isITBook={true} />,
@@ -233,7 +234,11 @@ function Activity() {
                     </ListTitle>
                     {activeList.map((item) => {
                         return (
-                            <ActivityItem key={item.id} onClick={() => setItemSelect(item)}>
+                            <ActivityItem
+                                key={item.id}
+                                onClick={() => setSelectedItem(item)}
+                                $isSelectedItem={selectedItem.id === item.id ? true : false}
+                            >
                                 <ItemTitle>{item.title}</ItemTitle>
                                 {item.tag}
                                 <span>{item.period}</span>
@@ -244,11 +249,11 @@ function Activity() {
                 </ActivityItemList>
                 <ActivityItemInfo>
                     <ActivityInfo
-                        addLink={itemSelect.addLink}
-                        title={itemSelect.title}
-                        skills={itemSelect.tag}
-                        period={itemSelect.period}
-                        learnedContent={itemSelect.content}
+                        addLink={selectedItem.addLink}
+                        title={selectedItem.title}
+                        skills={selectedItem.tag}
+                        period={selectedItem.period}
+                        learnedContent={selectedItem.content}
                     />
                 </ActivityItemInfo>
             </ActivityContainer>
