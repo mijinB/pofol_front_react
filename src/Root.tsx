@@ -223,6 +223,7 @@ function Root() {
     const [isFullWidth, setIsFullWidth] = useState<boolean>(false);
     const [isCopyClipBoard, setIsCopyClipBoard] = useState<boolean>(false);
 
+    const scrollbarsRef = useRef<any>();
     const educationRef = useRef<any>();
     const certificateRef = useRef<any>();
     const awardsRef = useRef<any>();
@@ -288,7 +289,7 @@ function Root() {
         }
     };
     return (
-        <Scrollbars autoHide>
+        <Scrollbars ref={scrollbarsRef} autoHide>
             <Wrapper $asideIsOpen={asideIsOpen}>
                 <AsideBackground />
                 <AsideMenuContainer>
@@ -311,6 +312,7 @@ function Root() {
                         {asideIsOpen && (
                             <OpenAside layoutId="aside">
                                 <AsideMenu
+                                    scrollbarsRef={scrollbarsRef}
                                     educationRef={educationRef}
                                     certificateRef={certificateRef}
                                     awardsRef={awardsRef}
@@ -329,6 +331,7 @@ function Root() {
                                 $asideIsHover={asideIsHover}
                             >
                                 <AsideMenu
+                                    scrollbarsRef={scrollbarsRef}
                                     educationRef={educationRef}
                                     certificateRef={certificateRef}
                                     awardsRef={awardsRef}
