@@ -108,15 +108,28 @@ function AsideMenu({ educationRef, certificateRef, awardsRef, subMenuIsOpen, tog
                     <span>🐯 백미진</span>
                 </AsideItem>
                 <SubMenuWrapper>
-                    <AsideItem to="/info" onClick={() => educationRef?.current?.scrollIntoView({ behavior: "smooth" })}>
+                    <AsideItem
+                        to="/info"
+                        onClick={() =>
+                            setTimeout(() => educationRef?.current?.scrollIntoView({ behavior: "smooth" }), 0)
+                        }
+                    >
                         <Dot />
                         <span>👩‍🎓 Education</span>
                     </AsideItem>
-                    <AsideItem to="/info" onClick={() => certificateRef?.current?.scrollIntoView({ behavior: "smooth" })}>
+                    <AsideItem
+                        to="/info"
+                        onClick={() =>
+                            setTimeout(() => certificateRef?.current?.scrollIntoView({ behavior: "smooth" }), 0)
+                        }
+                    >
                         <Dot />
                         <span>📚 Certificate</span>
                     </AsideItem>
-                    <AsideItem to="/info" onClick={() => awardsRef?.current?.scrollIntoView({ behavior: "smooth" })}>
+                    <AsideItem
+                        to="/info"
+                        onClick={() => setTimeout(() => awardsRef?.current?.scrollIntoView({ behavior: "smooth" }), 0)}
+                    >
                         <Dot />
                         <span>🏆 Awards</span>
                     </AsideItem>
