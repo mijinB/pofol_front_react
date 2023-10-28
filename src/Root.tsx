@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import AsideMenu from "./components/AsideMenu";
 import { motion, AnimatePresence } from "framer-motion";
@@ -223,6 +223,10 @@ function Root() {
     const [isFullWidth, setIsFullWidth] = useState<boolean>(false);
     const [isCopyClipBoard, setIsCopyClipBoard] = useState<boolean>(false);
 
+    const educationRef = useRef<any>();
+    const certificateRef = useRef<any>();
+    const awardsRef = useRef<any>();
+
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
      * 2. aside 메뉴가 닫힐 때 hover메뉴가 열리도록 asideIsHover(boolean) 변수에 true를 대입한다.
@@ -306,7 +310,13 @@ function Root() {
                     <AnimatePresence>
                         {asideIsOpen && (
                             <OpenAside layoutId="aside">
-                                <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
+                                <AsideMenu
+                                    educationRef={educationRef}
+                                    certificateRef={certificateRef}
+                                    awardsRef={awardsRef}
+                                    subMenuIsOpen={subMenuIsOpen}
+                                    toggleSubMenu={toggleSubMenu}
+                                />
                             </OpenAside>
                         )}
                     </AnimatePresence>
@@ -318,7 +328,13 @@ function Root() {
                                 onMouseLeave={onHoverOutAside}
                                 $asideIsHover={asideIsHover}
                             >
-                                <AsideMenu subMenuIsOpen={subMenuIsOpen} toggleSubMenu={toggleSubMenu} />
+                                <AsideMenu
+                                    educationRef={educationRef}
+                                    certificateRef={certificateRef}
+                                    awardsRef={awardsRef}
+                                    subMenuIsOpen={subMenuIsOpen}
+                                    toggleSubMenu={toggleSubMenu}
+                                />
                             </HoverAside>
                         )}
                     </AnimatePresence>
@@ -423,7 +439,7 @@ function Root() {
                         </AnimatePresence>
                     </PageHeader>
                     <PageContainer $isFullWidth={isFullWidth}>
-                        <Outlet context={{ isFullWidth }} />
+                        <Outlet context={{ isFullWidth, educationRef, certificateRef, awardsRef }} />
                         <CopiedMessage $isCopyClipBoard={isCopyClipBoard}>
                             <span>링크 복사 완료</span>
                         </CopiedMessage>

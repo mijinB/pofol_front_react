@@ -84,11 +84,14 @@ const Dot = styled.div`
 `;
 
 interface IAsideMenuProp {
+    educationRef: any;
+    certificateRef: any;
+    awardsRef: any;
     subMenuIsOpen: boolean;
     toggleSubMenu: () => void;
 }
 
-function AsideMenu({ subMenuIsOpen, toggleSubMenu }: IAsideMenuProp) {
+function AsideMenu({ educationRef, certificateRef, awardsRef, subMenuIsOpen, toggleSubMenu }: IAsideMenuProp) {
     return (
         <>
             <ProfileWrapper>
@@ -105,15 +108,15 @@ function AsideMenu({ subMenuIsOpen, toggleSubMenu }: IAsideMenuProp) {
                     <span>🐯 백미진</span>
                 </AsideItem>
                 <SubMenuWrapper>
-                    <AsideItem to="/info">
+                    <AsideItem to="/info" onClick={() => educationRef.current.scrollIntoView({ behavior: "smooth" })}>
                         <Dot />
                         <span>👩‍🎓 Education</span>
                     </AsideItem>
-                    <AsideItem to="/info">
+                    <AsideItem to="/info" onClick={() => certificateRef.current.scrollIntoView({ behavior: "smooth" })}>
                         <Dot />
                         <span>📚 Certificate</span>
                     </AsideItem>
-                    <AsideItem to="/info">
+                    <AsideItem to="/info" onClick={() => awardsRef.current.scrollIntoView({ behavior: "smooth" })}>
                         <Dot />
                         <span>🏆 Awards</span>
                     </AsideItem>

@@ -12,6 +12,10 @@ const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
 `;
 
+const ScrollPaddingContainer = styled.div`
+    padding: 57px;
+`;
+
 const TwoColumns = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -157,10 +161,13 @@ const AwardsContainer = styled.div`
 
 interface IInfoProps {
     isFullWidth: boolean;
+    educationRef: any;
+    certificateRef: any;
+    awardsRef: any;
 }
 
 function Info() {
-    const { isFullWidth } = useOutletContext<IInfoProps>();
+    const { isFullWidth, educationRef, certificateRef, awardsRef } = useOutletContext<IInfoProps>();
 
     return (
         <Wrapper $isFullWidth={isFullWidth}>
@@ -207,6 +214,7 @@ function Info() {
                     </LinkButton>
                 </GreetingContainer>
             </TwoColumns>
+            <ScrollPaddingContainer ref={educationRef}></ScrollPaddingContainer>
             <PageHeader icon="👩‍🎓" title="Education" />
             <EducationContainer>
                 <EducationItem>
@@ -218,6 +226,7 @@ function Info() {
                     <p>2019.03. ~ 2021.02. 편입, 졸업 (3.77 / 4.5)</p>
                 </EducationItem>
             </EducationContainer>
+            <ScrollPaddingContainer ref={certificateRef}></ScrollPaddingContainer>
             <PageHeader icon="📜" title="Certificate" />
             <CertificateWrapper>
                 <CertificateContainer>
@@ -351,6 +360,7 @@ function Info() {
                     </CertificateItem>
                 </CertificateContainer>
             </CertificateWrapper>
+            <ScrollPaddingContainer ref={awardsRef}></ScrollPaddingContainer>
             <PageHeader icon="🏆" title="Awards" />
             <AwardsContainer>
                 <img src={award1Image} alt="award1" width={300} />
