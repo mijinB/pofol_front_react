@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HeaderTitle = styled.div`
+const HeaderTitle = styled.h2`
     display: flex;
     flex-direction: column;
     gap: 20px;
