@@ -170,6 +170,7 @@ function Skills() {
                         ⪧ &lt;img&gt;태그와 background-image 속성을 상황에 맞게 판단하여 사용할 수 있어요.
                         <br />⪧ 다중 선택자를 사용하여 중복 코드를 줄일 수 있고 가상 요소(::before, ::after)를 필요에
                         따라 사용할 수 있어요.
+                        <br />⪧ @media를 사용하여 반응형 디자인을 구현할 수 있어요. 
                     </p>
                 </SkillItem>
                 <SkillItem>
