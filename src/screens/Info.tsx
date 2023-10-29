@@ -16,9 +16,9 @@ const ScrollPaddingContainer = styled.div`
     height: 57px;
 `;
 
-const TwoColumns = styled.div`
+const TwoColumns = styled.div<{ $isFullWidth: boolean }>`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr ${(props) => (props.$isFullWidth ? 2.5 : 1)}fr;
     gap: 20px;
     padding-bottom: 180px;
 `;
@@ -173,7 +173,7 @@ function Info() {
     return (
         <Wrapper $isFullWidth={isFullWidth}>
             <PageHeader icon="🐯" title="백미진" />
-            <TwoColumns>
+            <TwoColumns $isFullWidth={isFullWidth}>
                 <Image src={myImage} alt="me" />
                 <GreetingContainer>
                     <p>

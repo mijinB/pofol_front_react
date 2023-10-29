@@ -22,7 +22,7 @@ const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
     > p {
         width: ${(props) => (props.$isFullWidth ? 100 : 78)}%;
         font-size: 14px;
@@ -32,9 +32,10 @@ const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
 
 const SkillIcons = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 70px;
+    gap: 20px;
+    margin-bottom: 100px;
 `;
 
 const SkillContainer = styled.div`
