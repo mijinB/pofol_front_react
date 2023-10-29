@@ -98,6 +98,7 @@ const CertificateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-width: 462px;
     padding-bottom: 180px;
 `;
 
