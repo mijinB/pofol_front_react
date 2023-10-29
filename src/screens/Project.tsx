@@ -48,15 +48,17 @@ const SubDivider = styled.div`
 const ProjectContainer = styled.div`
     display: flex;
     justify-content: space-around;
+    gap: 15px;
+    width: 100%;
+    min-width: 800px;
 `;
 
-const ProjectItem = styled.div`
-    display: grid;
-    grid-template-rows: 2fr 1fr;
-    width: 400px;
-    height: 350px;
+const ProjectItem = styled.div<{ $isFullWidth: boolean }>`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: ${(props) => (props.$isFullWidth ? 500 : 350)}px;
     border-radius: 5px;
-    background-color: white;
     box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
     overflow: hidden;
     cursor: pointer;
@@ -68,16 +70,21 @@ const ProjectItem = styled.div`
 
 const TemplateImage = styled.img`
     width: 100%;
-    height: 226px;
+    height: 100%;
     border-bottom: 1px solid rgba(15, 15, 15, 0.1);
     object-fit: cover;
+    overflow: hidden;
 `;
 
 const TemplateTextContainer = styled.div`
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 7px;
+    height: 122px;
     padding: 5px;
+    background-color: white;
     > span {
         font-size: 13px;
     }
@@ -116,7 +123,7 @@ const ProjectDetailsModal = styled.div`
     left: 50%;
     display: grid;
     grid-template-rows: 44px 1fr;
-    width: 50%;
+    width: 960px;
     height: 85%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -373,7 +380,7 @@ function Project() {
             <PageHeader icon="🖼️" title="Project" />
             <YearTitle icon="🐰" title="2023" />
             <ProjectContainer>
-                <ProjectItem onClick={toggleToDoDetailsModal}>
+                <ProjectItem onClick={toggleToDoDetailsModal} $isFullWidth={isFullWidth}>
                     <TemplateImage src={todoTemplateImage} alt="todo template" />
                     <TemplateTextContainer>
                         <TemplateTitle>
@@ -393,7 +400,11 @@ function Project() {
                             <Scrollbars autoHide>
                                 <ModalContentWrapper>
                                     <ModalImageContainer $projectLogo={todoLogo}>
-                                        <ModalImage src={todoTemplateImage} alt="todo template" $objectPosition="center -30px" />
+                                        <ModalImage
+                                            src={todoTemplateImage}
+                                            alt="todo template"
+                                            $objectPosition="center -30px"
+                                        />
                                     </ModalImageContainer>
                                     <ModalTextContent>
                                         <ModalTitle>To Do List</ModalTitle>
@@ -659,7 +670,7 @@ function Project() {
                         </ProjectDetailsModal>
                     </>
                 )}
-                <ProjectItem onClick={toggleKoPlaceDetailsModal}>
+                <ProjectItem onClick={toggleKoPlaceDetailsModal} $isFullWidth={isFullWidth}>
                     <TemplateImage src={koPlaceTemplateImage} alt="ko place template" />
                     <TemplateTextContainer>
                         <TemplateTitle>
