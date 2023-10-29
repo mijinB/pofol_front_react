@@ -21,16 +21,22 @@ const TwoColumns = styled.div<{ $isFullWidth: boolean }>`
     grid-template-columns: 1fr ${(props) => (props.$isFullWidth ? 2.5 : 1)}fr;
     gap: 20px;
     padding-bottom: 180px;
+    @media (max-width: 1330px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 const Image = styled.img`
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 `;
 
 const GreetingContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 25px;
     > p {
         &:nth-of-type(1) {
             font-size: 22px;
@@ -156,8 +162,13 @@ const ObjectKeyText = styled.span`
 
 const AwardsContainer = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 30px;
     margin-bottom: 189px;
+    @media (max-width: 1460px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 interface IInfoProps {
