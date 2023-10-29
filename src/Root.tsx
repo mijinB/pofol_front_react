@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useMatches } from "react-router-dom";
 import { useState, useRef } from "react";
 import styled from "styled-components";
 import AsideMenu from "./components/AsideMenu";
@@ -86,10 +86,13 @@ const PageHeader = styled.div`
 
 const Breadcrumb = styled.div`
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 `;
 
 const BreadcrumbItem = styled(Link)`
-    padding: 5px 5px 5px 0;
+    padding: 5px;
     font-size: 14px;
     cursor: pointer;
     &:hover {
@@ -288,6 +291,9 @@ function Root() {
             console.log("error");
         }
     };
+
+    let matches = useMatches();
+    console.log(matches, "matches");
     return (
         <Scrollbars ref={scrollbarsRef} autoHide>
             <Wrapper $asideIsOpen={asideIsOpen}>
@@ -381,7 +387,11 @@ function Root() {
                             )}
                         </AsideOpenButton>
                         <Breadcrumb>
-                            <BreadcrumbItem to="/info">👑 mijin Portfolio</BreadcrumbItem>
+                            <BreadcrumbItem to="/info" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>👑 mijin Portfolio</BreadcrumbItem>
+                            /
+                            <BreadcrumbItem to={matches[1].pathname} onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
+                                {matches[1].pathname.replace("/", "")}
+                            </BreadcrumbItem>
                         </Breadcrumb>
                         <OptionsButton onClick={toggleOptionsPopup}>
                             <svg
