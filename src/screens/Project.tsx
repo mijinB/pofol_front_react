@@ -30,7 +30,7 @@ import koPlaceMainImage from "../assets/images/ko_place_main.png";
 import koPlaceDetailImage from "../assets/images/ko_place_detail.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
+    width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
 `;
 
 const SubDivider = styled.div`

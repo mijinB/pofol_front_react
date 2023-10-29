@@ -15,7 +15,7 @@ import dartImage from "../assets/images/dart.png";
 import flutterImage from "../assets/images/flutter.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
+    width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
 `;
 
 const IntroContainer = styled.div<{ $isFullWidth: boolean }>`

@@ -13,7 +13,7 @@ import ActivityInfo from "../components/ActivityInfo";
 import ActivitySkills from "../components/ActivitySkills";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? 100 : 50)}%;
+    width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
 `;
 
 const ActivityContainer = styled.div`
