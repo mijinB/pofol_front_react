@@ -27,6 +27,7 @@ const ActivityItemList = styled.div`
     grid-template-rows: 30px repeat(3, 1fr) 1.6fr repeat(2, 1.2fr);
     gap: 5px;
     width: 100%;
+    min-width: 244px;
     height: 100%;
     padding: 5px;
     border-radius: 4px;
