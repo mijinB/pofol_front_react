@@ -107,7 +107,7 @@ function AsideMenu({
                 <ProfileName>mijin Portfolio</ProfileName>
             </ProfileWrapper>
             <SlideDown $subMenuIsOpen={subMenuIsOpen}>
-                <AsideItem to="info" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
+                <AsideItem to="/info" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
                     <SubMenuButton onClick={toggleSubMenu} $subMenuIsOpen={subMenuIsOpen}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 6L15 12L9 18" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
@@ -117,7 +117,7 @@ function AsideMenu({
                 </AsideItem>
                 <SubMenuWrapper>
                     <AsideItem
-                        to="info"
+                        to="/info"
                         onClick={() =>
                             setTimeout(() => educationRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
@@ -126,7 +126,7 @@ function AsideMenu({
                         <span>👩‍🎓 Education</span>
                     </AsideItem>
                     <AsideItem
-                        to="info"
+                        to="/info"
                         onClick={() =>
                             setTimeout(() => certificateRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
@@ -135,7 +135,7 @@ function AsideMenu({
                         <span>📚 Certificate</span>
                     </AsideItem>
                     <AsideItem
-                        to="info"
+                        to="/info"
                         onClick={() =>
                             setTimeout(() => awardsRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
@@ -145,19 +145,19 @@ function AsideMenu({
                     </AsideItem>
                 </SubMenuWrapper>
             </SlideDown>
-            <AsideItem to="skills" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
+            <AsideItem to="/skills" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 6L15 12L9 18" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 <span>🎨 SKILLS</span>
             </AsideItem>
-            <AsideItem to="project" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
+            <AsideItem to="/project" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 6L15 12L9 18" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 <span>🖼️ PROJECT</span>
             </AsideItem>
-            <AsideItem to="activity" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
+            <AsideItem to="/activity" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 6L15 12L9 18" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
                 </svg>

@@ -387,11 +387,20 @@ function Root() {
                             )}
                         </AsideOpenButton>
                         <Breadcrumb>
-                            <BreadcrumbItem to="/info" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>👑 mijin Portfolio</BreadcrumbItem>
-                            /
-                            <BreadcrumbItem to={matches[1].pathname} onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
-                                {matches[1].pathname.replace("/", "")}
+                            <BreadcrumbItem to="/info" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
+                                👑 mijin Portfolio
                             </BreadcrumbItem>
+                            {matches[1]?.pathname && (
+                                <>
+                                    /
+                                    <BreadcrumbItem
+                                        to={matches[1].pathname}
+                                        onClick={() => scrollbarsRef?.current?.scrollTop(0)}
+                                    >
+                                        {matches[1].pathname.replace("/", "")}
+                                    </BreadcrumbItem>
+                                </>
+                            )}
                         </Breadcrumb>
                         <OptionsButton onClick={toggleOptionsPopup}>
                             <svg
