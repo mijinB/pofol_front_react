@@ -31,6 +31,9 @@ import koPlaceDetailImage from "../assets/images/ko_place_detail.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
+    @media (max-width: 1150px) {
+        width: 100%;
+    }
 `;
 
 const SubDivider = styled.div`
@@ -47,16 +50,19 @@ const SubDivider = styled.div`
 
 const ProjectContainer = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     gap: 15px;
     width: 100%;
-    min-width: 800px;
+    @media (max-width: 1150px) {
+        flex-direction: column;
+    }
 `;
 
 const ProjectItem = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
     flex-direction: column;
     width: 100%;
+    min-width: 396px;
     height: ${(props) => (props.$isFullWidth ? 500 : 350)}px;
     border-radius: 5px;
     box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
@@ -65,6 +71,10 @@ const ProjectItem = styled.div<{ $isFullWidth: boolean }>`
     &:hover {
         background-color: rgba(15, 15, 15, 0.02);
         transition: background-color 0.2s ease-out;
+    }
+    @media (max-width: 1150px) {
+        width: 100%;
+        height: 400px;
     }
 `;
 
