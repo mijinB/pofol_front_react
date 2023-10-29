@@ -29,6 +29,7 @@ const TwoColumns = styled.div<{ $isFullWidth: boolean }>`
 const Image = styled.img`
     width: 100%;
     height: 100%;
+    max-height: 500px;
     object-fit: cover;
 `;
 
