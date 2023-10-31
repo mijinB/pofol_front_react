@@ -1,16 +1,27 @@
 import { Link, Outlet, useLocation, useMatches } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import AsideMenu from "./components/AsideMenu";
 import { motion, AnimatePresence } from "framer-motion";
 import Scrollbars from "react-custom-scrollbars-2";
 
-const Wrapper = styled.div<{ $asideIsOpen: boolean }>`
+const Wrapper = styled.div.attrs({ className: "on" })`
     display: grid;
-    grid-template-columns: ${(props) => (props.$asideIsOpen ? "240px" : "0px")} 7fr;
+    grid-template-columns: 0px 7fr;
     grid-template-rows: 1fr;
     min-height: 100%;
     transition: grid-template-columns 0.3s ease-in-out;
+
+    &.on {
+        grid-template-columns: 240px 7fr;
+
+        .aside_close_button {
+            display: flex;
+        }
+        .open_aside {
+            width: 240px;
+        }
+    }
 `;
 
 const AsideBackground = styled.div`
@@ -21,17 +32,21 @@ const AsideMenuContainer = styled.div`
     position: fixed;
 `;
 
-const HoverArea = styled.div<{ $asideIsOpen: boolean }>`
+const HoverArea = styled.div`
     position: fixed;
-    width: ${(props) => (props.$asideIsOpen ? 0 : 150)}px;
+    width: 150px;
     height: 100%;
+
+    .on & {
+        width: 0;
+    }
 `;
 
-const AsideCloseButton = styled.button`
+const AsideCloseButton = styled.button.attrs({ className: "aside_close_button" })`
     position: absolute;
     z-index: 1;
     left: 186px;
-    display: flex;
+    display: none;
     padding: 5px;
     margin: 10px;
     opacity: 0;
@@ -41,19 +56,21 @@ const AsideCloseButton = styled.button`
     }
 `;
 
-const AsideOpenButton = styled.button<{ $asideIsOpen: boolean }>`
+const AsideOpenButton = styled.button`
     position: absolute;
     top: 3px;
     left: -57px;
     display: flex;
     padding: 5px;
     margin: 10px;
-    ${(props) => (props.$asideIsOpen ? "display: none;" : null)}
+    .on & {
+        display: none;
+    }
 `;
 
-const OpenAside = styled(motion.div)`
+const OpenAside = styled(motion.div).attrs({ className: "open_aside" })`
     position: absolute;
-    width: 240px;
+    width: 0px;
 `;
 
 const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
@@ -69,10 +86,13 @@ const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
     transition: left 0.3s linear;
 `;
 
-const ContentWrapper = styled.div<{ $asideIsOpen: boolean }>`
+const ContentWrapper = styled.div`
     display: grid;
     grid-template-rows: 57px 1fr;
-    margin: 0 ${(props) => (props.$asideIsOpen ? 20 : 57)}px;
+    margin: 0 57px;
+    .on & {
+        margin: 0 20px;
+    }
 `;
 
 const PageHeader = styled.div`
@@ -218,7 +238,6 @@ function Root() {
     const BASE_URL = "http://localhost:3000";
     const location = useLocation();
 
-    const [asideIsOpen, setAsideIsOpen] = useState<boolean>(true);
     const [asideIsHover, setAsideIsHover] = useState<boolean>(false);
     const [subMenuIsOpen, setSubMenuIsOpen] = useState<boolean>(true);
 
@@ -230,24 +249,36 @@ function Root() {
     const educationRef = useRef<any>();
     const certificateRef = useRef<any>();
     const awardsRef = useRef<any>();
+    const menuRef = useRef<any>();
 
     let matches = useMatches();
 
+    useEffect(() => {
+        window.innerWidth >= 1024 && menuRef?.current?.classList.add("on");
+
+        const reSizeListener = () => {
+            if (window.innerWidth >= 1024) {
+                menuRef.current.classList.add("on");
+            } else {
+                menuRef.current.classList.remove("on");
+            }
+        };
+
+        window.addEventListener("resize", reSizeListener);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     /**@function toggleAside
-     * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
-     * 2. aside 메뉴가 닫힐 때 hover메뉴가 열리도록 asideIsHover(boolean) 변수에 true를 대입한다.
+     * 1. aside menu class에 "on"이 없으면 추가 있으면 제거
      */
     const toggleAside = () => {
-        setAsideIsOpen((previous) => !previous);
-        setAsideIsHover(true);
+        menuRef?.current?.classList?.toggle("on");
     };
 
     /**@function onHoverAside
-     * 1. Aside 메뉴가 열려있을 경우에는(asideIsOpen=true) 아무런 기능없이 함수 종료
-     * 2. asideIsHover(boolean) 변수에 true를 대입한다.
+     * 1. asideIsHover(boolean) 변수에 true를 대입한다.
      */
     const onHoverAside = () => {
-        if (asideIsOpen) return;
         setAsideIsHover(true);
     };
 
@@ -293,43 +324,33 @@ function Root() {
             console.log("error");
         }
     };
-    
+
     return (
         <Scrollbars ref={scrollbarsRef} autoHide>
-            <Wrapper $asideIsOpen={asideIsOpen}>
+            <Wrapper ref={menuRef}>
                 <AsideBackground />
                 <AsideMenuContainer>
-                    <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} $asideIsOpen={asideIsOpen} />
+                    <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} />
                     <AsideCloseButton onClick={toggleAside}>
-                        {asideIsOpen && (
-                            <svg
-                                width="27"
-                                height="27"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M12 18L6 12L12 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M18 18L12 12L18 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        )}
+                        <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 18L6 12L12 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                            <path d="M18 18L12 12L18 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
                     </AsideCloseButton>
                     <AnimatePresence>
-                        {asideIsOpen && (
-                            <OpenAside layoutId="aside">
-                                <AsideMenu
-                                    scrollbarsRef={scrollbarsRef}
-                                    educationRef={educationRef}
-                                    certificateRef={certificateRef}
-                                    awardsRef={awardsRef}
-                                    subMenuIsOpen={subMenuIsOpen}
-                                    toggleSubMenu={toggleSubMenu}
-                                />
-                            </OpenAside>
-                        )}
+                        <OpenAside layoutId="aside">
+                            <AsideMenu
+                                scrollbarsRef={scrollbarsRef}
+                                educationRef={educationRef}
+                                certificateRef={certificateRef}
+                                awardsRef={awardsRef}
+                                subMenuIsOpen={subMenuIsOpen}
+                                toggleSubMenu={toggleSubMenu}
+                            />
+                        </OpenAside>
                     </AnimatePresence>
                     <AnimatePresence>
-                        {!asideIsOpen && (
+                        {!menuRef?.current?.classList.contains("on") && (
                             <HoverAside
                                 layoutId="aside"
                                 onMouseEnter={onHoverAside}
@@ -348,13 +369,12 @@ function Root() {
                         )}
                     </AnimatePresence>
                 </AsideMenuContainer>
-                <ContentWrapper $asideIsOpen={asideIsOpen}>
+                <ContentWrapper>
                     <PageHeader>
                         <AsideOpenButton
                             onClick={toggleAside}
                             onMouseEnter={onHoverAside}
                             onMouseLeave={onHoverOutAside}
-                            $asideIsOpen={asideIsOpen}
                         >
                             {asideIsHover ? (
                                 <svg
