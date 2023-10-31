@@ -231,6 +231,8 @@ function Root() {
     const certificateRef = useRef<any>();
     const awardsRef = useRef<any>();
 
+    let matches = useMatches();
+
     /**@function toggleAside
      * 1. asideIsOpen(boolean) 변수의 값을 전환한다.
      * 2. aside 메뉴가 닫힐 때 hover메뉴가 열리도록 asideIsHover(boolean) 변수에 true를 대입한다.
@@ -291,9 +293,7 @@ function Root() {
             console.log("error");
         }
     };
-
-    let matches = useMatches();
-    console.log(matches, "matches");
+    
     return (
         <Scrollbars ref={scrollbarsRef} autoHide>
             <Wrapper $asideIsOpen={asideIsOpen}>
