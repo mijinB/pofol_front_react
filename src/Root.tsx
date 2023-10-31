@@ -51,7 +51,7 @@ const Wrapper = styled.div`
             margin: 0 20px;
 
             @media (max-width: 1024px) {
-                margin: 0 57px;
+                margin: 0;
             }
         }
     }
@@ -108,6 +108,11 @@ const AsideOpenButton = styled.button.attrs({ className: "aside_open_button" })`
     display: flex;
     padding: 5px;
     margin: 10px;
+
+    @media (max-width: 1024px) {
+        position: relative;
+        left: 0;
+    }
 `;
 
 const OpenAside = styled(motion.div).attrs({ className: "open_aside" })`
@@ -136,7 +141,6 @@ const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
 const ContentWrapper = styled.div.attrs({ className: "content_wrapper" })`
     display: grid;
     grid-template-rows: 57px 1fr;
-    margin: 0 57px;
 `;
 
 const PageHeader = styled.div`
