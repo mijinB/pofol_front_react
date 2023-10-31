@@ -85,6 +85,10 @@ const HoverArea = styled.div.attrs({ className: "hover_area" })`
     position: fixed;
     width: 150px;
     height: 100%;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
 `;
 
 const AsideCloseButton = styled.button.attrs({ className: "aside_close_button" })`
@@ -257,6 +261,10 @@ const PageContainer = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
     justify-content: center;
     padding: 100px ${(props) => (props.$isFullWidth ? 96 : 0)}px;
+
+    @media (max-width: 1024px) {
+        padding: 20px;
+    }
 `;
 
 const optionsPopupVariants = {
@@ -308,7 +316,7 @@ function Root() {
         const reSizeListener = () => {
             setInnerWidth(window.innerWidth);
 
-            if (innerWidth >= 1024) {
+            if (window.innerWidth >= 1024) {
                 menuRef.current.classList.add("on");
             } else {
                 menuRef.current.classList.remove("on");

@@ -13,6 +13,19 @@ const HeaderTitle = styled.h2`
             font-weight: 600;
         }
     }
+
+    @media (max-width: 1024px) {
+        gap: 10px;
+        > span {
+        &:nth-of-type(1) {
+            font-size: 40px;
+        }
+        &:nth-of-type(2) {
+            font-size: 22px;
+            font-weight: 600;
+        }
+    }
+    }
 `;
 
 const Divider = styled.div`
@@ -20,6 +33,10 @@ const Divider = styled.div`
     height: 1px;
     margin: 30px 0;
     background-color: #37352f;
+
+    @media (max-width: 1024px) {
+        margin: 15px 0;
+    }
 `;
 
 interface IPageHeaderProps {

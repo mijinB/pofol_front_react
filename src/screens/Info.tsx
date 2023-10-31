@@ -10,6 +10,9 @@ import award2Image from "../assets/images/award2.jpg";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
 `;
 
 const ScrollPaddingContainer = styled.div`
@@ -23,6 +26,7 @@ const TwoColumns = styled.div<{ $isFullWidth: boolean }>`
     padding-bottom: 180px;
     @media (max-width: 1330px) {
         grid-template-columns: 1fr;
+        padding-bottom: 70px;
     }
 `;
 
@@ -31,6 +35,10 @@ const Image = styled.img`
     height: 100%;
     max-height: 500px;
     object-fit: cover;
+
+    @media (max-width: 1024px) {
+        max-height: 200px;
+    }
 `;
 
 const GreetingContainer = styled.div`
@@ -58,6 +66,25 @@ const GreetingContainer = styled.div`
             line-height: 1.5;
         }
     }
+
+    @media (max-width: 1024px) {
+        gap: 15px;
+        > p {
+            &:nth-of-type(1) {
+                font-size: 18px;
+                line-height: 1.5;
+            }
+            &:nth-of-type(2) {
+                font-size: 15px;
+            }
+        }
+        > div:nth-of-type(1) {
+            padding: 10px 15px;
+            > p {
+                font-size: 15px;
+            }
+        }
+    }
 `;
 
 const LinkButton = styled.div`
@@ -82,6 +109,10 @@ const EducationContainer = styled.div`
     flex-direction: column;
     gap: 25px;
     padding-bottom: 180px;
+
+    @media (max-width: 1024px) {
+        padding-bottom: 70px;
+    }
 `;
 
 const EducationItem = styled.div`
@@ -93,14 +124,27 @@ const EducationItem = styled.div`
     > p {
         font-size: 15px;
     }
+
+    @media (max-width: 1024px) {
+        > h2 {
+            font-size: 15px;
+        }
+        > p {
+            font-size: 14px;
+        }
+    }
 `;
 
 const CertificateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-width: 462px;
+    width: 100%;
     padding-bottom: 180px;
+
+    @media (max-width: 1024px) {
+        padding-bottom: 70px;
+    }
 `;
 
 const CertificateContainer = styled.div`
@@ -110,6 +154,11 @@ const CertificateContainer = styled.div`
     padding: 30px;
     border-radius: 5px;
     background-color: rgba(112, 112, 112, 0.1);
+
+    @media (max-width: 1024px) {
+        gap: 15px;
+        padding: 20px;
+    }
 `;
 
 const CertificateItem = styled.div`
@@ -120,6 +169,12 @@ const CertificateItem = styled.div`
         font-size: 15px;
         font-weight: 600;
         font-style: italic;
+    }
+
+    @media (max-width: 1024px) {
+        > h2 {
+            font-size: 14px;
+        }
     }
 `;
 
@@ -135,13 +190,25 @@ const DescriptionSpace = styled.div`
     flex-direction: column;
     gap: 5px;
     padding-left: 25px;
+
+    @media (max-width: 1024px) {
+        font-size: 13px;
+    }
 `;
 
 const ItemLine = styled.div`
     display: flex;
+    flex-wrap: wrap;
     gap: 7px;
     > * {
         font-size: 15px;
+    }
+
+    @media (max-width: 1024px) {
+        gap: 5px;
+        > * {
+            font-size: 13px;
+        }
     }
 `;
 
@@ -167,9 +234,19 @@ const AwardsContainer = styled.div`
     justify-content: center;
     gap: 30px;
     margin-bottom: 189px;
+    > img {
+        width: 300px;
+    }
+
     @media (max-width: 1460px) {
         flex-direction: column;
         align-items: center;
+    }
+    @media (max-width: 1024px) {
+        margin-bottom: 70px;
+        > img {
+            width: 200px;
+        }
     }
 `;
 
@@ -377,8 +454,8 @@ function Info() {
             <ScrollPaddingContainer ref={awardsRef}></ScrollPaddingContainer>
             <PageHeader icon="🏆" title="Awards" />
             <AwardsContainer>
-                <img src={award1Image} alt="award1" width={300} />
-                <img src={award2Image} alt="award2" width={300} />
+                <img src={award1Image} alt="award1" />
+                <img src={award2Image} alt="award2" />
             </AwardsContainer>
         </Wrapper>
     );
