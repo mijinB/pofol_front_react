@@ -5,7 +5,7 @@ import AsideMenu from "./components/AsideMenu";
 import { motion, AnimatePresence } from "framer-motion";
 import Scrollbars from "react-custom-scrollbars-2";
 
-const Wrapper = styled.div.attrs({ className: "on" })`
+const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 0px 7fr;
     grid-template-rows: 1fr;
@@ -21,10 +21,35 @@ const Wrapper = styled.div.attrs({ className: "on" })`
         .open_aside {
             width: 240px;
         }
+
+        .aside_background {
+            @media (max-width: 1024px) {
+                left: 0px;
+                transition: left 0.3s ease-in-out;
+            }
+        }
+    }
+
+    .aside_background {
+        @media (max-width: 1024px) {
+            position: absolute;
+            top: 100px;
+            left: -250px;
+            width: 240px;
+            height: 275px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transition: left 0.3s ease-in-out;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        display: flex;
     }
 `;
 
-const AsideBackground = styled.div`
+const AsideBackground = styled.div.attrs({ className: "aside_background" })`
     background-color: #f5cd79;
 `;
 
@@ -65,12 +90,21 @@ const AsideOpenButton = styled.button`
     margin: 10px;
     .on & {
         display: none;
+
+        @media (max-width: 1024px) {
+            display: flex;
+            background: none;
+        }
     }
 `;
 
 const OpenAside = styled(motion.div).attrs({ className: "open_aside" })`
     position: absolute;
     width: 0px;
+    @media (max-width: 1024px) {
+        top: 100px;
+        transition: width 0.3s ease-in-out;
+    }
 `;
 
 const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
@@ -92,6 +126,10 @@ const ContentWrapper = styled.div`
     margin: 0 57px;
     .on & {
         margin: 0 20px;
+
+        @media (max-width: 1024px) {
+            margin: 0 57px;
+        }
     }
 `;
 
@@ -244,6 +282,7 @@ function Root() {
     const [isOptionsPopupOpen, setISsOptionsPopupOpen] = useState<boolean>(false);
     const [isFullWidth, setIsFullWidth] = useState<boolean>(false);
     const [isCopyClipBoard, setIsCopyClipBoard] = useState<boolean>(false);
+    const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
 
     const scrollbarsRef = useRef<any>();
     const educationRef = useRef<any>();
@@ -254,10 +293,12 @@ function Root() {
     let matches = useMatches();
 
     useEffect(() => {
-        window.innerWidth >= 1024 && menuRef?.current?.classList.add("on");
+        innerWidth >= 1024 && menuRef?.current?.classList.add("on");
 
         const reSizeListener = () => {
-            if (window.innerWidth >= 1024) {
+            setInnerWidth(window.innerWidth);
+
+            if (innerWidth >= 1024) {
                 menuRef.current.classList.add("on");
             } else {
                 menuRef.current.classList.remove("on");
@@ -338,7 +379,7 @@ function Root() {
                         </svg>
                     </AsideCloseButton>
                     <AnimatePresence>
-                        <OpenAside layoutId="aside">
+                        <OpenAside layoutId={innerWidth >= 1024 ? "aside" : ""}>
                             <AsideMenu
                                 scrollbarsRef={scrollbarsRef}
                                 educationRef={educationRef}
@@ -350,9 +391,9 @@ function Root() {
                         </OpenAside>
                     </AnimatePresence>
                     <AnimatePresence>
-                        {!menuRef?.current?.classList.contains("on") && (
+                        {innerWidth >= 1024 && !menuRef?.current?.classList.contains("on") && (
                             <HoverAside
-                                layoutId="aside"
+                                layoutId={innerWidth >= 1024 ? "aside" : ""}
                                 onMouseEnter={onHoverAside}
                                 onMouseLeave={onHoverOutAside}
                                 $asideIsHover={asideIsHover}
@@ -376,22 +417,41 @@ function Root() {
                             onMouseEnter={onHoverAside}
                             onMouseLeave={onHoverOutAside}
                         >
-                            {asideIsHover ? (
-                                <svg
-                                    width="27"
-                                    height="27"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M12 18L18 12L12 6"
-                                        stroke="#707070"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                    />
-                                    <path d="M6 18L12 12L6 6" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
+                            {innerWidth >= 1024 ? (
+                                asideIsHover ? (
+                                    <svg
+                                        width="27"
+                                        height="27"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M12 18L18 12L12 6"
+                                            stroke="#707070"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                        />
+                                        <path
+                                            d="M6 18L12 12L6 6"
+                                            stroke="#707070"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                        />
+                                    </svg>
+                                ) : (
+                                    <svg
+                                        width="27"
+                                        height="27"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path d="M5 7H19" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                                        <path d="M5 12H19" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                                        <path d="M5 17H19" stroke="#707070" strokeWidth="2" strokeLinecap="round" />
+                                    </svg>
+                                )
                             ) : (
                                 <svg
                                     width="27"
