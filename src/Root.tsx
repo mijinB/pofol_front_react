@@ -15,32 +15,44 @@ const Wrapper = styled.div`
     &.on {
         grid-template-columns: 240px 7fr;
 
-        .aside_close_button {
-            display: flex;
-        }
-        .open_aside {
-            width: 240px;
-        }
-
         .aside_background {
             @media (max-width: 1024px) {
                 left: 0px;
                 transition: left 0.3s ease-in-out;
             }
         }
-    }
 
-    .aside_background {
-        @media (max-width: 1024px) {
-            position: absolute;
-            top: 100px;
-            left: -250px;
+        .hover_area {
+            width: 0;
+        }
+
+        .aside_close_button {
+            display: flex;
+
+            @media (max-width: 1024px) {
+                display: none;
+            }
+        }
+
+        .aside_open_button {
+            display: none;
+
+            @media (max-width: 1024px) {
+                display: flex;
+                background: none;
+            }
+        }
+
+        .open_aside {
             width: 240px;
-            height: 275px;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            transition: left 0.3s ease-in-out;
+        }
+
+        .content_wrapper {
+            margin: 0 20px;
+
+            @media (max-width: 1024px) {
+                margin: 0 57px;
+            }
         }
     }
 
@@ -51,20 +63,28 @@ const Wrapper = styled.div`
 
 const AsideBackground = styled.div.attrs({ className: "aside_background" })`
     background-color: #f5cd79;
+
+    @media (max-width: 1024px) {
+        position: absolute;
+        top: 100px;
+        left: -250px;
+        width: 240px;
+        height: 275px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        transition: left 0.3s ease-in-out;
+    }
 `;
 
 const AsideMenuContainer = styled.div`
     position: fixed;
 `;
 
-const HoverArea = styled.div`
+const HoverArea = styled.div.attrs({ className: "hover_area" })`
     position: fixed;
     width: 150px;
     height: 100%;
-
-    .on & {
-        width: 0;
-    }
 `;
 
 const AsideCloseButton = styled.button.attrs({ className: "aside_close_button" })`
@@ -81,26 +101,19 @@ const AsideCloseButton = styled.button.attrs({ className: "aside_close_button" }
     }
 `;
 
-const AsideOpenButton = styled.button`
+const AsideOpenButton = styled.button.attrs({ className: "aside_open_button" })`
     position: absolute;
     top: 3px;
     left: -57px;
     display: flex;
     padding: 5px;
     margin: 10px;
-    .on & {
-        display: none;
-
-        @media (max-width: 1024px) {
-            display: flex;
-            background: none;
-        }
-    }
 `;
 
 const OpenAside = styled(motion.div).attrs({ className: "open_aside" })`
     position: absolute;
     width: 0px;
+
     @media (max-width: 1024px) {
         top: 100px;
         transition: width 0.3s ease-in-out;
@@ -120,17 +133,10 @@ const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
     transition: left 0.3s linear;
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div.attrs({ className: "content_wrapper" })`
     display: grid;
     grid-template-rows: 57px 1fr;
     margin: 0 57px;
-    .on & {
-        margin: 0 20px;
-
-        @media (max-width: 1024px) {
-            margin: 0 57px;
-        }
-    }
 `;
 
 const PageHeader = styled.div`
