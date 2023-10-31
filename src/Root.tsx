@@ -65,7 +65,7 @@ const AsideBackground = styled.div.attrs({ className: "aside_background" })`
     background-color: #f5cd79;
 
     @media (max-width: 1024px) {
-        position: absolute;
+        position: fixed;
         top: 100px;
         left: -250px;
         width: 240px;
