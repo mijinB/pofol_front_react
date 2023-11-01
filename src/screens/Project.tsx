@@ -30,8 +30,9 @@ import koPlaceMainImage from "../assets/images/ko_place_main.png";
 import koPlaceDetailImage from "../assets/images/ko_place_detail.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
-    @media (max-width: 1150px) {
+    width: ${(props) => (props.$isFullWidth ? "100" : "80")}%;
+
+    @media (max-width: 1024px) {
         width: 100%;
     }
 `;
@@ -53,6 +54,7 @@ const ProjectContainer = styled.div`
     justify-content: center;
     gap: 15px;
     width: 100%;
+    
     @media (max-width: 1150px) {
         flex-direction: column;
     }
@@ -72,9 +74,13 @@ const ProjectItem = styled.div<{ $isFullWidth: boolean }>`
         background-color: rgba(15, 15, 15, 0.02);
         transition: background-color 0.2s ease-out;
     }
-    @media (max-width: 1150px) {
-        width: 100%;
+
+    @media (max-width: 1024px) {
+        min-width: 385px;
         height: 400px;
+        &:last-child {
+            margin-bottom: 80px;
+        }
     }
 `;
 
@@ -116,6 +122,10 @@ const TeamTag = styled.span`
     border-radius: 3px;
     background-color: rgba(15, 15, 15, 0.1);
     font-size: 14px;
+
+    @media (max-width: 1024px) {
+        font-size: 13px;
+    }
 `;
 
 const OverLay = styled.div`
@@ -128,7 +138,7 @@ const OverLay = styled.div`
 `;
 
 const ProjectDetailsModal = styled.div`
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     display: grid;
@@ -142,6 +152,11 @@ const ProjectDetailsModal = styled.div`
     box-shadow: rgba(15, 15, 15, 0.016) 0px 0px 0px 1px, rgba(15, 15, 15, 0.03) 0px 3px 6px,
         rgba(15, 15, 15, 0.06) 0px 9px 24px;
     transform: translate(-50%, -50%);
+
+    @media (max-width: 1024px) {
+        grid-template-rows: 36px 1fr;
+        width: 90%;
+    }
 `;
 
 const ModalContentWrapper = styled.div`
@@ -160,6 +175,20 @@ const ModalImageContainer = styled.div<{ $projectLogo: string }>`
         background: url(${(props) => props.$projectLogo}) no-repeat center/contain;
         content: "";
     }
+
+    @media (max-width: 1024px) {
+        &::after {
+            bottom: -33px;
+            left: 25px;
+            width: 70px;
+            height: 70px;
+        }
+    }
+    @media (max-width: 500px) {
+        &::after {
+            bottom: -5px;
+        }
+    }
 `;
 
 const ModalImage = styled.img<{ $objectPosition: string }>`
@@ -171,6 +200,13 @@ const ModalImage = styled.img<{ $objectPosition: string }>`
 
 const ModalTextContent = styled.div`
     padding: 80px 110px;
+
+    @media (max-width: 1024px) {
+        padding: 40px 10px;
+    }
+    @media (max-width: 500px) {
+        padding: 20px 10px;
+    }
 `;
 
 const ModalTitle = styled.h2`
@@ -179,6 +215,14 @@ const ModalTitle = styled.h2`
     gap: 7px;
     font-size: 42px;
     font-weight: 600;
+
+    @media (max-width: 1024px) {
+        font-size: 27px;
+        > img {
+            width: 28px;
+            border-radius: 50%;
+        }
+    }
 `;
 
 const ModalSummaryContainer = styled.div`
@@ -186,6 +230,10 @@ const ModalSummaryContainer = styled.div`
     > p {
         font-size: 14px;
         line-height: 1.5;
+    }
+
+    @media (max-width: 1024px) {
+        padding: 25px 0;
     }
 `;
 
@@ -209,11 +257,27 @@ const SummaryItemTitle = styled.div`
         font-size: 14px;
         opacity: 0.7;
     }
+
+    @media (max-width: 1024px) {
+        > svg {
+            width: 18px;
+        }
+        > span {
+            font-size: 13px;
+        }
+    }
 `;
 
 const SummaryItemContent = styled.div`
     > p {
         font-size: 14px;
+    }
+
+    @media (max-width: 1024px) {
+        > p {
+            font-size: 13px;
+            line-height: 1.2;
+        }
     }
 `;
 
@@ -247,6 +311,12 @@ const CommentContent = styled.div`
     > span {
         font-weight: 600;
     }
+
+    @media (max-width: 1024px) {
+        > * {
+            font-size: 13px;
+        }
+    }
 `;
 
 const ModalContentSection = styled.div`
@@ -257,11 +327,25 @@ const ModalContentSection = styled.div`
     > p {
         line-height: 1.5;
     }
+
+    @media (max-width: 1024px) {
+        margin-bottom: 40px;
+        > p {
+            font-size: 14px;
+        }
+    }
+    @media (max-width: 500px) {
+        margin-bottom: 60px;
+    }
 `;
 
 const SectionTitle = styled.h3`
     font-size: 22px;
     font-weight: 600;
+
+    @media (max-width: 1024px) {
+        font-size: 18px;
+    }
 `;
 
 const LinkItem = styled.div`
@@ -271,6 +355,12 @@ const LinkItem = styled.div`
     > span {
         font-size: 15px;
         font-style: italic;
+    }
+
+    @media (max-width: 1024px) {
+        > span {
+            font-size: 14px;
+        }
     }
 `;
 
@@ -303,20 +393,44 @@ const LinkInfo = styled.div`
             color: rgba(112, 112, 112, 0.7);
         }
     }
+
+    @media (max-width: 1024px) {
+        > span {
+            &:nth-of-type(1) {
+                font-size: 13px;
+            }
+            &:nth-of-type(2) {
+                font-size: 11px;
+            }
+        }
+    }
 `;
 
 const TwoColumns = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
     gap: 10px;
     > img {
         width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+        > img {
+            width: 90%;
+        }
+    }
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
     }
 `;
 
 const FourColumns = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
     align-items: center;
     gap: 10px;
     > img {
@@ -331,11 +445,33 @@ const FourColumns = styled.div`
             line-height: 1.5;
         }
     }
+
+    @media (max-width: 1024px) {
+        > img {
+            width: 90%;
+        }
+        > div {
+            > p {
+                font-size: 14px;
+            }
+        }
+    }
+    @media (max-width: 710px) {
+        grid-template-columns: repeat(2, 1fr);
+        > img {
+            width: 70%;
+        }
+        > div {
+            margin-bottom: 30px;
+        }
+    }
 `;
 
 const ToggleInfoColumns = styled.div`
     display: grid;
     grid-template-columns: 1fr 2.5fr;
+    justify-items: center;
+    align-items: center;
     gap: 10px;
     > img {
         width: 100%;
@@ -349,6 +485,25 @@ const ToggleInfoColumns = styled.div`
             line-height: 1.5;
         }
     }
+
+    @media (max-width: 1024px) {
+        > img {
+            width: 70%;
+        }
+        > div {
+            > p {
+                font-size: 14px;
+            }
+        }
+    }
+    @media (max-width: 710px) {
+        > img {
+            width: 100%;
+        }
+    }
+    @media (max-width: 540px) {
+        grid-template-columns: 1fr 1.3fr;
+    }
 `;
 
 const CheckBoxContainer = styled.div`
@@ -358,6 +513,12 @@ const CheckBoxContainer = styled.div`
     > p {
         color: rgba(112, 112, 112, 0.7);
         text-decoration: line-through;
+    }
+
+    @media (max-width: 1024px) {
+        > p {
+            font-size: 14px;
+        }
     }
 `;
 
@@ -590,7 +751,7 @@ function Project() {
                                         </ModalContentSection>
                                         <SubDivider />
                                         <ModalTitle>
-                                            <ProfileImage src={reactImage} alt="react logo" width={40} />
+                                            <img src={reactImage} alt="react logo" width={40} />
                                             React To Do List
                                         </ModalTitle>
                                         <ModalSummaryContainer>

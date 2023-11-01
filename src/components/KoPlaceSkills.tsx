@@ -13,6 +13,17 @@ const SkillsContainer = styled.div`
             font-weight: 600;
         }
     }
+
+    @media (max-width: 1024px) {
+        > div {
+            > svg {
+                width: 12px;
+            }
+            > span {
+                font-size: 11px;
+            }
+        }
+    }
 `;
 const DartIcon = styled.div`
     background-color: #0175c2;

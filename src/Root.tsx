@@ -46,14 +46,6 @@ const Wrapper = styled.div`
         .open_aside {
             width: 240px;
         }
-
-        .content_wrapper {
-            margin: 0 20px;
-
-            @media (max-width: 1024px) {
-                margin: 0;
-            }
-        }
     }
 
     @media (max-width: 1024px) {
@@ -145,6 +137,7 @@ const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
 const ContentWrapper = styled.div.attrs({ className: "content_wrapper" })`
     display: grid;
     grid-template-rows: 57px 1fr;
+    width: 100%;
 `;
 
 const PageHeader = styled.div`
