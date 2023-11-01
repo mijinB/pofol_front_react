@@ -145,13 +145,12 @@ const ProjectDetailsModal = styled.div`
     grid-template-rows: 44px 1fr;
     width: 960px;
     height: 85%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-radius: 5px;
     background-color: white;
     box-shadow: rgba(15, 15, 15, 0.016) 0px 0px 0px 1px, rgba(15, 15, 15, 0.03) 0px 3px 6px,
         rgba(15, 15, 15, 0.06) 0px 9px 24px;
     transform: translate(-50%, -50%);
+    overflow: hidden;
 
     @media (max-width: 1024px) {
         grid-template-rows: 36px 1fr;
