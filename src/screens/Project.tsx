@@ -54,7 +54,7 @@ const ProjectContainer = styled.div`
     justify-content: center;
     gap: 15px;
     width: 100%;
-    
+
     @media (max-width: 1150px) {
         flex-direction: column;
     }
@@ -64,7 +64,6 @@ const ProjectItem = styled.div<{ $isFullWidth: boolean }>`
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-width: 396px;
     height: ${(props) => (props.$isFullWidth ? 500 : 350)}px;
     border-radius: 5px;
     box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
@@ -76,7 +75,6 @@ const ProjectItem = styled.div<{ $isFullWidth: boolean }>`
     }
 
     @media (max-width: 1024px) {
-        min-width: 385px;
         height: 400px;
         &:last-child {
             margin-bottom: 80px;
@@ -103,6 +101,13 @@ const TemplateTextContainer = styled.div`
     background-color: white;
     > span {
         font-size: 13px;
+    }
+
+    @media (max-width: 400px) {
+        gap: 5px;
+        > span {
+            font-size: 11px;
+        }
     }
 `;
 
@@ -262,6 +267,7 @@ const SummaryItemTitle = styled.div`
             width: 18px;
         }
         > span {
+            width: 57px;
             font-size: 13px;
         }
     }

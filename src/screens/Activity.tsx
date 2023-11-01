@@ -15,7 +15,7 @@ import ProjectModalHeader from "../components/ProjectModalHeader";
 import Scrollbars from "react-custom-scrollbars-2";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
+    width: ${(props) => (props.$isFullWidth ? "100" : "80")}%;
 
     @media (max-width: 1024px) {
         width: 100%;
@@ -29,6 +29,7 @@ const ActivityContainer = styled.div`
 
     @media (max-width: 1024px) {
         grid-template-columns: 1fr;
+        margin-bottom: 80px;
     }
 `;
 

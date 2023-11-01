@@ -6,6 +6,7 @@ const SkillsContainer = styled.div`
     gap: 5px;
     > div {
         display: inline-flex;
+        align-items: center;
         gap: 2px;
         padding: 2px 3px;
         border-radius: 3px;
@@ -22,6 +23,16 @@ const SkillsContainer = styled.div`
             }
             > span {
                 font-size: 11px;
+            }
+        }
+    }
+    @media (max-width: 400px) {
+        > div {
+            > svg {
+                width: 10px;
+            }
+            > span {
+                font-size: 9px;
             }
         }
     }

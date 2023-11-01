@@ -15,7 +15,7 @@ import dartImage from "../assets/images/dart.png";
 import flutterImage from "../assets/images/flutter.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
+    width: ${(props) => (props.$isFullWidth ? "100" : "80")}%;
 
     @media (max-width: 1024px) {
         width: 100%;
@@ -28,7 +28,6 @@ const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
     gap: 20px;
     margin-bottom: 30px;
     > p {
-        width: ${(props) => (props.$isFullWidth ? 100 : 78)}%;
         font-size: 14px;
         line-height: 1.4;
     }
@@ -37,7 +36,6 @@ const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
         gap: 10px;
         margin-bottom: 20px;
         > p {
-            width: 100%;
             font-size: 13px;
             line-height: 1.3;
         }
@@ -48,11 +46,11 @@ const SkillIcons = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
     margin-bottom: 100px;
 
-    @media (max-width: 1024px) {
-        flex-wrap: wrap;
+    @media (max-width: 430px) {
         > img {
             width: 35px;
         }
