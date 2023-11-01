@@ -53,6 +53,14 @@ const Wrapper = styled.div`
     }
 `;
 
+const OverLay = styled.div`
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+`;
+
 const AsideBackground = styled.div.attrs({ className: "aside_background" })`
     background-color: #f5cd79;
 
@@ -169,14 +177,6 @@ const BreadcrumbItem = styled(Link)`
 const OptionsButton = styled.button`
     display: flex;
     padding: 6px;
-`;
-
-const OverLay = styled.div`
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 `;
 
 const OptionsPopup = styled(motion.div)`
@@ -322,9 +322,11 @@ function Root() {
 
     /**@function toggleAside
      * 1. aside menu class에 "on"이 없으면 추가 있으면 제거
+     * 2. 화면이 1024보다 작을 때 생기는 aside menu OverLay를 on/off하기 위함.(aside menu가 state 변수가 아니기 때문에 innerWidth를 통한 재렌더링 실행)
      */
     const toggleAside = () => {
         menuRef?.current?.classList?.toggle("on");
+        setInnerWidth((previous) => previous + 0.1);
     };
 
     /**@function onHoverAside
@@ -380,6 +382,9 @@ function Root() {
     return (
         <Scrollbars ref={scrollbarsRef} autoHide>
             <Wrapper ref={menuRef}>
+                {innerWidth < 1024 && menuRef?.current?.classList.contains("on") ? (
+                    <OverLay onClick={toggleAside} />
+                ) : null}
                 <AsideBackground />
                 <AsideMenuContainer>
                     <HoverArea onMouseEnter={onHoverAside} onMouseLeave={onHoverOutAside} />
