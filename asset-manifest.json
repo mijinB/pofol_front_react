@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/pofol_front_react/static/js/main.c0454345.js",
+    "main.js": "/pofol_front_react/static/js/main.adca39e4.js",
     "static/media/todo_list.png": "/pofol_front_react/static/media/todo_list.e91c6b68e080726033cb.png",
     "static/media/todo_login.png": "/pofol_front_react/static/media/todo_login.a0efde9479dfd015466d.png",
     "static/media/ko_place_main.png": "/pofol_front_react/static/media/ko_place_main.48d975e4bbf6d5b4d9a1.png",
@@ -33,9 +33,9 @@
     "static/media/google_play.png": "/pofol_front_react/static/media/google_play.be5f794ce26995268470.png",
     "static/media/framer.png": "/pofol_front_react/static/media/framer.a2c42bc638b884b5aaa0.png",
     "index.html": "/pofol_front_react/index.html",
-    "main.c0454345.js.map": "/pofol_front_react/static/js/main.c0454345.js.map"
+    "main.adca39e4.js.map": "/pofol_front_react/static/js/main.adca39e4.js.map"
   },
   "entrypoints": [
-    "static/js/main.c0454345.js"
+    "static/js/main.adca39e4.js"
   ]
 }
