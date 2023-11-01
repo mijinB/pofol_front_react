@@ -234,10 +234,10 @@ const FullWidthLabel = styled.label.attrs({ htmlFor: "fullWidth" })<{ $isFullWid
     }
     &::after {
         position: absolute;
-        top: -11px;
+        top: -6px;
         left: ${(props) => (props.$isFullWidth ? 12 : -1)}px;
         color: white;
-        font-size: 32px;
+        font-size: 19px;
         transition: left 0.15s linear;
         content: "●";
     }
