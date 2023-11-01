@@ -244,8 +244,8 @@ const FullWidthLabel = styled.label.attrs({ htmlFor: "fullWidth" })<{ $isFullWid
 `;
 
 const CopiedMessage = styled.div<{ $isCopyClipBoard: boolean }>`
-    position: absolute;
-    top: ${(props) => (props.$isCopyClipBoard ? 60 : -60)}px;
+    position: fixed;
+    top: ${(props) => (props.$isCopyClipBoard ? 60 : -100)}px;
     display: flex;
     justify-content: center;
     align-items: center;
