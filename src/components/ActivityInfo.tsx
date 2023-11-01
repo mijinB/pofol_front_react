@@ -7,13 +7,19 @@ const ItemInfoWrapper = styled.div`
     padding: 0 20px;
     border-radius: 4px;
     background-color: #f1f8fb;
+
+    @media (max-width: 1024px) {
+        padding: 20px 10px 0;
+        border-radius: 0px;
+        background-color: white;
+    }
 `;
 
 const ModalSummaryContainer = styled.div`
     padding: 40px 0;
-    > p {
-        font-size: 13px;
-        line-height: 1.5;
+
+    @media (max-width: 1024px) {
+        padding: 0 0 40px;
     }
 `;
 
@@ -40,23 +46,72 @@ const SummaryTitleTexts = styled.div`
     > span {
         display: inline-flex;
         align-items: center;
+        width: 76px;
         height: 30px;
         margin-bottom: 10px;
         font-size: 14px;
         opacity: 0.7;
+    }
+
+    @media (max-width: 1024px) {
+        margin-right: 20px;
+        > span {
+            width: 71px;
+            font-size: 13px;
+        }
     }
 `;
 
 const SummaryContents = styled.div`
     display: flex;
     flex-direction: column;
-    width: 300px;
     > * {
         display: inline-flex;
         align-items: center;
         height: 30px;
         margin-bottom: 10px;
         font-size: 14px;
+    }
+
+    @media (max-width: 1024px) {
+        width: 100%;
+        overflow: hidden;
+        > * {
+            font-size: 13px;
+        }
+    }
+`;
+
+const SkillsContainer = styled.div`
+    @media (max-width: 500px) {
+        > div {
+            gap: 3px;
+            > div {
+                display: inline-flex;
+                gap: 0;
+                padding: 0;
+                border-radius: 0;
+                background: none;
+                > svg {
+                    display: none;
+                }
+                > span {
+                    margin-right: 5px;
+                    color: black;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    @media (max-width: 360px) {
+        > div {
+            gap: 1px;
+            > div {
+                > span {
+                    font-size: 10px;
+                }
+            }
+        }
     }
 `;
 
@@ -67,8 +122,13 @@ const ItemTitle = styled.h3`
     margin-bottom: 60px;
     font-size: 23px;
     font-weight: 600;
+    text-align: center;
     > img {
         display: none;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 22px;
     }
 `;
 
@@ -84,11 +144,23 @@ const ModalContentSection = styled.div`
         font-size: 15px;
         line-height: 1.3;
     }
+
+    @media (max-width: 1024px) {
+        margin-bottom: 0;
+        padding-bottom: 80px;
+        > div {
+            font-size: 14px;
+        }
+    }
 `;
 
 const SectionTitle = styled.h3`
     font-size: 19px;
     font-weight: 600;
+
+    @media (max-width: 1024px) {
+        font-size: 18px;
+    }
 `;
 
 const LinkItem = styled.div`
@@ -98,6 +170,12 @@ const LinkItem = styled.div`
     > span {
         font-size: 15px;
         font-style: italic;
+    }
+
+    @media (max-width: 1024px) {
+        > span {
+            font-size: 14px;
+        }
     }
 `;
 
@@ -128,6 +206,17 @@ const LinkInfo = styled.div`
         &:nth-of-type(2) {
             font-size: 12px;
             color: rgba(112, 112, 112, 0.7);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        > span {
+            &:nth-of-type(1) {
+                font-size: 13px;
+            }
+            &:nth-of-type(2) {
+                font-size: 11px;
+            }
         }
     }
 `;
@@ -180,7 +269,7 @@ function ActivityInfo({ addLink, title, skills, period, learnedContent }: IActiv
                     </SummaryTitleTexts>
                     <SummaryContents>
                         <p>완료</p>
-                        {skills}
+                        <SkillsContainer>{skills}</SkillsContainer>
                         <p>{period}</p>
                         <p>Nomad Coders 노마드 코더</p>
                     </SummaryContents>

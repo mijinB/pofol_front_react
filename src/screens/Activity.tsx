@@ -11,15 +11,25 @@ import flutterImage from "../assets/images/flutter.png";
 import { useState } from "react";
 import ActivityInfo from "../components/ActivityInfo";
 import ActivitySkills from "../components/ActivitySkills";
+import ProjectModalHeader from "../components/ProjectModalHeader";
+import Scrollbars from "react-custom-scrollbars-2";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
+
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
 `;
 
 const ActivityContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 20px;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 const ActivityItemList = styled.div`
@@ -33,8 +43,6 @@ const ActivityItemList = styled.div`
     border-radius: 4px;
     background-color: #f1f8fb;
 `;
-
-const ActivityItemInfo = styled.div``;
 
 const ListTitle = styled.span`
     display: flex;
@@ -80,8 +88,35 @@ const EmText = styled.div`
     font-weight: 600;
 `;
 
+const OverLay = styled.div`
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+`;
+
+const ProjectDetailsModal = styled.div`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    grid-template-rows: 36px 1fr;
+    width: 90%;
+    height: 85%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(15, 15, 15, 0.016) 0px 0px 0px 1px, rgba(15, 15, 15, 0.03) 0px 3px 6px,
+        rgba(15, 15, 15, 0.06) 0px 9px 24px;
+    transform: translate(-50%, -50%);
+`;
+
 interface IActivityProp {
     isFullWidth: boolean;
+    innerWidth: number;
 }
 
 interface IItemSelect {
@@ -94,7 +129,9 @@ interface IItemSelect {
 }
 
 function Activity() {
-    const { isFullWidth } = useOutletContext<IActivityProp>();
+    const { isFullWidth, innerWidth } = useOutletContext<IActivityProp>();
+
+    const [isActivityInfoOpen, setIsActivityInfoOpen] = useState<boolean>(false);
 
     const [selectedItem, setSelectedItem] = useState<IItemSelect>({
         id: 1,
@@ -221,6 +258,21 @@ function Activity() {
         },
     ];
 
+    /**@function changeActivityInfo
+     * 1. selectedItem(object) 변수의 값을 변경한다.
+     * @param { object } item
+     */
+    const changeActivityInfo = (item: IItemSelect) => {
+        setSelectedItem(item);
+    };
+
+    /**@function toggleActivityInfoModal
+     * 1. isActivityInfoOpen(boolean) 변수의 값을 전환한다.
+     */
+    const toggleActivityInfoModal = () => {
+        setIsActivityInfoOpen((previous) => !previous);
+    };
+
     return (
         <Wrapper $isFullWidth={isFullWidth}>
             <PageHeader icon="👩‍🎨" title="Activity" />
@@ -237,7 +289,14 @@ function Activity() {
                         return (
                             <ActivityItem
                                 key={item.id}
-                                onClick={() => setSelectedItem(item)}
+                                onClick={() => {
+                                    if (innerWidth >= 1024) {
+                                        changeActivityInfo(item);
+                                    } else {
+                                        changeActivityInfo(item);
+                                        toggleActivityInfoModal();
+                                    }
+                                }}
                                 $isSelectedItem={selectedItem.id === item.id ? true : false}
                             >
                                 <ItemTitle>{item.title}</ItemTitle>
@@ -248,7 +307,7 @@ function Activity() {
                         );
                     })}
                 </ActivityItemList>
-                <ActivityItemInfo>
+                {innerWidth >= 1024 ? (
                     <ActivityInfo
                         addLink={selectedItem.addLink}
                         title={selectedItem.title}
@@ -256,7 +315,25 @@ function Activity() {
                         period={selectedItem.period}
                         learnedContent={selectedItem.content}
                     />
-                </ActivityItemInfo>
+                ) : (
+                    isActivityInfoOpen && (
+                        <>
+                            <OverLay onClick={toggleActivityInfoModal} />
+                            <ProjectDetailsModal>
+                                <ProjectModalHeader clickFunction={toggleActivityInfoModal} />
+                                <Scrollbars autoHide>
+                                    <ActivityInfo
+                                        addLink={selectedItem.addLink}
+                                        title={selectedItem.title}
+                                        skills={selectedItem.tag}
+                                        period={selectedItem.period}
+                                        learnedContent={selectedItem.content}
+                                    />
+                                </Scrollbars>
+                            </ProjectDetailsModal>
+                        </>
+                    )
+                )}
             </ActivityContainer>
         </Wrapper>
     );

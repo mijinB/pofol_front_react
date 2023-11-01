@@ -552,7 +552,7 @@ function Root() {
                         </AnimatePresence>
                     </PageHeader>
                     <PageContainer $isFullWidth={isFullWidth}>
-                        <Outlet context={{ isFullWidth, educationRef, certificateRef, awardsRef }} />
+                        <Outlet context={{ isFullWidth, educationRef, certificateRef, awardsRef, innerWidth }} />
                         <CopiedMessage $isCopyClipBoard={isCopyClipBoard}>
                             <span>링크 복사 완료</span>
                         </CopiedMessage>
