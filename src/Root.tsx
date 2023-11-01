@@ -46,6 +46,14 @@ const Wrapper = styled.div`
         .open_aside {
             width: 240px;
         }
+
+        .bread_crumb {
+            left: 5px;
+
+            @media (max-width: 1024px) {
+                left: 0;
+            }
+        }
     }
 
     @media (max-width: 1024px) {
@@ -108,7 +116,6 @@ const AsideCloseButton = styled.button.attrs({ className: "aside_close_button" }
 const AsideOpenButton = styled.button.attrs({ className: "aside_open_button" })`
     position: absolute;
     top: 3px;
-    left: -57px;
     display: flex;
     padding: 5px;
     margin: 10px;
@@ -122,10 +129,10 @@ const AsideOpenButton = styled.button.attrs({ className: "aside_open_button" })`
 const OpenAside = styled(motion.div).attrs({ className: "open_aside" })`
     position: absolute;
     width: 0px;
+    transition: width 0.3s ease-in-out;
 
     @media (max-width: 1024px) {
         top: 100px;
-        transition: width 0.3s ease-in-out;
     }
 `;
 
@@ -142,7 +149,7 @@ const HoverAside = styled(motion.div)<{ $asideIsHover: boolean }>`
     transition: left 0.3s linear;
 `;
 
-const ContentWrapper = styled.div.attrs({ className: "content_wrapper" })`
+const ContentWrapper = styled.div`
     display: grid;
     grid-template-rows: 57px 1fr;
     width: 100%;
@@ -157,11 +164,16 @@ const PageHeader = styled.div`
     background-color: rgba(255, 255, 255, 0.9);
 `;
 
-const Breadcrumb = styled.div`
+const Breadcrumb = styled.div.attrs({ className: "bread_crumb" })`
     position: relative;
+    left: 48px;
     display: flex;
     align-items: center;
     gap: 5px;
+
+    @media (max-width: 1024px) {
+        left: 0;
+    }
 `;
 
 const BreadcrumbItem = styled(Link)`
@@ -321,11 +333,13 @@ function Root() {
     }, []);
 
     /**@function toggleAside
-     * 1. aside menu class에 "on"이 없으면 추가 있으면 제거
-     * 2. 화면이 1024보다 작을 때 생기는 aside menu OverLay를 on/off하기 위함.(aside menu가 state 변수가 아니기 때문에 innerWidth를 통한 재렌더링 실행)
+     * 1. aside menu class에 "on"이 없으면 추가 있으면 제거한다.
+     * 2. aside menu 닫힐 때 hover aside menu의 이상반응 제거를 위해 asideIsHover(boolean) 변수에 true를 대입한다.
+     * 3. 화면이 1024보다 작을 때 생기는 aside menu OverLay를 on/off하기 위함.(aside menu가 state 변수가 아니기 때문에 innerWidth를 통한 재렌더링 실행)
      */
     const toggleAside = () => {
         menuRef?.current?.classList?.toggle("on");
+        setAsideIsHover(true);
         setInnerWidth((previous) => previous + 0.1);
     };
 
