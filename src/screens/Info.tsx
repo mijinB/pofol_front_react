@@ -10,6 +10,7 @@ import award2Image from "../assets/images/award2.jpg";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
+
     @media (max-width: 1024px) {
         width: 100%;
     }
@@ -24,6 +25,7 @@ const TwoColumns = styled.div<{ $isFullWidth: boolean }>`
     grid-template-columns: 1fr ${(props) => (props.$isFullWidth ? 2.5 : 1)}fr;
     gap: 20px;
     padding-bottom: 180px;
+    
     @media (max-width: 1330px) {
         grid-template-columns: 1fr;
         padding-bottom: 70px;

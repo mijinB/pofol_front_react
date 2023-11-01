@@ -16,6 +16,10 @@ import flutterImage from "../assets/images/flutter.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? "100%" : "807px")};
+
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
 `;
 
 const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
@@ -28,6 +32,16 @@ const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
         font-size: 14px;
         line-height: 1.4;
     }
+
+    @media (max-width: 1024px) {
+        gap: 10px;
+        margin-bottom: 20px;
+        > p {
+            width: 100%;
+            font-size: 13px;
+            line-height: 1.3;
+        }
+    }
 `;
 
 const SkillIcons = styled.div`
@@ -36,6 +50,13 @@ const SkillIcons = styled.div`
     align-items: center;
     gap: 20px;
     margin-bottom: 100px;
+
+    @media (max-width: 1024px) {
+        flex-wrap: wrap;
+        > img {
+            width: 35px;
+        }
+    }
 `;
 
 const SkillContainer = styled.div`
@@ -50,6 +71,15 @@ const SkillItem = styled.div`
     > p {
         vertical-align: center;
         line-height: 1.5;
+    }
+
+    @media (max-width: 1024px) {
+        &:last-child {
+            margin-bottom: 80px;
+        }
+        > p {
+            font-size: 14px;
+        }
     }
 `;
 
@@ -170,7 +200,7 @@ function Skills() {
                         ⪧ &lt;img&gt;태그와 background-image 속성을 상황에 맞게 판단하여 사용할 수 있어요.
                         <br />⪧ 다중 선택자를 사용하여 중복 코드를 줄일 수 있고 가상 요소(::before, ::after)를 필요에
                         따라 사용할 수 있어요.
-                        <br />⪧ @media를 사용하여 반응형 디자인을 구현할 수 있어요. 
+                        <br />⪧ @media를 사용하여 반응형 디자인을 구현할 수 있어요.
                     </p>
                 </SkillItem>
                 <SkillItem>
