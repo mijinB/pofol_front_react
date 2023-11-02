@@ -3,18 +3,74 @@ import { RouterProvider } from "react-router-dom";
 import router from "./Router";
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+import PretendardThin from "./assets/fonts/Pretendard/Pretendard-Thin.ttf";
+import PretendardExtraLight from "./assets/fonts/Pretendard/Pretendard-ExtraLight.ttf";
+import PretendardLight from "./assets/fonts/Pretendard/Pretendard-Light.ttf";
+import PretendardRegular from "./assets/fonts/Pretendard/Pretendard-Regular.ttf";
+import PretendardMedium from "./assets/fonts/Pretendard/Pretendard-Medium.ttf";
+import PretendardSemiBold from "./assets/fonts/Pretendard/Pretendard-SemiBold.ttf";
+import PretendardBold from "./assets/fonts/Pretendard/Pretendard-Bold.ttf";
+import PretendardExtraBold from "./assets/fonts/Pretendard/Pretendard-ExtraBold.ttf";
+import PretendardBlack from "./assets/fonts/Pretendard/Pretendard-Black.ttf";
+
+const GlobalFont = createGlobalStyle`
 @font-face { 
   font-family: "Pretendard"; 
   font-style: normal; 
   font-weight: 100; 
-  src: 
-  url("./assets/fonts/Pretendard-Thin.woff2") format("woff2"), 
-  url("./assets/fonts/Pretendard-Thin.woff") format("woff"), 
-  url("./assets/fonts/Pretendard-Thin.otf") format("opentype"), 
-  url("./assets/fonts/Pretendard-Thin.ttf") format("truetype"); 
+  src: url(${PretendardThin}) format("truetype"); 
 }
+@font-face { 
+  font-family: "Pretendard"; 
+  font-style: normal; 
+  font-weight: 200; 
+  src: url(${PretendardExtraLight}) format("truetype"); 
+}
+@font-face { 
+  font-family: "Pretendard"; 
+  font-style: normal; 
+  font-weight: 300; 
+  src: url(${PretendardLight}) format("truetype"); 
+}
+@font-face { 
+  font-family: "Pretendard"; 
+  font-style: normal; 
+  font-weight: 400; 
+  src: url(${PretendardRegular}) format("truetype"); 
+}
+@font-face { 
+  font-family: "Pretendard"; 
+  font-style: normal; 
+  font-weight: 500; 
+  src: url(${PretendardMedium}) format("truetype"); 
+}
+@font-face { 
+  font-family: "Pretendard"; 
+  font-style: normal; 
+  font-weight: 600; 
+  src:  url(${PretendardSemiBold}) format("truetype"); 
+}
+@font-face { 
+  font-family: "Pretendard"; 
+  font-style: normal; 
+  font-weight: 700; 
+  src: url(${PretendardBold}) format("truetype"); 
+}
+@font-face { 
+  font-family: "Pretendard"; 
+  font-style: normal; 
+  font-weight: 800; 
+  src: url(${PretendardExtraBold}) format("truetype"); 
+}
+@font-face { 
+  font-family: "Pretendard"; 
+  font-style: normal; 
+  font-weight: 900; 
+  src: url(${PretendardBlack}) format("truetype"); 
+}
+`;
 
+const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -92,6 +148,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
     <>
         <GlobalStyle />
+        <GlobalFont />
         <RouterProvider router={router} />
     </>
 );
