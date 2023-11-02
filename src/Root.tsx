@@ -129,6 +129,7 @@ const AsideOpenButton = styled.button.attrs({ className: "aside_open_button" })`
 const OpenAside = styled(motion.div).attrs({ className: "open_aside" })`
     position: absolute;
     width: 0px;
+    overflow: hidden;
     transition: width 0.3s ease-in-out;
 
     @media (max-width: 1024px) {

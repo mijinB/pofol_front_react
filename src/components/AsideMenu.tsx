@@ -59,12 +59,6 @@ const AsideItem = styled(NavLink)`
         color: #707070;
         font-size: 14px;
     }
-
-    @media (max-width: 1024px) {
-        &:hover {
-            background: none;
-        }
-    }
 `;
 
 const SubMenuButton = styled.div<{ $subMenuIsOpen: boolean }>`
