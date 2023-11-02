@@ -189,6 +189,7 @@ const BreadcrumbItem = styled(Link)`
 const OptionsButton = styled.button`
     display: flex;
     padding: 6px;
+    margin: 10px;
 `;
 
 const OptionsPopup = styled(motion.div)`
