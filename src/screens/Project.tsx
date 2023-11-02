@@ -5,7 +5,7 @@ import Scrollbars from "react-custom-scrollbars-2";
 import PageHeader from "../components/PageHeader";
 import ToDoSkills from "../components/ToDoSkills";
 import KoPlaceSkills from "../components/KoPlaceSkills";
-import ProjectModalHeader from "../components/ProjectModalHeader";
+import ModalPageHeader from "../components/ModalPageHeader";
 import YearTitle from "../components/YearTitle";
 
 import todoTemplateImage from "../assets/images/todo_template.jpg";
@@ -580,7 +580,7 @@ function Project() {
                     <>
                         <OverLay onClick={toggleToDoDetailsModal} />
                         <ProjectDetailsModal>
-                            <ProjectModalHeader clickFunction={toggleToDoDetailsModal} />
+                            <ModalPageHeader clickFunction={toggleToDoDetailsModal} />
                             <Scrollbars autoHide>
                                 <ModalContentWrapper>
                                     <ModalImageContainer $projectLogo={todoLogo}>
@@ -870,7 +870,7 @@ function Project() {
                     <>
                         <OverLay onClick={toggleKoPlaceDetailsModal} />
                         <ProjectDetailsModal>
-                            <ProjectModalHeader clickFunction={toggleKoPlaceDetailsModal} />
+                            <ModalPageHeader clickFunction={toggleKoPlaceDetailsModal} />
                             <Scrollbars autoHide>
                                 <ModalContentWrapper>
                                     <ModalImageContainer $projectLogo={koPlaceLogo}>

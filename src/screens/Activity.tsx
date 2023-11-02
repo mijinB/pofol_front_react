@@ -11,7 +11,7 @@ import flutterImage from "../assets/images/flutter.png";
 import { useState } from "react";
 import ActivityInfo from "../components/ActivityInfo";
 import ActivitySkills from "../components/ActivitySkills";
-import ProjectModalHeader from "../components/ProjectModalHeader";
+import ModalPageHeader from "../components/ModalPageHeader";
 import Scrollbars from "react-custom-scrollbars-2";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
@@ -320,7 +320,7 @@ function Activity() {
                         <>
                             <OverLay onClick={toggleActivityInfoModal} />
                             <ProjectDetailsModal>
-                                <ProjectModalHeader clickFunction={toggleActivityInfoModal} />
+                                <ModalPageHeader clickFunction={toggleActivityInfoModal} />
                                 <Scrollbars autoHide>
                                     <ActivityInfo
                                         addLink={selectedItem.addLink}
