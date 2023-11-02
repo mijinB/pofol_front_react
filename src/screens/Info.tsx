@@ -9,7 +9,7 @@ import award1Image from "../assets/images/award1.jpg";
 import award2Image from "../assets/images/award2.jpg";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? "100" : "80")}%;
+    width: ${(props) => (props.$isFullWidth ? "100" : "50")}%;
 
     @media (max-width: 1024px) {
         width: 100%;

@@ -15,7 +15,7 @@ import ProjectModalHeader from "../components/ProjectModalHeader";
 import Scrollbars from "react-custom-scrollbars-2";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? "100" : "80")}%;
+    width: ${(props) => (props.$isFullWidth ? "100" : "50")}%;
 
     @media (max-width: 1024px) {
         width: 100%;
@@ -27,7 +27,7 @@ const ActivityContainer = styled.div`
     grid-template-columns: 1fr 2fr;
     gap: 20px;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         grid-template-columns: 1fr;
         margin-bottom: 80px;
     }
@@ -290,7 +290,7 @@ function Activity() {
                             <ActivityItem
                                 key={item.id}
                                 onClick={() => {
-                                    if (innerWidth >= 1024) {
+                                    if (innerWidth >= 1200) {
                                         changeActivityInfo(item);
                                     } else {
                                         changeActivityInfo(item);
@@ -307,7 +307,7 @@ function Activity() {
                         );
                     })}
                 </ActivityItemList>
-                {innerWidth >= 1024 ? (
+                {innerWidth >= 1200 ? (
                     <ActivityInfo
                         addLink={selectedItem.addLink}
                         title={selectedItem.title}

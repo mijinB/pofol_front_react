@@ -3,12 +3,14 @@ import naverBlogImage from "../assets/images/naverblog.png";
 import nomadImage from "../assets/images/nomadLogo.png";
 
 const ItemInfoWrapper = styled.div`
+    min-width: 400px;
     height: 100%;
     padding: 0 20px;
     border-radius: 4px;
     background-color: #f1f8fb;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
+        min-width: auto;
         padding: 20px 10px 0;
         border-radius: 0px;
         background-color: white;
@@ -18,7 +20,7 @@ const ItemInfoWrapper = styled.div`
 const ModalSummaryContainer = styled.div`
     padding: 40px 0;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         padding: 0 0 40px;
     }
 `;
@@ -54,7 +56,7 @@ const SummaryTitleTexts = styled.div`
         opacity: 0.7;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         margin-right: 20px;
         > span {
             width: 71px;
@@ -74,7 +76,7 @@ const SummaryContents = styled.div`
         font-size: 14px;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         width: 100%;
         overflow: hidden;
         > * {
@@ -128,7 +130,7 @@ const ItemTitle = styled.h3`
         display: none;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         font-size: 22px;
     }
 `;
@@ -146,7 +148,7 @@ const ModalContentSection = styled.div`
         line-height: 1.3;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         margin-bottom: 0;
         padding-bottom: 80px;
         > div {
@@ -159,7 +161,7 @@ const SectionTitle = styled.h3`
     font-size: 19px;
     font-weight: 700;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         font-size: 18px;
     }
 `;
@@ -173,7 +175,7 @@ const LinkItem = styled.div`
         font-style: italic;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         > span {
             font-size: 14px;
         }
@@ -210,7 +212,7 @@ const LinkInfo = styled.div`
         }
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         > span {
             &:nth-of-type(1) {
                 font-size: 13px;

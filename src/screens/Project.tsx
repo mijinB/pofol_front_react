@@ -30,7 +30,7 @@ import koPlaceMainImage from "../assets/images/ko_place_main.png";
 import koPlaceDetailImage from "../assets/images/ko_place_detail.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? "100" : "80")}%;
+    width: ${(props) => (props.$isFullWidth ? "100" : "50")}%;
 
     @media (max-width: 1024px) {
         width: 100%;
@@ -73,7 +73,6 @@ const ProjectItem = styled.div<{ $isFullWidth: boolean }>`
         background-color: rgba(15, 15, 15, 0.02);
         transition: background-color 0.2s ease-out;
     }
-
     @media (max-width: 1024px) {
         height: 400px;
         &:last-child {
@@ -90,7 +89,7 @@ const TemplateImage = styled.img`
     overflow: hidden;
 `;
 
-const TemplateTextContainer = styled.div`
+const TemplateTextContainer = styled.div<{ $isFullWidth: boolean }>`
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
@@ -103,6 +102,12 @@ const TemplateTextContainer = styled.div`
         font-size: 13px;
     }
 
+    @media (max-width: 1420px) {
+        height: ${(props) => !props.$isFullWidth && 150}px;
+    }
+    @media (max-width: 1150px) {
+        height: 122px;
+    }
     @media (max-width: 400px) {
         gap: 5px;
         > span {
@@ -561,7 +566,7 @@ function Project() {
             <ProjectContainer>
                 <ProjectItem onClick={toggleToDoDetailsModal} $isFullWidth={isFullWidth}>
                     <TemplateImage src={todoTemplateImage} alt="todo template" />
-                    <TemplateTextContainer>
+                    <TemplateTextContainer $isFullWidth={isFullWidth}>
                         <TemplateTitle>
                             <img src={todoLogo} alt="todo logo" width={22} />
                             <span>To Do List</span>
@@ -851,7 +856,7 @@ function Project() {
                 )}
                 <ProjectItem onClick={toggleKoPlaceDetailsModal} $isFullWidth={isFullWidth}>
                     <TemplateImage src={koPlaceTemplateImage} alt="ko place template" />
-                    <TemplateTextContainer>
+                    <TemplateTextContainer $isFullWidth={isFullWidth}>
                         <TemplateTitle>
                             <img src={koPlaceLogo} alt="ko place logo" width={22} />
                             <span>가볼 만한 곳=ko</span>

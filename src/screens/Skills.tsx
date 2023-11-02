@@ -15,7 +15,7 @@ import dartImage from "../assets/images/dart.png";
 import flutterImage from "../assets/images/flutter.png";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
-    width: ${(props) => (props.$isFullWidth ? "100" : "80")}%;
+    width: ${(props) => (props.$isFullWidth ? "100" : "50")}%;
 
     @media (max-width: 1024px) {
         width: 100%;
@@ -116,6 +116,13 @@ const MediumDarkDivider = styled.div`
 `;
 const LongDarkDivider = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? 192 : 145)}px;
+
+    @media (max-width: 1420px) {
+        width: 145px;
+    }
+    @media (max-width: 1024px) {
+        width: 145px;
+    }
 `;
 const JSDarkDivider = styled.div`
     width: 125px;
