@@ -426,7 +426,7 @@ function Root() {
                         </OpenAside>
                     </AnimatePresence>
                     <AnimatePresence>
-                        {innerWidth >= 1024 && !menuRef?.current?.classList.contains("on") && (
+                        {innerWidth >= 1024 && menuRef?.current?.classList.contains("on") === false && (
                             <HoverAside
                                 layoutId={innerWidth >= 1024 ? "aside" : ""}
                                 onMouseEnter={onHoverAside}
