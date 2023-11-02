@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import profileImage from "../assets/images/profile.jpg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ProfileWrapper = styled.div`
     display: flex;
@@ -30,7 +30,7 @@ const SlideDown = styled.div<{ $subMenuIsOpen: boolean }>`
     transition: max-height 0.1s ease-in-out;
 `;
 
-const AsideItem = styled(Link)`
+const AsideItem = styled(NavLink)`
     display: flex;
     align-items: center;
     width: 100%;
@@ -40,7 +40,14 @@ const AsideItem = styled(Link)`
     cursor: pointer;
     &:hover {
         border-radius: 3px;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: #ffb8b8;
+    }
+    &.active {
+        border-radius: 3px;
+        background-color: #ffb8b8;
+        > span {
+            color: #37352f;
+        }
     }
     > * {
         flex: 0 0 auto;
@@ -96,6 +103,7 @@ interface IAsideMenuProp {
     awardsRef: any;
     subMenuIsOpen: boolean;
     toggleSubMenu: () => void;
+    scrollTop: number;
 }
 
 function AsideMenu({
@@ -105,6 +113,7 @@ function AsideMenu({
     awardsRef,
     subMenuIsOpen,
     toggleSubMenu,
+    scrollTop,
 }: IAsideMenuProp) {
     return (
         <>
@@ -127,6 +136,12 @@ function AsideMenu({
                         onClick={() =>
                             setTimeout(() => educationRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
+                        style={({ isActive }) => ({
+                            backgroundColor:
+                                isActive && scrollTop >= 600 && scrollTop < 1200
+                                    ? "rgba(255, 184, 184, 0.4)"
+                                    : "transparent",
+                        })}
                     >
                         <Dot />
                         <span>👩‍🎓 Education</span>
@@ -136,6 +151,12 @@ function AsideMenu({
                         onClick={() =>
                             setTimeout(() => certificateRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
+                        style={({ isActive }) => ({
+                            backgroundColor:
+                                isActive && scrollTop >= 1200 && scrollTop < 2200
+                                    ? "rgba(255, 184, 184, 0.4)"
+                                    : "transparent",
+                        })}
                     >
                         <Dot />
                         <span>📚 Certificate</span>
@@ -145,6 +166,9 @@ function AsideMenu({
                         onClick={() =>
                             setTimeout(() => awardsRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
+                        style={({ isActive }) => ({
+                            backgroundColor: isActive && scrollTop >= 2200 ? "rgba(255, 184, 184, 0.4)" : "transparent",
+                        })}
                     >
                         <Dot />
                         <span>🏆 Awards</span>

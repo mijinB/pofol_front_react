@@ -70,7 +70,7 @@ const OverLay = styled.div`
 `;
 
 const AsideBackground = styled.div.attrs({ className: "aside_background" })`
-    background-color: #f5cd79;
+    background-color: rgb(251, 251, 250);
 
     @media (max-width: 1024px) {
         position: fixed;
@@ -309,6 +309,7 @@ function Root() {
     const [isFullWidth, setIsFullWidth] = useState<boolean>(false);
     const [isCopyClipBoard, setIsCopyClipBoard] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
+    const [scrollTop, setScrollTop] = useState<number>(0);
 
     const scrollbarsRef = useRef<any>();
     const educationRef = useRef<any>();
@@ -397,7 +398,7 @@ function Root() {
     };
 
     return (
-        <Scrollbars ref={scrollbarsRef} autoHide>
+        <Scrollbars ref={scrollbarsRef} autoHide onScrollFrame={(event) => setScrollTop(event.scrollTop)}>
             <Wrapper ref={menuRef}>
                 {innerWidth < 1024 && menuRef?.current?.classList.contains("on") ? (
                     <OverLay onClick={toggleAside} />
@@ -420,6 +421,7 @@ function Root() {
                                 awardsRef={awardsRef}
                                 subMenuIsOpen={subMenuIsOpen}
                                 toggleSubMenu={toggleSubMenu}
+                                scrollTop={scrollTop}
                             />
                         </OpenAside>
                     </AnimatePresence>
@@ -438,6 +440,7 @@ function Root() {
                                     awardsRef={awardsRef}
                                     subMenuIsOpen={subMenuIsOpen}
                                     toggleSubMenu={toggleSubMenu}
+                                    scrollTop={scrollTop}
                                 />
                             </HoverAside>
                         )}

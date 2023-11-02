@@ -65,7 +65,7 @@ const GreetingContainer = styled.div`
     > div:nth-of-type(1) {
         padding: 15px 20px;
         border-radius: 5px;
-        background-color: rgba(246, 229, 141, 0.6);
+        background-color: rgba(255, 204, 204, 0.65);
         > p {
             font-size: 16px;
             line-height: 1.5;
@@ -158,7 +158,7 @@ const CertificateContainer = styled.div`
     gap: 30px;
     padding: 30px;
     border-radius: 5px;
-    background-color: rgba(112, 112, 112, 0.1);
+    background-color: rgba(253, 236, 200, 0.3);
 
     @media (max-width: 1024px) {
         gap: 15px;
