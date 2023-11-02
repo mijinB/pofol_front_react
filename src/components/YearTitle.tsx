@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ProjectTitle = styled.div`
     padding-top: 50px;
     > span {
-        font-weight: 600;
+        font-weight: 700;
     }
 `;
 

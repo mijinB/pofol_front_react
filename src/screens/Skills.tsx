@@ -88,7 +88,7 @@ const SkillTitle = styled.div`
     width: 20%;
     padding-left: 5px;
     > span {
-        font-weight: 600;
+        font-weight: 700;
     }
 `;
 

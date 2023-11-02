@@ -217,14 +217,16 @@ const ModalTitle = styled.h2`
     display: flex;
     align-items: flex-end;
     gap: 7px;
-    font-size: 42px;
-    font-weight: 600;
+    font-size: 38px;
+    font-weight: 800;
+    > img {
+        border-radius: 50%;
+    }
 
     @media (max-width: 1024px) {
         font-size: 27px;
         > img {
             width: 28px;
-            border-radius: 50%;
         }
     }
 `;
@@ -259,6 +261,7 @@ const SummaryItemTitle = styled.div`
     }
     > span {
         font-size: 14px;
+        font-weight: 500;
         opacity: 0.7;
     }
 
@@ -346,7 +349,7 @@ const ModalContentSection = styled.div`
 
 const SectionTitle = styled.h3`
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 700;
 
     @media (max-width: 1024px) {
         font-size: 18px;

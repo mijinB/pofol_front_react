@@ -162,6 +162,7 @@ footer, header, hgroup, menu, nav, section {
 }
 html, body {
   height: 100%;
+  font-weight: 400;
   > div {
     height: 100%;
   }

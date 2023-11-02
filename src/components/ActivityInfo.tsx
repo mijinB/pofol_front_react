@@ -50,6 +50,7 @@ const SummaryTitleTexts = styled.div`
         height: 30px;
         margin-bottom: 10px;
         font-size: 14px;
+        font-weight: 500;
         opacity: 0.7;
     }
 
@@ -121,7 +122,7 @@ const ItemTitle = styled.h3`
     gap: 5px;
     margin-bottom: 60px;
     font-size: 23px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     > img {
         display: none;
@@ -156,7 +157,7 @@ const ModalContentSection = styled.div`
 
 const SectionTitle = styled.h3`
     font-size: 19px;
-    font-weight: 600;
+    font-weight: 700;
 
     @media (max-width: 1024px) {
         font-size: 18px;

@@ -10,7 +10,7 @@ const HeaderTitle = styled.h2`
         }
         &:nth-of-type(2) {
             font-size: 30px;
-            font-weight: 600;
+            font-weight: 800;
         }
     }
 
