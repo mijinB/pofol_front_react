@@ -286,7 +286,7 @@ function ActivityInfo({ addLink, title, skills, period, learnedContent }: IActiv
                     <LinkItem>
                         <span>⪧ Naver Blog</span>
                         <LinkItemBox
-                            href="https://github.com/mijinB/vanilla_js_todo_list"
+                            href="https://blog.naver.com/bkmij"
                             target="_blank"
                             rel="noreferrer noopener"
                         >
@@ -300,7 +300,7 @@ function ActivityInfo({ addLink, title, skills, period, learnedContent }: IActiv
                     <LinkItem>
                         <span>⪧ Nomad Coders Community</span>
                         <LinkItemBox
-                            href="https://mijinb.github.io/vanilla_js_todo_list/"
+                            href="https://nomadcoders.co/community/book_club/"
                             target="_blank"
                             rel="noreferrer noopener"
                         >
