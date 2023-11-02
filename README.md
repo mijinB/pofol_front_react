@@ -10,7 +10,7 @@
 ![Facebook Badge](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Facebook Badge](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![Facebook Badge](https://img.shields.io/badge/StyledComponents-DB7093?style=flat-square&logo=styledcomponents&logoColor=white)
-![Facebook Badge](https://img.shields.io/badge/FramerAnimation-0055FF?style=flat-square&logo=framer&logoColor=white)
+![Facebook Badge](https://img.shields.io/badge/FramerMotion-0055FF?style=flat-square&logo=framer&logoColor=white)
 <br><br>
 
 <b>⌨️devtool⌨️</b>
