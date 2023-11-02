@@ -1,7 +1,16 @@
 {
   "files": {
-    "main.js": "/pofol_front_react/static/js/main.12110ecc.js",
+    "main.js": "/pofol_front_react/static/js/main.bee3e6fc.js",
     "static/media/todo_list.png": "/pofol_front_react/static/media/todo_list.e91c6b68e080726033cb.png",
+    "static/media/Pretendard-Thin.ttf": "/pofol_front_react/static/media/Pretendard-Thin.5a36e5790b59271c3c17.ttf",
+    "static/media/Pretendard-ExtraLight.ttf": "/pofol_front_react/static/media/Pretendard-ExtraLight.8fac2ec0a752261e7f3d.ttf",
+    "static/media/Pretendard-Light.ttf": "/pofol_front_react/static/media/Pretendard-Light.ae54342c83bcc5345734.ttf",
+    "static/media/Pretendard-Regular.ttf": "/pofol_front_react/static/media/Pretendard-Regular.e134b5961452730e41ec.ttf",
+    "static/media/Pretendard-Medium.ttf": "/pofol_front_react/static/media/Pretendard-Medium.7f0e62f904e2bce0dbfb.ttf",
+    "static/media/Pretendard-ExtraBold.ttf": "/pofol_front_react/static/media/Pretendard-ExtraBold.7b1b1a0de81d526fbcf2.ttf",
+    "static/media/Pretendard-SemiBold.ttf": "/pofol_front_react/static/media/Pretendard-SemiBold.8dc0a9b91d078d3d5abd.ttf",
+    "static/media/Pretendard-Black.ttf": "/pofol_front_react/static/media/Pretendard-Black.ec45aceadbcff2eef509.ttf",
+    "static/media/Pretendard-Bold.ttf": "/pofol_front_react/static/media/Pretendard-Bold.81fe678b068ad0d40f38.ttf",
     "static/media/todo_login.png": "/pofol_front_react/static/media/todo_login.a0efde9479dfd015466d.png",
     "static/media/ko_place_main.png": "/pofol_front_react/static/media/ko_place_main.48d975e4bbf6d5b4d9a1.png",
     "static/media/todo_game.png": "/pofol_front_react/static/media/todo_game.394e154e4f326b02f916.png",
@@ -33,9 +42,9 @@
     "static/media/google_play.png": "/pofol_front_react/static/media/google_play.be5f794ce26995268470.png",
     "static/media/framer.png": "/pofol_front_react/static/media/framer.a2c42bc638b884b5aaa0.png",
     "index.html": "/pofol_front_react/index.html",
-    "main.12110ecc.js.map": "/pofol_front_react/static/js/main.12110ecc.js.map"
+    "main.bee3e6fc.js.map": "/pofol_front_react/static/js/main.bee3e6fc.js.map"
   },
   "entrypoints": [
-    "static/js/main.12110ecc.js"
+    "static/js/main.bee3e6fc.js"
   ]
 }
