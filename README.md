@@ -17,3 +17,5 @@
 <br><br>
 
 ![Facebook Badge](https://img.shields.io/badge/VSCode-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
+<br><br>
+<a href="https://www.npmjs.com/package/react-custom-scrollbars-2"> + react-custom-scrollbars-2 </a>
