@@ -1,6 +1,7 @@
 {
   "files": {
-    "main.js": "/pofol_front_react/static/js/main.d54d04a2.js",
+    "main.css": "/pofol_front_react/static/css/main.dc1fdf34.css",
+    "main.js": "/pofol_front_react/static/js/main.918cb480.js",
     "static/media/todo_list.png": "/pofol_front_react/static/media/todo_list.e91c6b68e080726033cb.png",
     "static/media/Pretendard-Thin.ttf": "/pofol_front_react/static/media/Pretendard-Thin.5a36e5790b59271c3c17.ttf",
     "static/media/Pretendard-ExtraLight.ttf": "/pofol_front_react/static/media/Pretendard-ExtraLight.8fac2ec0a752261e7f3d.ttf",
@@ -22,15 +23,6 @@
     "static/media/Pretendard-ExtraLight.otf": "/pofol_front_react/static/media/Pretendard-ExtraLight.b2f0f7193307817b6f38.otf",
     "static/media/Pretendard-Thin.otf": "/pofol_front_react/static/media/Pretendard-Thin.bf4abb209aed8f35d1ca.otf",
     "static/media/ko_place_main.png": "/pofol_front_react/static/media/ko_place_main.48d975e4bbf6d5b4d9a1.png",
-    "static/media/Pretendard-Black.woff": "/pofol_front_react/static/media/Pretendard-Black.8bad248bdb96c3377cbc.woff",
-    "static/media/Pretendard-ExtraBold.woff": "/pofol_front_react/static/media/Pretendard-ExtraBold.88651b953c5d967d1db9.woff",
-    "static/media/Pretendard-Bold.woff": "/pofol_front_react/static/media/Pretendard-Bold.dd56301118da9e158ce9.woff",
-    "static/media/Pretendard-SemiBold.woff": "/pofol_front_react/static/media/Pretendard-SemiBold.86ffe3f48b7881c55a2c.woff",
-    "static/media/Pretendard-Medium.woff": "/pofol_front_react/static/media/Pretendard-Medium.f0cc544dcc84cf9f03b3.woff",
-    "static/media/Pretendard-Light.woff": "/pofol_front_react/static/media/Pretendard-Light.d0646c81e7ffb919ebd1.woff",
-    "static/media/Pretendard-Regular.woff": "/pofol_front_react/static/media/Pretendard-Regular.21b4bbcb93a4b1214f7d.woff",
-    "static/media/Pretendard-ExtraLight.woff": "/pofol_front_react/static/media/Pretendard-ExtraLight.050334e61f5fd99dddd4.woff",
-    "static/media/Pretendard-Thin.woff": "/pofol_front_react/static/media/Pretendard-Thin.d3e53f3d68cbe18c8f70.woff",
     "static/media/Pretendard-Black.woff2": "/pofol_front_react/static/media/Pretendard-Black.a4a9c5efac034f021c8e.woff2",
     "static/media/Pretendard-ExtraBold.woff2": "/pofol_front_react/static/media/Pretendard-ExtraBold.d96f7e46d4ca0cdd4912.woff2",
     "static/media/Pretendard-Bold.woff2": "/pofol_front_react/static/media/Pretendard-Bold.14a8579db02dbe10e1c0.woff2",
@@ -69,9 +61,11 @@
     "static/media/google_play.png": "/pofol_front_react/static/media/google_play.be5f794ce26995268470.png",
     "static/media/framer.png": "/pofol_front_react/static/media/framer.a2c42bc638b884b5aaa0.png",
     "index.html": "/pofol_front_react/index.html",
-    "main.d54d04a2.js.map": "/pofol_front_react/static/js/main.d54d04a2.js.map"
+    "main.dc1fdf34.css.map": "/pofol_front_react/static/css/main.dc1fdf34.css.map",
+    "main.918cb480.js.map": "/pofol_front_react/static/js/main.918cb480.js.map"
   },
   "entrypoints": [
-    "static/js/main.d54d04a2.js"
+    "static/css/main.dc1fdf34.css",
+    "static/js/main.918cb480.js"
   ]
 }
