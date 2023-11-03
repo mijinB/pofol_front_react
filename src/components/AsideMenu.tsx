@@ -132,7 +132,9 @@ function AsideMenu({
                         }
                         style={({ isActive }) => ({
                             backgroundColor:
-                                isActive && scrollTop >= 600 && scrollTop < 1200
+                                isActive &&
+                                scrollTop >= educationRef?.current?.offsetTop - 200 &&
+                                scrollTop < certificateRef?.current?.offsetTop - 200
                                     ? "rgba(255, 184, 184, 0.4)"
                                     : "transparent",
                         })}
@@ -147,7 +149,9 @@ function AsideMenu({
                         }
                         style={({ isActive }) => ({
                             backgroundColor:
-                                isActive && scrollTop >= 1200 && scrollTop < 2200
+                                isActive &&
+                                scrollTop >= certificateRef?.current?.offsetTop - 200 &&
+                                scrollTop < awardsRef?.current?.offsetTop - 200
                                     ? "rgba(255, 184, 184, 0.4)"
                                     : "transparent",
                         })}
@@ -161,7 +165,10 @@ function AsideMenu({
                             setTimeout(() => awardsRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
                         style={({ isActive }) => ({
-                            backgroundColor: isActive && scrollTop >= 2200 ? "rgba(255, 184, 184, 0.4)" : "transparent",
+                            backgroundColor:
+                                isActive && scrollTop >= awardsRef?.current?.offsetTop - 200
+                                    ? "rgba(255, 184, 184, 0.4)"
+                                    : "transparent",
                         })}
                     >
                         <Dot />
