@@ -300,7 +300,7 @@ const optionsPopupVariants = {
 };
 
 function Root() {
-    const BASE_URL = "http://localhost:3000";
+    const BASE_URL = "https://mijinb.github.io/pofol_front_react/#";
     const location = useLocation();
 
     const [asideIsHover, setAsideIsHover] = useState<boolean>(false);
