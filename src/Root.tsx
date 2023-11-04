@@ -39,7 +39,6 @@ const Wrapper = styled.div`
 
             @media (max-width: 1024px) {
                 display: flex;
-                background: none;
             }
         }
 
@@ -321,12 +320,12 @@ function Root() {
     let matches = useMatches();
 
     useEffect(() => {
-        innerWidth >= 1024 && menuRef?.current?.classList.add("on");
+        innerWidth > 1024 && menuRef?.current?.classList.add("on");
 
         const reSizeListener = () => {
             setInnerWidth(window.innerWidth);
 
-            if (window.innerWidth >= 1024) {
+            if (window.innerWidth > 1024) {
                 menuRef.current.classList.add("on");
             } else {
                 menuRef.current.classList.remove("on");
@@ -345,7 +344,7 @@ function Root() {
     const toggleAside = () => {
         menuRef?.current?.classList?.toggle("on");
         setAsideIsHover(true);
-        setInnerWidth((previous) => previous + 0.1);
+        setInnerWidth((previous) => previous - 0.1);
     };
 
     /**@function onHoverAside
@@ -427,7 +426,7 @@ function Root() {
                         </OpenAside>
                     </AnimatePresence>
                     <AnimatePresence>
-                        {innerWidth >= 1024 && menuRef?.current?.classList.contains("on") === false && (
+                        {innerWidth > 1024 && menuRef?.current?.classList.contains("on") === false && (
                             <HoverAside
                                 layoutId={innerWidth >= 1024 ? "aside" : ""}
                                 onMouseEnter={onHoverAside}
@@ -454,7 +453,7 @@ function Root() {
                             onMouseEnter={onHoverAside}
                             onMouseLeave={onHoverOutAside}
                         >
-                            {innerWidth >= 1024 ? (
+                            {innerWidth > 1024 ? (
                                 asideIsHover ? (
                                     <svg
                                         width="27"
