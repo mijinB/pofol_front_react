@@ -196,7 +196,7 @@ const OptionsButton = styled.button`
 const OptionsPopup = styled(motion.div)`
     position: absolute;
     top: 57px;
-    right: 0;
+    right: 10px;
     width: 200px;
     padding: 10px 5px;
     border-radius: 5px;
