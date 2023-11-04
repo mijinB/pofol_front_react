@@ -61,6 +61,16 @@ const AsideItem = styled(NavLink)`
     }
 `;
 
+const SubAsideItem = styled(AsideItem)`
+    &:hover {
+        border-radius: 3px;
+        background-color: rgba(255, 184, 184, 0.4) !important;
+    }
+    &.active {
+        background: none;
+    }
+`;
+
 const SubMenuButton = styled.div<{ $subMenuIsOpen: boolean }>`
     display: flex;
     padding: 3px;
@@ -125,55 +135,56 @@ function AsideMenu({
                     <span>🐯 백미진</span>
                 </AsideItem>
                 <SubMenuWrapper>
-                    <AsideItem
+                    <SubAsideItem
                         to="/info"
                         onClick={() =>
                             setTimeout(() => educationRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
-                        style={({ isActive }) => ({
-                            backgroundColor:
+                        style={({ isActive }) => {
+                            if (
                                 isActive &&
                                 scrollTop >= educationRef?.current?.offsetTop - 200 &&
                                 scrollTop < certificateRef?.current?.offsetTop - 200
-                                    ? "rgba(255, 184, 184, 0.4)"
-                                    : "transparent",
-                        })}
+                            ) {
+                                return { backgroundColor: "rgba(255, 184, 184, 0.4)" };
+                            }
+                        }}
                     >
                         <Dot />
                         <span>👩‍🎓 Education</span>
-                    </AsideItem>
-                    <AsideItem
+                    </SubAsideItem>
+                    <SubAsideItem
                         to="/info"
                         onClick={() =>
                             setTimeout(() => certificateRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
-                        style={({ isActive }) => ({
-                            backgroundColor:
+                        style={({ isActive }) => {
+                            if (
                                 isActive &&
                                 scrollTop >= certificateRef?.current?.offsetTop - 200 &&
                                 scrollTop < awardsRef?.current?.offsetTop - 200
-                                    ? "rgba(255, 184, 184, 0.4)"
-                                    : "transparent",
-                        })}
+                            ) {
+                                return { backgroundColor: "rgba(255, 184, 184, 0.4)" };
+                            }
+                        }}
                     >
                         <Dot />
                         <span>📚 Certificate</span>
-                    </AsideItem>
-                    <AsideItem
+                    </SubAsideItem>
+                    <SubAsideItem
                         to="/info"
                         onClick={() =>
                             setTimeout(() => awardsRef?.current?.scrollIntoView({ behavior: "smooth" }), 100)
                         }
-                        style={({ isActive }) => ({
-                            backgroundColor:
-                                isActive && scrollTop >= awardsRef?.current?.offsetTop - 200
-                                    ? "rgba(255, 184, 184, 0.4)"
-                                    : "transparent",
-                        })}
+                        style={({ isActive }) => {
+                            if (isActive && scrollTop >= awardsRef?.current?.offsetTop - 200) {
+                                return { backgroundColor: "rgba(255, 184, 184, 0.4)" };
+                            }
+                        }}
                     >
                         <Dot />
                         <span>🏆 Awards</span>
-                    </AsideItem>
+                    </SubAsideItem>
                 </SubMenuWrapper>
             </SlideDown>
             <AsideItem to="/skills" onClick={() => scrollbarsRef?.current?.scrollTop(0)}>
