@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pofol_front_react/static/css/main.dc1fdf34.css",
-    "main.js": "/pofol_front_react/static/js/main.fbc9db77.js",
+    "main.js": "/pofol_front_react/static/js/main.63c16e0f.js",
     "static/media/todo_list.png": "/pofol_front_react/static/media/todo_list.e91c6b68e080726033cb.png",
     "static/media/Pretendard-Thin.ttf": "/pofol_front_react/static/media/Pretendard-Thin.5a36e5790b59271c3c17.ttf",
     "static/media/Pretendard-ExtraLight.ttf": "/pofol_front_react/static/media/Pretendard-ExtraLight.8fac2ec0a752261e7f3d.ttf",
@@ -33,8 +33,13 @@
     "static/media/Pretendard-ExtraLight.woff2": "/pofol_front_react/static/media/Pretendard-ExtraLight.78e886701aa794247c35.woff2",
     "static/media/Pretendard-Thin.woff2": "/pofol_front_react/static/media/Pretendard-Thin.450b58933971c5b135f4.woff2",
     "static/media/todo_game.png": "/pofol_front_react/static/media/todo_game.394e154e4f326b02f916.png",
+    "static/media/portfolio_url_copy.png": "/pofol_front_react/static/media/portfolio_url_copy.76abd04b7bbed0f65c6a.png",
     "static/media/todo_setting.png": "/pofol_front_react/static/media/todo_setting.fecde6d746c028a004cf.png",
+    "static/media/portfolio_full_width.png": "/pofol_front_react/static/media/portfolio_full_width.9a21c4834c6da75b79d8.png",
+    "static/media/portfolio_main.png": "/pofol_front_react/static/media/portfolio_main.da5b1baebbfcfdedd9d9.png",
     "static/media/ko_place_detail.png": "/pofol_front_react/static/media/ko_place_detail.a0a6072d84e08a29f8f4.png",
+    "static/media/portfolio_project_modal.png": "/pofol_front_react/static/media/portfolio_project_modal.cfa03e293dddb58f74dc.png",
+    "static/media/portfolio_project.png": "/pofol_front_react/static/media/portfolio_project.02eeff7ab78ad8271a28.png",
     "static/media/me.jpeg": "/pofol_front_react/static/media/me.f80e3ab598687c76f266.jpeg",
     "static/media/styledcomponents.png": "/pofol_front_react/static/media/styledcomponents.895263d71e86843cc091.png",
     "static/media/award1.jpg": "/pofol_front_react/static/media/award1.1fe9a8236795a0ad2817.jpg",
@@ -42,9 +47,13 @@
     "static/media/award2.jpg": "/pofol_front_react/static/media/award2.4a2c39ba229e83cccfe1.jpg",
     "static/media/todo_template.jpg": "/pofol_front_react/static/media/todo_template.2a9d27604980ca1105e7.jpg",
     "static/media/vscode.png": "/pofol_front_react/static/media/vscode.19edc3fbac1c451f289d.png",
+    "static/media/portfolio_template.jpg": "/pofol_front_react/static/media/portfolio_template.cbecefc4027954034b12.jpg",
+    "static/media/portfolio_notebook_screen.png": "/pofol_front_react/static/media/portfolio_notebook_screen.14798447a1341555680d.png",
     "static/media/dart.png": "/pofol_front_react/static/media/dart.915170854945dfb634d5.png",
     "static/media/flutter.png": "/pofol_front_react/static/media/flutter.14caf834ef2fe069a171.png",
     "static/media/react_theme_toggle.gif": "/pofol_front_react/static/media/react_theme_toggle.568843ce2f5333351c57.gif",
+    "static/media/portfolio_tablet_screen.png": "/pofol_front_react/static/media/portfolio_tablet_screen.67af612ee32eed0258ee.png",
+    "static/media/portfolio_mobile_screen.png": "/pofol_front_react/static/media/portfolio_mobile_screen.0a53df5f2117e30f414b.png",
     "static/media/ko_place_logo.png": "/pofol_front_react/static/media/ko_place_logo.340cdbdf8432753fb5d5.png",
     "static/media/typescript.png": "/pofol_front_react/static/media/typescript.659e4b9351cf1baa6930.png",
     "static/media/react_todo.png": "/pofol_front_react/static/media/react_todo.b2bdaf356a7aec5eb2ad.png",
@@ -57,15 +66,18 @@
     "static/media/react.png": "/pofol_front_react/static/media/react.63daa472d6cb8470aabd.png",
     "static/media/git_profile.jpg": "/pofol_front_react/static/media/git_profile.c1a0ae6b74a869bdc17b.jpg",
     "static/media/scss.png": "/pofol_front_react/static/media/scss.ac4423955e16cba6e429.png",
+    "static/media/portfolio_aside_menu_open.png": "/pofol_front_react/static/media/portfolio_aside_menu_open.c37467131f95896c7ae3.png",
     "static/media/gmail.png": "/pofol_front_react/static/media/gmail.0d5e86f42ea347e03fe6.png",
+    "static/media/portfolio_logo.png": "/pofol_front_react/static/media/portfolio_logo.56e07f0a5536c2f05b04.png",
     "static/media/google_play.png": "/pofol_front_react/static/media/google_play.be5f794ce26995268470.png",
+    "static/media/portfolio_aside_menu_close.png": "/pofol_front_react/static/media/portfolio_aside_menu_close.aa99015c4d822505ffc6.png",
     "static/media/framer.png": "/pofol_front_react/static/media/framer.a2c42bc638b884b5aaa0.png",
     "index.html": "/pofol_front_react/index.html",
     "main.dc1fdf34.css.map": "/pofol_front_react/static/css/main.dc1fdf34.css.map",
-    "main.fbc9db77.js.map": "/pofol_front_react/static/js/main.fbc9db77.js.map"
+    "main.63c16e0f.js.map": "/pofol_front_react/static/js/main.63c16e0f.js.map"
   },
   "entrypoints": [
     "static/css/main.dc1fdf34.css",
-    "static/js/main.fbc9db77.js"
+    "static/js/main.63c16e0f.js"
   ]
 }
