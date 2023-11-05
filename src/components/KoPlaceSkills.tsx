@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const SkillsContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
     > div {
         display: inline-flex;

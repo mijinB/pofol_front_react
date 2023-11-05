@@ -118,8 +118,11 @@ const TemplateTextContainer = styled.div<{ $isFullWidth: boolean }>`
     @media (max-width: 1420px) {
         height: ${(props) => !props.$isFullWidth && 150}px;
     }
-    @media (max-width: 1150px) {
-        height: 122px;
+    @media (max-width: 1125px) {
+        height: ${(props) => !props.$isFullWidth && 175}px;
+    }
+    @media (max-width: 590px) {
+        height: 175px;
     }
     @media (max-width: 400px) {
         gap: 5px;
