@@ -62,14 +62,20 @@ const SubDivider = styled.div`
     }
 `;
 
-const ProjectContainer = styled.div`
+const ProjectContainer = styled.div<{ $isFullWidth: boolean }>`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     width: 100%;
 
-    @media (max-width: 1150px) {
-        flex-direction: column;
+    @media (max-width: 1440px) {
+        ${(props) => !props.$isFullWidth && "grid-template-columns: 1fr;"}
+    }
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 770px) {
+        grid-template-columns: 1fr;
     }
 `;
 
@@ -86,6 +92,7 @@ const ProjectItem = styled.div<{ $isFullWidth: boolean }>`
         background-color: rgba(15, 15, 15, 0.02);
         transition: background-color 0.2s ease-out;
     }
+
     @media (max-width: 1024px) {
         height: 400px;
         &:last-child {
@@ -115,15 +122,6 @@ const TemplateTextContainer = styled.div<{ $isFullWidth: boolean }>`
         font-size: 13px;
     }
 
-    @media (max-width: 1420px) {
-        height: ${(props) => !props.$isFullWidth && 150}px;
-    }
-    @media (max-width: 1125px) {
-        height: ${(props) => !props.$isFullWidth && 175}px;
-    }
-    @media (max-width: 590px) {
-        height: 175px;
-    }
     @media (max-width: 400px) {
         gap: 5px;
         > span {
@@ -548,7 +546,7 @@ function Project() {
         <Wrapper $isFullWidth={isFullWidth}>
             <PageHeader icon="🖼️" title="Project" />
             <YearTitle icon="🐰" title="2023" />
-            <ProjectContainer>
+            <ProjectContainer $isFullWidth={isFullWidth}>
                 <ProjectItem onClick={togglePortfolioModal} $isFullWidth={isFullWidth}>
                     <TemplateImage src={portfolioTemplateImage} alt="portfolio template" />
                     <TemplateTextContainer $isFullWidth={isFullWidth}>
