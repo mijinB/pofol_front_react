@@ -216,11 +216,18 @@ const ModalImageContainer = styled.div<{ $projectLogo: string }>`
     }
 `;
 
-const ModalImage = styled.img<{ $objectPosition: string }>`
+const ModalImage = styled.img<{ $objectPosition: number }>`
     width: 100%;
     height: 220px;
     object-fit: cover;
-    object-position: ${(props) => props.$objectPosition};
+    object-position: center ${(props) => props.$objectPosition}px;
+
+    @media (max-width: 1010px) {
+        object-position: center ${(props) => props.$objectPosition + 30}px;
+    }
+    @media (max-width: 570px) {
+        object-position: center ${(props) => props.$objectPosition + 40}px;
+    }
 `;
 
 const ModalTextContent = styled.div`
@@ -565,7 +572,7 @@ function Project() {
                                         <ModalImage
                                             src={portfolioTemplateImage}
                                             alt="portfolio template"
-                                            $objectPosition="center -75px"
+                                            $objectPosition={-75}
                                         />
                                     </ModalImageContainer>
                                     <ModalTextContent>
@@ -707,11 +714,7 @@ function Project() {
                             <Scrollbars autoHide>
                                 <ModalContentWrapper>
                                     <ModalImageContainer $projectLogo={todoLogo}>
-                                        <ModalImage
-                                            src={todoTemplateImage}
-                                            alt="todo template"
-                                            $objectPosition="center -30px"
-                                        />
+                                        <ModalImage src={todoTemplateImage} alt="todo template" $objectPosition={-40} />
                                     </ModalImageContainer>
                                     <ModalTextContent>
                                         <ProjectSummary
@@ -921,7 +924,7 @@ function Project() {
                                         <ModalImage
                                             src={koPlaceTemplateImage}
                                             alt="ko place template"
-                                            $objectPosition="center -100px"
+                                            $objectPosition={-100}
                                         />
                                     </ModalImageContainer>
                                     <ModalTextContent>
