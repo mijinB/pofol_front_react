@@ -7,7 +7,10 @@ import ToDoSkills from "../components/ToDoSkills";
 import KoPlaceSkills from "../components/KoPlaceSkills";
 import ModalPageHeader from "../components/ModalPageHeader";
 import YearTitle from "../components/YearTitle";
+import ProjectSummary from "../components/ProjectSummary";
 
+import portfolioTemplateImage from "../assets/images/portfolio_template.jpg";
+import portfolioLogo from "../assets/images/portfolio_logo.png";
 import todoTemplateImage from "../assets/images/todo_template.jpg";
 import todoLogo from "../assets/images/todo_logo.png";
 import koPlaceTemplateImage from "../assets/images/ko_place_template.jpg";
@@ -27,7 +30,17 @@ import reactCustomizeImage from "../assets/images/react_customize.png";
 import reactThemeToggleGIF from "../assets/images/react_theme_toggle.gif";
 import koPlaceMainImage from "../assets/images/ko_place_main.png";
 import koPlaceDetailImage from "../assets/images/ko_place_detail.png";
-import ProjectSummary from "../components/ProjectSummary";
+import portfolioMainImage from "../assets/images/portfolio_main.png";
+import portfolioFullWidthImage from "../assets/images/portfolio_full_width.png";
+import portfolioUrlCopyImage from "../assets/images/portfolio_url_copy.png";
+import portfolioAsideOpenImage from "../assets/images/portfolio_aside_menu_open.png";
+import portfolioAsideCloseImage from "../assets/images/portfolio_aside_menu_close.png";
+import portfolioProjectImage from "../assets/images/portfolio_project.png";
+import portfolioProjectModalImage from "../assets/images/portfolio_project_modal.png";
+import portfolioNotebookImage from "../assets/images/portfolio_notebook_screen.png";
+import portfolioTabletImage from "../assets/images/portfolio_tablet_screen.png";
+import portfolioMobileImage from "../assets/images/portfolio_mobile_screen.png";
+import PortfolioSkills from "../components/PortfolioSkills";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? "100" : "50")}%;
@@ -50,8 +63,8 @@ const SubDivider = styled.div`
 `;
 
 const ProjectContainer = styled.div`
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     width: 100%;
 
@@ -356,15 +369,32 @@ const TwoColumns = styled.div`
     > img {
         width: 100%;
     }
+    > p {
+        line-height: 1.5;
+    }
 
     @media (max-width: 1024px) {
         > img {
             width: 90%;
         }
+        > p {
+            font-size: 14px;
+        }
     }
     @media (max-width: 600px) {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, 1fr);
+    }
+`;
+
+const TwoColumnsMini = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+    > img {
+        width: 50%;
     }
 `;
 
@@ -447,6 +477,15 @@ const ToggleInfoColumns = styled.div`
     }
 `;
 
+const PhotosByDevice = styled.div`
+    display: grid;
+    grid-template-columns: 3.4fr 1.8fr 1fr;
+    gap: 10px;
+    > img {
+        width: 100%;
+    }
+`;
+
 const CheckBoxContainer = styled.div`
     display: flex;
     align-items: flex-start;
@@ -470,8 +509,16 @@ interface IProjectProp {
 function Project() {
     const { isFullWidth } = useOutletContext<IProjectProp>();
 
+    const [isPortfolioOpen, setIsPortfolioOpen] = useState<boolean>(false);
     const [isToDoDetailsOpen, setIsToDoDetailsOpen] = useState<boolean>(false);
     const [isKoPlaceDetailsOpen, setIsKoPlaceDetailsOpen] = useState<boolean>(false);
+
+    /**@function togglePortfolioModal
+     * 1. isPortfolioOpen(boolean) 변수의 값을 전환한다.
+     */
+    const togglePortfolioModal = () => {
+        setIsPortfolioOpen((previous) => !previous);
+    };
 
     /**@function toggleDetailsModal
      * 1. isToDoDetailsOpen(boolean) 변수의 값을 전환한다.
@@ -492,6 +539,151 @@ function Project() {
             <PageHeader icon="🖼️" title="Project" />
             <YearTitle icon="🐰" title="2023" />
             <ProjectContainer>
+                <ProjectItem onClick={togglePortfolioModal} $isFullWidth={isFullWidth}>
+                    <TemplateImage src={portfolioTemplateImage} alt="portfolio template" />
+                    <TemplateTextContainer $isFullWidth={isFullWidth}>
+                        <TemplateTitle>
+                            <img src={portfolioLogo} alt="portfolio logo" width={22} />
+                            <span>Mijin Portfolio</span>
+                        </TemplateTitle>
+                        <PortfolioSkills />
+                        <span>2023년 10월 5일 → 11월 5일</span>
+                        <TeamTag>개인프로젝트</TeamTag>
+                    </TemplateTextContainer>
+                </ProjectItem>
+                {isPortfolioOpen && (
+                    <>
+                        <OverLay onClick={togglePortfolioModal} />
+                        <ProjectDetailsModal>
+                            <ModalPageHeader clickFunction={togglePortfolioModal} />
+                            <Scrollbars autoHide>
+                                <ModalContentWrapper>
+                                    <ModalImageContainer $projectLogo={portfolioLogo}>
+                                        <ModalImage
+                                            src={portfolioTemplateImage}
+                                            alt="portfolio template"
+                                            $objectPosition="center -75px"
+                                        />
+                                    </ModalImageContainer>
+                                    <ModalTextContent>
+                                        <ProjectSummary
+                                            projectTitle={"Mijin Portfolio"}
+                                            simpleInfo={"🐰2023년 mijin Portfolio"}
+                                            skills={<PortfolioSkills />}
+                                            period={"2023년 10월 5일 → 11월 5일"}
+                                            projectGroup={"개인프로젝트"}
+                                            commentContent={"커버 이미지는 Pixlr E를 사용해서 직접 제작했어요."}
+                                        />
+                                        <ModalContentSection>
+                                            <SectionTitle>🔗 Link</SectionTitle>
+                                            <LinkItem>
+                                                <span>⪧ GitHub(source)</span>
+                                                <LinkItemBox
+                                                    href="https://github.com/mijinB/pofol_front_react"
+                                                    target="_blank"
+                                                    rel="noreferrer noopener"
+                                                >
+                                                    <ProfileImage src={gitProfileImage} alt="git profile" width={33} />
+                                                    <GitHubImage src={githubImage} alt="github logo" width={17} />
+                                                    <LinkInfo>
+                                                        <span>pofol_front_react</span>
+                                                        <span>mijinB</span>
+                                                    </LinkInfo>
+                                                </LinkItemBox>
+                                            </LinkItem>
+                                            <LinkItem>
+                                                <span>⪧ GitHub Pages(deploy)</span>
+                                                <LinkItemBox
+                                                    href="https://mijinb.github.io/pofol_front_react/#/info"
+                                                    target="_blank"
+                                                    rel="noreferrer noopener"
+                                                >
+                                                    <ProfileImage src={githubImage} alt="github logo" width={33} />
+                                                    <LinkInfo>
+                                                        <span>Mijin Portfolio</span>
+                                                        <span>https://mijinb.github.io/pofol_front_react/#/info</span>
+                                                    </LinkInfo>
+                                                </LinkItemBox>
+                                            </LinkItem>
+                                        </ModalContentSection>
+                                        <ModalContentSection>
+                                            <SectionTitle>🧸 상세 내용</SectionTitle>
+                                            <TwoColumns>
+                                                <img src={portfolioMainImage} alt="portfolio main" />
+                                                <p>
+                                                    Notion의 깔끔한 디자인을 참고하기 위해 먼저 Notion에 포트폴리오를
+                                                    작성하여 전체적인 디자인을 구상하고 Notion을 보면서 2023년
+                                                    포트폴리오를 구현했어요.
+                                                </p>
+                                            </TwoColumns>
+                                            <TwoColumns>
+                                                <img src={portfolioFullWidthImage} alt="portfolio full width" />
+                                                <img src={portfolioUrlCopyImage} alt="portfolio url copy" />
+                                            </TwoColumns>
+                                            <p>
+                                                기본 너비는 50%이지만 option button에서 ‘전체 너비’ toggle을 사용해 전체
+                                                너비로도 볼 수 있어요.
+                                            </p>
+                                            <p>
+                                                또, option button의 ‘링크 복사’ 버튼을 사용하면 현재 페이지의 URL이
+                                                클립보드에 저장되며 링크 복사가 완료되었다는 확인 문구를 화면 위로 3초
+                                                동안 보여줘요.
+                                            </p>
+                                            <p>
+                                                (option button을 클릭해서 popup 창이 뜰 때 그 뒤로 overlay도 함께 띄우기
+                                                때문에 popup 창 외 다른 부분을 클릭하거나 터치하면 popup 창이 자동으로
+                                                닫히도록 구현했어요.)
+                                            </p>
+                                            <TwoColumnsMini>
+                                                <img
+                                                    src={portfolioAsideOpenImage}
+                                                    alt="portfolio aside open"
+                                                    width={50}
+                                                />
+                                                <img src={portfolioAsideCloseImage} alt="portfolio aside close" />
+                                            </TwoColumnsMini>
+                                            <p>
+                                                aside menu에서 정보(’백미진’) 부분은 sub menu도 존재해요. 기본으로
+                                                펼쳐져 있지만 호랑이 옆 arrow icon을 사용해 접었다 폈다 할 수 있어요.
+                                            </p>
+                                            <p>
+                                                sub menu가 없는 메뉴들은 arrow icon의 hover 스타일을 설정하지 않음으로써
+                                                혼동을 방지했어요.
+                                            </p>
+                                            <TwoColumns>
+                                                <img src={portfolioProjectImage} alt="portfolio project" />
+                                                <img src={portfolioProjectModalImage} alt="portfolio project" />
+                                            </TwoColumns>
+                                            <p>
+                                                프로젝트는 Notion의 ‘갤러리 보기’를 참고하여 templete 이미지와 요약
+                                                정보를 보여주고 item을 클릭하면 modal로 detail 정보를 볼 수 있도록
+                                                구현했어요.
+                                            </p>
+                                            <PhotosByDevice>
+                                                <img src={portfolioNotebookImage} alt="portfolio notebook" />
+                                                <img src={portfolioTabletImage} alt="portfolio tablet" />
+                                                <img src={portfolioMobileImage} alt="portfolio mobile" />
+                                            </PhotosByDevice>
+                                            <p>
+                                                여러 디바이스에서 볼 수 있도록 media를 이용해 반응형 웹으로 구현했어요.
+                                            </p>
+                                            <p>
+                                                참고 이미지를 보면 Activity의 detail 정보가 화면이 클 때는 오른쪽에서
+                                                보였지만 화면이 작아지면 Project와 같이 요약 정보만 보여주고 클릭하면
+                                                Modal이 뜨도록 구현했어요.
+                                            </p>
+                                        </ModalContentSection>
+                                        <ModalContentSection>
+                                            <SectionTitle>⚒️ 사용 기술 및 라이브러리</SectionTitle>
+                                            <p>⪧ HTML, CSS, JavaScript, TypeScript, React</p>
+                                            <p>⪧ Styled Components, Framer Motion, React Custom Scrollbars 2</p>
+                                        </ModalContentSection>
+                                    </ModalTextContent>
+                                </ModalContentWrapper>
+                            </Scrollbars>
+                        </ProjectDetailsModal>
+                    </>
+                )}
                 <ProjectItem onClick={toggleToDoDetailsModal} $isFullWidth={isFullWidth}>
                     <TemplateImage src={todoTemplateImage} alt="todo template" />
                     <TemplateTextContainer $isFullWidth={isFullWidth}>
@@ -711,7 +903,7 @@ function Project() {
                             <span>가볼 만한 곳=ko</span>
                         </TemplateTitle>
                         <KoPlaceSkills />
-                        <span>2023년 8월 18일 → 2023년 8월 29일</span>
+                        <span>2023년 8월 18일 → 8월 29일</span>
                         <TeamTag>개인프로젝트</TeamTag>
                     </TemplateTextContainer>
                 </ProjectItem>
@@ -730,93 +922,6 @@ function Project() {
                                         />
                                     </ModalImageContainer>
                                     <ModalTextContent>
-                                        {/* <ModalTitle>가볼 만한 곳=ko</ModalTitle>
-                                        <ModalSummaryContainer>
-                                            <ModalSummary>
-                                                <SummaryItemTitle>
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="21"
-                                                        height="21"
-                                                        viewBox="0 0 64 64"
-                                                    >
-                                                        <defs fill="#37352F" />
-                                                        <path
-                                                            d="m32,8c-14.81,0-24,8.43-24,22,0,6.92,2.4,12.49,6.7,16.3l-6.7,6.7,2,3c5.42,0,10.43-1.8,14.45-4.84,2.32.55,4.84.84,7.55.84,14.81,0,24-8.43,24-22s-9.19-22-24-22Zm4,37h-8v-6h8v6Zm0-18l-2,8h-4l-2-8v-12h8v12Z"
-                                                            fill="#37352F"
-                                                        />
-                                                    </svg>
-                                                    <span>간단 소개</span>
-                                                </SummaryItemTitle>
-                                                <SummaryItemContent>
-                                                    <p>한국의 가볼 만한 곳을 쉽게 조회할 수 있는 여행 정보 앱</p>
-                                                </SummaryItemContent>
-                                                <SummaryItemTitle>
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="21"
-                                                        height="21"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                    >
-                                                        <path
-                                                            d="M12 20L4.6797 10.8496C4.34718 10.434 4.18092 10.2262 4.13625 9.9757C4.09159 9.72524 4.17575 9.47276 4.34407 8.96778L5.0883 6.73509C5.52832 5.41505 5.74832 4.75503 6.2721 4.37752C6.79587 4 7.49159 4 8.88304 4H15.117C16.5084 4 17.2041 4 17.7279 4.37752C18.2517 4.75503 18.4717 5.41505 18.9117 6.73509L19.6559 8.96778C19.8243 9.47276 19.9084 9.72524 19.8637 9.9757C19.8191 10.2262 19.6528 10.434 19.3203 10.8496L12 20ZM12 20L15.5 9M12 20L8.5 9M19.5 10L15.5 9M15.5 9L14 5M15.5 9H8.5M10 5L8.5 9M8.5 9L4.5 10"
-                                                            stroke="#37352F"
-                                                            strokeLinecap="round"
-                                                        />
-                                                    </svg>
-                                                    <span>skills & tool</span>
-                                                </SummaryItemTitle>
-                                                <SummaryItemContent>
-                                                    <KoPlaceSkills />
-                                                </SummaryItemContent>
-                                                <SummaryItemTitle>
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="21"
-                                                        height="21"
-                                                        viewBox="0 0 64 64"
-                                                    >
-                                                        <defs fill="#37352F" />
-                                                        <path
-                                                            d="m48,12v-6h-6v6h-20v-6h-6v6h-8v40h48V12h-8Zm2,35H14v-19h36v19Z"
-                                                            fill="#37352F"
-                                                        />
-                                                    </svg>
-                                                    <span>진행 기간</span>
-                                                </SummaryItemTitle>
-                                                <SummaryItemContent>
-                                                    <p>2023년 5월 5일 → 5월 16일</p>
-                                                </SummaryItemContent>
-                                                <SummaryItemTitle>
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="21"
-                                                        height="21"
-                                                        viewBox="0 0 64 64"
-                                                    >
-                                                        <defs fill="#37352F" />
-                                                        <path
-                                                            d="m27,19c0-3.09,1.91-5,5-5s5,1.91,5,5-1.91,5-5,5-5-1.91-5-5Zm30,5c3.09,0,5-1.91,5-5s-1.91-5-5-5-5,1.91-5,5,1.91,5,5,5Zm-18,7c0-2.47-1.53-4-4-4h-6c-2.47,0-4,1.53-4,4v7h14v-7Zm-23,17h32v-6H16v6Zm44-21h-6c-2.11,0-3.53.71-4.8,2.4l-3.45,4.6h-2.75v4h4.75l4.25-5.67v15.67h12v-17c0-2.47-1.53-4-4-4Zm-53-3c3.09,0,5-1.91,5-5s-1.91-5-5-5-5,1.91-5,5,1.91,5,5,5Zm14,14v-4h-2.75l-3.45-4.6c-1.27-1.69-2.69-2.4-4.8-2.4h-6c-2.47,0-4,1.53-4,4v17h12v-15.67l4.25,5.67h4.75Z"
-                                                            fill="#37352F"
-                                                        />
-                                                    </svg>
-                                                    <span>팀 구성</span>
-                                                </SummaryItemTitle>
-                                                <SummaryItemContent>
-                                                    <TeamTag>개인프로젝트</TeamTag>
-                                                </SummaryItemContent>
-                                            </ModalSummary>
-                                            <SubDivider />
-                                            <ModalComment>
-                                                <ProfileImage src={profileImage} alt="profile" width={21} />
-                                                <CommentContent>
-                                                    <span>mijin</span>
-                                                    <p>커버 이미지는 Photoshop을 사용해서 직접 제작했어요.</p>
-                                                </CommentContent>
-                                            </ModalComment>
-                                            <SubDivider />
-                                        </ModalSummaryContainer> */}
                                         <ProjectSummary
                                             projectTitle={"가볼 만한 곳=ko"}
                                             simpleInfo={
