@@ -100,6 +100,7 @@ const LinkButton = styled.div`
     > * {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 7px;
         color: #707070;
         font-size: 15px;
