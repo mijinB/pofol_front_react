@@ -307,7 +307,7 @@ function Root() {
 
     const [isOptionsPopupOpen, setISsOptionsPopupOpen] = useState<boolean>(false);
     const [isFullWidth, setIsFullWidth] = useState<boolean>(false);
-    const [isCopyClipBoard, setIsCopyClipBoard] = useState<boolean>(false);
+    const [isUrlCopyClipBoard, setIsUrlCopyClipBoard] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
     const [scrollTop, setScrollTop] = useState<number>(0);
 
@@ -382,16 +382,17 @@ function Root() {
         setIsFullWidth((previous) => !previous);
     };
 
-    /**@function onCopyClipBoard
-     * 1. 복사할 text를 받아와서 클립보드에 저장한다.
-     * 2. 정상적으로 동작됐으면 확인 Message 띄우기 위해 isCopyClipBoard(boolean) 변수에 true 대입하고 3초 후 다시 false 대입한다.
+    /**@function onUrlCopyClipBoard
+     * 1. 복사할 url을 받아와서 클립보드에 저장한다.
+     * 2. 정상적으로 동작됐으면 확인 Message 띄우기 위해 isUrlCopyClipBoard(boolean) 변수에 true 대입하고 3초 후 다시 false 대입한다.
      * 3. 동작되지 않았으면 console에 error 띄운다.
+     * @param { string } url
      */
-    const onCopyClipBoard = async (text: string) => {
+    const onUrlCopyClipBoard = async (url: string) => {
         try {
-            await navigator.clipboard.writeText(text);
-            setIsCopyClipBoard(true);
-            setTimeout(() => setIsCopyClipBoard(false), 3000);
+            await navigator.clipboard.writeText(url);
+            setIsUrlCopyClipBoard(true);
+            setTimeout(() => setIsUrlCopyClipBoard(false), 3000);
         } catch {
             console.log("error");
         }
@@ -546,7 +547,7 @@ function Root() {
                                             <FullWidthToggle onClick={toggleFullWidth} />
                                             <FullWidthLabel $isFullWidth={isFullWidth} />
                                         </OptionItem>
-                                        <OptionItem onClick={() => onCopyClipBoard(`${BASE_URL}${location.pathname}`)}>
+                                        <OptionItem onClick={() => onUrlCopyClipBoard(`${BASE_URL}${location.pathname}`)}>
                                             <span>링크 복사</span>
                                             <svg
                                                 width="24"
@@ -578,7 +579,7 @@ function Root() {
                     </PageHeader>
                     <PageContainer $isFullWidth={isFullWidth}>
                         <Outlet context={{ isFullWidth, educationRef, certificateRef, awardsRef, innerWidth }} />
-                        <CopiedMessage $isCopyClipBoard={isCopyClipBoard}>
+                        <CopiedMessage $isCopyClipBoard={isUrlCopyClipBoard}>
                             <span>링크 복사 완료</span>
                         </CopiedMessage>
                     </PageContainer>

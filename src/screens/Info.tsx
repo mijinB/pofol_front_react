@@ -7,6 +7,7 @@ import naverBlogImage from "../assets/images/naverblog.png";
 import gmailImage from "../assets/images/gmail.png";
 import award1Image from "../assets/images/award1.jpg";
 import award2Image from "../assets/images/award2.jpg";
+import { useState } from "react";
 
 const Wrapper = styled.div<{ $isFullWidth: boolean }>`
     width: ${(props) => (props.$isFullWidth ? "100" : "50")}%;
@@ -103,6 +104,7 @@ const LinkButton = styled.div`
         color: #707070;
         font-size: 15px;
         font-weight: 600;
+        cursor: pointer;
         &:hover {
             color: #f8c75d;
         }
@@ -258,6 +260,12 @@ const AwardsContainer = styled.div`
     }
 `;
 
+const CopiedMessage = styled.p<{ $isEmailCopyClipBoard: boolean }>`
+    opacity: ${(props) => (props.$isEmailCopyClipBoard ? 1 : 0)};
+    color: #707070;
+    transition: opacity 0.1s ease-in;
+`;
+
 interface IInfoProps {
     isFullWidth: boolean;
     educationRef: any;
@@ -267,6 +275,23 @@ interface IInfoProps {
 
 function Info() {
     const { isFullWidth, educationRef, certificateRef, awardsRef } = useOutletContext<IInfoProps>();
+    const [isEmailCopyClipBoard, setIsEmailCopyClipBoard] = useState<boolean>(false);
+
+    /**@function onEmailCopyClipBoard
+     * 1. 복사할 email을 받아와서 클립보드에 저장한다.
+     * 2. 정상적으로 동작됐으면 확인 Message 띄우기 위해 isEmailCopyClipBoard(boolean) 변수에 true 대입하고 3초 후 다시 false 대입한다.
+     * 3. 동작되지 않았으면 console에 error 띄운다.
+     * @param { string } email
+     */
+    const onEmailCopyClipBoard = async (email: string) => {
+        try {
+            await navigator.clipboard.writeText(email);
+            setIsEmailCopyClipBoard(true);
+            setTimeout(() => setIsEmailCopyClipBoard(false), 1500);
+        } catch {
+            console.log("error");
+        }
+    };
 
     return (
         <Wrapper $isFullWidth={isFullWidth}>
@@ -306,9 +331,10 @@ function Info() {
                             <img src={naverBlogImage} alt="naver blog" width={25} />
                             Naver Blog
                         </a>
-                        <span>
+                        <span onClick={() => onEmailCopyClipBoard("bmj13465@gmail.com")}>
                             <img src={gmailImage} alt="gmail" width={25} />
                             bmj13465@gmail.com
+                            <CopiedMessage $isEmailCopyClipBoard={isEmailCopyClipBoard}>✅ 복사 완료</CopiedMessage>
                         </span>
                     </LinkButton>
                 </GreetingContainer>
