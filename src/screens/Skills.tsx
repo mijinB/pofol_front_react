@@ -5,6 +5,7 @@ import htmlImage from "../assets/images/html5.png";
 import cssImage from "../assets/images/css3.png";
 import jsImage from "../assets/images/js.png";
 import reactImage from "../assets/images/react.png";
+import vueImage from "../assets/images/vue.png";
 import typescriptImage from "../assets/images/typescript.png";
 import scssImage from "../assets/images/scss.png";
 import styledComponentsImage from "../assets/images/styledcomponents.png";
@@ -44,10 +45,10 @@ const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
 
 const SkillIcons = styled.div`
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 50px;
     margin-bottom: 100px;
 
     @media (max-width: 430px) {
@@ -128,7 +129,7 @@ const JSDarkDivider = styled.div`
     width: 125px;
 `;
 const ReactDarkDivider = styled.div`
-    width: 95px;
+    width: 111px;
 `;
 const TSDarkDivider = styled.div`
     width: 130px;
@@ -165,6 +166,7 @@ function Skills() {
                 <Image src={cssImage} alt="css" width={50} />
                 <Image src={jsImage} alt="javascript" width={45} />
                 <Image src={reactImage} alt="react" width={47} />
+                <Image src={vueImage} alt="vue" width={47} />
                 <Image src={typescriptImage} alt="typescript" width={45} />
                 <Image src={scssImage} alt="scss" width={45} />
                 <Image src={styledComponentsImage} alt="styled components" width={45} />
@@ -224,7 +226,7 @@ function Skills() {
                 <SkillItem>
                     <SkillTitle>
                         <Image src={reactImage} alt="react" width={28} />
-                        <span>React</span>
+                        <span>React.JS</span>
                     </SkillTitle>
                     <SubDivider>
                         <ReactDarkDivider />
@@ -238,6 +240,24 @@ function Skills() {
                         <br />
                         ⪧ React Hook(State, Effect)을 사용하여 상태 관리를 할 수 있어요.
                         <br />⪧ 재사용을 위한 UI Component 구현이 가능해요.
+                    </p>
+                </SkillItem>
+                <SkillItem>
+                    <SkillTitle>
+                        <Image src={vueImage} alt="vue" width={28} />
+                        <span>Vue.JS</span>
+                    </SkillTitle>
+                    <SubDivider>
+                        <MediumDarkDivider />
+                    </SubDivider>
+                    <p>
+                        ⪧ 양방향 데이터 바인딩을 사용하여 데이터의 변화가 자동으로 화면에 반영되도록 데이터와 UI를 동기화할 수 있어요.
+                        <br />
+                        ⪧ 생명주기 훅을 잘 이해하고 있고 이를 활용하여 생명주기를 고려하여 구현이 가능해요.
+                        <br />
+                        ⪧ v-if/v-for과 같은 조건부/리스트 렌더링을 활용하여 Vue.JS의 장점을 살려 간단하게 구현할 수 있어요.
+                        <br />
+                        ⪧ props와 emit을 사용하여 컴포넌트간 데이터 통신과 이벤트 호출을 활용할 수 있어요.
                     </p>
                 </SkillItem>
                 <SkillItem>
