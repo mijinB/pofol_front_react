@@ -45,7 +45,7 @@ const IntroContainer = styled.div<{ $isFullWidth: boolean }>`
 
 const SkillIcons = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     gap: 50px;
