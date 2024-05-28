@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pofol_front_react/static/css/main.dc1fdf34.css",
-    "main.js": "/pofol_front_react/static/js/main.4a8aa2cc.js",
+    "main.js": "/pofol_front_react/static/js/main.4b897d8d.js",
     "static/media/todo_list.png": "/pofol_front_react/static/media/todo_list.e91c6b68e080726033cb.png",
     "static/media/Pretendard-Thin.ttf": "/pofol_front_react/static/media/Pretendard-Thin.5a36e5790b59271c3c17.ttf",
     "static/media/Pretendard-ExtraLight.ttf": "/pofol_front_react/static/media/Pretendard-ExtraLight.8fac2ec0a752261e7f3d.ttf",
@@ -74,10 +74,10 @@
     "static/media/framer.png": "/pofol_front_react/static/media/framer.a2c42bc638b884b5aaa0.png",
     "index.html": "/pofol_front_react/index.html",
     "main.dc1fdf34.css.map": "/pofol_front_react/static/css/main.dc1fdf34.css.map",
-    "main.4a8aa2cc.js.map": "/pofol_front_react/static/js/main.4a8aa2cc.js.map"
+    "main.4b897d8d.js.map": "/pofol_front_react/static/js/main.4b897d8d.js.map"
   },
   "entrypoints": [
     "static/css/main.dc1fdf34.css",
-    "static/js/main.4a8aa2cc.js"
+    "static/js/main.4b897d8d.js"
   ]
 }
